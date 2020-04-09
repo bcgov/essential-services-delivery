@@ -303,7 +303,7 @@
       "displayName": "Source Image Name",
       "description": "The name of the image to use for this resource.",
       "required": true,
-      "value": "issuer-kit-db"
+      "value": "db"
     },
     {
       "name": "TAG_NAME",
@@ -317,7 +317,7 @@
       "displayName": "MongoDB Database Name",
       "description": "The name of the MongoDB database.",
       "required": true,
-      "value": "identity_kit_db"
+      "value": "issuer_db"
     },
     {
       "name": "MONGODB_USER",

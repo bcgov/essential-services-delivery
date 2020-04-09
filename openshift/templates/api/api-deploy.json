@@ -95,6 +95,20 @@
             }
           },
           "spec": {
+            "volumes": [
+              {
+                "name": "${NAME}${SUFFIX}-custom-schema-volume",
+                "configMap": {
+                  "name": "${APP_CONFIG_MAP_NAME}${SUFFIX}",
+                  "items": [
+                    {
+                      "key": "${CUSTOM_SCHEMA_FILE}",
+                      "path": "${CUSTOM_SCHEMA_FILE}"
+                    }
+                  ]
+                }
+              }
+            ],
             "containers": [
               {
                 "name": "${NAME}${SUFFIX}",
@@ -195,7 +209,7 @@
                   },
                   {
                     "name": "CUSTOM_SCHEMA_PATH",
-                    "value": "${CUSTOM_SCHEMA_PATH}"
+                    "value": "${CUSTOM_SCHEMA_PATH}/${CUSTOM_SCHEMA_FILE}"
                   }
                 ],
                 "resources": {
@@ -207,7 +221,14 @@
                     "cpu": "${CPU_LIMIT}",
                     "memory": "${MEMORY_LIMIT}"
                   }
-                }
+                },
+                "volumeMounts": [
+                  {
+                    "name": "${NAME}${SUFFIX}-custom-schema-volume",
+                    "mountPath": "${CUSTOM_SCHEMA_PATH}/${CUSTOM_SCHEMA_FILE}",
+                    "subPath": "${CUSTOM_SCHEMA_FILE}"
+                  }
+                ]
               }
             ]
           }
@@ -240,10 +261,10 @@
       "kind": "NetworkSecurityPolicy",
       "apiVersion": "secops.pathfinder.gov.bc.ca/v1alpha1",
       "metadata": {
-        "name": "custom-${APP_NAME}-pods-to-api",
+        "name": "custom-${APP_NAME}-${NAME}${SUFFIX}-pods-to-api",
         "labels": {
-          "name": "custom-${APP_NAME}-pods-to-api",
-          "app": "${APP_NAME}",
+          "name": "custom-${APP_NAME}-${NAME}${SUFFIX}-pods-to-api",
+          "app": "${APP_NAME}${SUFFIX}",
           "app-group": "${APP_GROUP}",
           "role": "${ROLE}",
           "env": "${TAG_NAME}"
@@ -267,10 +288,10 @@
       "kind": "NetworkSecurityPolicy",
       "apiVersion": "secops.pathfinder.gov.bc.ca/v1alpha1",
       "metadata": {
-        "name": "custom-${APP_NAME}-${NAME}-policy",
+        "name": "custom-${APP_NAME}-${NAME}${SUFFIX}-policy",
         "labels": {
-          "name": "custom-${APP_NAME}-${NAME}-policy",
-          "app": "${APP_NAME}",
+          "name": "custom-${APP_NAME}-${NAME}${SUFFIX}-policy",
+          "app": "${APP_NAME}${SUFFIX}",
           "app-group": "${APP_GROUP}",
           "role": "${ROLE}",
           "env": "${TAG_NAME}"
@@ -281,7 +302,7 @@
         "source": [
           [
             "role=${ROLE}",
-            "app=${APP_NAME}",
+            "app=${APP_NAME}${SUFFIX}",
             "env=${TAG_NAME}",
             "$namespace=${NAMESPACE_NAME}-${TAG_NAME}"
           ]
@@ -289,13 +310,13 @@
         "destination": [
           [
             "role=db",
-            "app=${APP_NAME}",
+            "app=${APP_NAME}${SUFFIX}",
             "env=${TAG_NAME}",
             "$namespace=${NAMESPACE_NAME}-${TAG_NAME}"
           ],
           [
             "role=agent",
-            "app=${APP_NAME}",
+            "app=${APP_NAME}${SUFFIX}",
             "env=${TAG_NAME}",
             "$namespace=${NAMESPACE_NAME}-${TAG_NAME}"
           ]
@@ -358,7 +379,7 @@
       "displayName": "Database Service Name",
       "description": "The name of the database server/service.",
       "required": true,
-      "value": "issuer-kit-db"
+      "value": "db"
     },
     {
       "name": "DB_PORT",
@@ -372,14 +393,14 @@
       "displayName": "Database Name",
       "required": true,
       "description": "Name of the deployed database (see environment variables in deployed database).",
-      "value": "identity_kit_db"
+      "value": "issuer_db"
     },
     {
       "name": "SOURCE_IMAGE_NAME",
       "displayName": "Source Image Name",
       "description": "The name of the image to use for this resource.",
       "required": true,
-      "value": "issuer-kit-controller"
+      "value": "api"
     },
     {
       "name": "TAG_NAME",
@@ -393,7 +414,7 @@
       "displayName": "Agent Service name",
       "description": "Agent service name",
       "required": true,
-      "value": "issuer-kit-agent"
+      "value": "agent"
     },
     {
       "name": "AGENT_ADMIN_PORT",
@@ -438,11 +459,25 @@
       "value": ""
     },
     {
+      "name": "APP_CONFIG_MAP_NAME",
+      "displayName": "Application Config Map Name",
+      "description": "The name of the configuration map holding the data to configure the application.",
+      "required": true,
+      "value": "api-config"
+    },
+    {
       "name": "CUSTOM_SCHEMA_PATH",
       "displayName": "Custom Schema Path",
       "description": "Specifies the path to a file containing a custom schema definition. If set, the controller will try to use this schema instead of the default one.",
       "required": false,
       "value": ""
+    },
+    {
+      "name": "CUSTOM_SCHEMA_FILE",
+      "displayName": "Custom Schema File",
+      "description": "Specifies the name of the file containing a custom schema definition. If set, the controller will try to use this schema instead of the default one.",
+      "required": false,
+      "value": "schema.json"
     },
     {
       "name": "MIN_REPLICAS",
