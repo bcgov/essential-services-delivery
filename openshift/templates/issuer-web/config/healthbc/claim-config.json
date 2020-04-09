@@ -1,0 +1,40 @@
+{
+  "questions": [
+    {
+      "type": "text",
+      "name": "placeholder",
+      "defaultValue": "Proceed to request your credential",
+      "readOnly": true,
+      "visibleIf": "{expiry_date} empty"
+    },
+    {
+      "type": "text",
+      "name": "expiry_date",
+      "inputType": "date",
+      "title": "Expiry Date:",
+      "readOnly": true,
+      "isRequired": true,
+      "visibleIf": "{expiry_date} notempty"
+    },
+    {
+      "type": "text",
+      "name": "phn",
+      "title": "Personal Health Number:",
+      "readOnly": true,
+      "isRequired": true,
+      "visibleIf": "{phn} notempty"
+    }
+  ],
+  "triggers": [
+    {
+      "type": "runexpression",
+      "expression": "{placeholder} notempty",
+      "runExpression": "setExpiryDate('placeholder', 'expiry_date')"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{placeholder} notempty",
+      "runExpression": "setPHN('placeholder', 'phn')"
+    }
+  ]
+}

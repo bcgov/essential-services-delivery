@@ -11,6 +11,17 @@ fi
 # The results need to be encoded as OpenShift template parameters for use with oc process.
 # ================================================================================================================
 
+# Generate application config map
+# - To include all of the files in the application instance's profile directory.
+# Injected by genDepls.sh
+# - APP_CONFIG_MAP_NAME
+# - SUFFIX
+OUTPUT_FORMAT=json
+APPCONFIG_SOURCE_PATH=$( dirname "$0" )/config/${PROFILE}
+APPCONFIG_OUTPUT_FILE=${APP_CONFIG_MAP_NAME}-configmap_DeploymentConfig.json
+printStatusMsg "Generating ConfigMap; ${APP_CONFIG_MAP_NAME} ..."
+generateConfigMap "${APP_CONFIG_MAP_NAME}${SUFFIX}" "${APPCONFIG_SOURCE_PATH}" "${OUTPUT_FORMAT}" "${APPCONFIG_OUTPUT_FILE}"
+
 if createOperation; then
   # Randomly generate a set of credentials without asking ...
   # printStatusMsg "Creating a set of random user credentials ..."
