@@ -6,7 +6,7 @@
 NAME=issuer-web
 # GITHUB_WEBHOOK_SECRET=[a-zA-Z0-9]{40}
 # GENERIC_WEBHOOK_SECRET=[a-zA-Z0-9]{40}
-SOURCE_REPOSITORY_URL=https://github.com/bcgov/covid-19-essential-services.git
+SOURCE_REPOSITORY_URL=https://github.com/bcgov/essential-services-delivery.git
 SOURCE_REPOSITORY_REF=master
 CONTEXT_DIR=./jenkins/issuer-web
 JENKINSFILE_PATH=Jenkinsfile

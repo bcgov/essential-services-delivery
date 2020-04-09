@@ -1,7 +1,7 @@
 def PIPELINE_NAME = "issuer-web"
 
 def LIB_NAME= "covid19-es-lib"
-def LIB_REPO = "https://github.com/bcgov/identity-kit-poc.git"
+def LIB_REPO = "https://github.com/bcgov/essential-services-delivery.git"
 def LIB_BRANCH = "master"
 library identifier: "${LIB_NAME}@${LIB_BRANCH}", 
         retriever: modernSCM(
