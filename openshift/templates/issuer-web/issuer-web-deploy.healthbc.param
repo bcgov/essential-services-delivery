@@ -4,7 +4,7 @@
 # Template File: ../openshift/templates/issuer-web/issuer-web-deploy.json
 #=========================================================
 NAME=issuer-web
-APP_NAME=issuer-kit
+APP_NAME=issuer
 APP_GROUP=healthbc
 SUFFIX=-healthbc
 ROLE=public-frontend

@@ -4,7 +4,7 @@
 # Template File: ../openshift/templates/db/db-deploy.json
 #=========================================================
 NAME=db
-APP_NAME=issuer-kit
+APP_NAME=issuer
 APP_GROUP=healthbc
 SUFFIX=-healthbc
 ROLE=db

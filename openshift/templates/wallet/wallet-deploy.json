@@ -271,14 +271,14 @@
       "displayName": "App Name",
       "description": "Used to group components together in the OpenShift console.",
       "required": true,
-      "value": "issuer-kit"
+      "value": "issuer"
     },
     {
       "name": "APP_GROUP",
       "displayName": "App Group",
       "description": "The name assigned to all of the deployments in this project.",
       "required": true,
-      "value": "issuer-kit"
+      "value": "issuer"
     },
     {
       "name": "SUFFIX",

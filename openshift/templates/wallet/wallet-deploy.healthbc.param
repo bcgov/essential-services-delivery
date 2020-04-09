@@ -4,7 +4,7 @@
 # Template File: ../openshift/templates/wallet/wallet-deploy.json
 #=========================================================
 NAME=wallet
-APP_NAME=issuer-kit
+APP_NAME=issuer
 APP_GROUP=healthbc
 SUFFIX=-healthbc
 ROLE=wallet
