@@ -1,5 +1,5 @@
 {
-  "env": "production",
+  "env": "development",
   "issuer": {
     "name": "Med Lab"
   },
@@ -17,7 +17,7 @@
       "silentRedirectUri": "https://medlab-dev.pathfinder.gov.bc.ca/silent-renew-oidc.html",
       "post_logout_redirect_uri": "https://medlab-dev.pathfinder.gov.bc.ca",
       "extraQueryParams": {
-        "pres_req_conf_id": "verified-person"
+        "pres_req_conf_id": "c19c-dev"
       },
       "metadata": {
         "issuer": "https://vc-oidc-controller.pathfinder.gov.bc.ca",
@@ -34,11 +34,11 @@
     "url": "/api"
   },
   "issuedSuccess": {
-    "successText": "You can now proceed to get your Essential Service credential:",
+    "successText": "You can use your credential to access the following facilities:",
     "links": [
       {
-        "url": "https://www.google.ca",
-        "description": "Essential Services Accreditation"
+        "url": "T.B.D.",
+        "description": "Long Term Care Facility"
       }
     ]
   }

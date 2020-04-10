@@ -2,10 +2,18 @@
   "questions": [
     {
       "type": "text",
-      "name": "placeholder",
-      "defaultValue": "Proceed to request your credential",
+      "name": "phn",
+      "title": "Personal Health Number:",
       "readOnly": true,
-      "visibleIf": "{expiry_date} empty"
+      "isRequired": true
+    },
+    {
+      "type": "text",
+      "name": "test_outcome",
+      "title": "Test Outcome:",
+      "readOnly": true,
+      "isRequired": true,
+      "defaultValue": "CLEAR"
     },
     {
       "type": "text",
@@ -15,26 +23,13 @@
       "readOnly": true,
       "isRequired": true,
       "visibleIf": "{expiry_date} notempty"
-    },
-    {
-      "type": "text",
-      "name": "phn",
-      "title": "Personal Health Number:",
-      "readOnly": true,
-      "isRequired": true,
-      "visibleIf": "{phn} notempty"
     }
   ],
   "triggers": [
     {
       "type": "runexpression",
-      "expression": "{placeholder} notempty",
-      "runExpression": "setExpiryDate('placeholder', 'expiry_date')"
-    },
-    {
-      "type": "runexpression",
-      "expression": "{placeholder} notempty",
-      "runExpression": "setPHN('placeholder', 'phn')"
+      "expression": "{test_outcome} notempty",
+      "runExpression": "setExpiryDate('expiry_date')"
     }
   ]
-}
+}s
