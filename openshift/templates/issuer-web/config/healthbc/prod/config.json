@@ -34,11 +34,11 @@
     "url": "/api"
   },
   "issuedSuccess": {
-    "successText": "You can now proceed to get your Essential Service credential:",
+    "successText": "Next steps:",
     "links": [
       {
-        "url": "https://www.google.ca",
-        "description": "Essential Services Accreditation"
+        "url": "https://ocdcleaning.pathfinder.gov.bc.ca",
+        "description": "OCD Cleaning Essential Service Authorization"
       }
     ]
   }

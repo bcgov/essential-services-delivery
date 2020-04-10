@@ -1,5 +1,5 @@
 {
-  "env": "production",
+  "env": "test",
   "issuer": {
     "name": "Health Gateway"
   },
@@ -34,11 +34,11 @@
     "url": "/api"
   },
   "issuedSuccess": {
-    "successText": "You can now proceed to get your Essential Service credential:",
+    "successText": "Next step:",
     "links": [
       {
-        "url": "https://www.google.ca",
-        "description": "Essential Services Accreditation"
+        "url": "https://ocdcleaning-test.pathfinder.gov.bc.ca",
+        "description": "OCD Cleaning Essential Service Authorization"
       }
     ]
   }
