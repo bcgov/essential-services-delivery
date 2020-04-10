@@ -39,12 +39,11 @@ node {
     }
   }
 
-  stage("Deploy ${config.DEPLOYMENT_ENVIRONMENT_TAGS[0]}") {
+  // The image is used by more than one deployment configuration, just tag it ...
+  stage("Deploy ${config.APP_NAME} to ${config.DEPLOYMENT_ENVIRONMENT_TAGS[0]}") {
     script {
-      deploy("${config.APP_NAME}",
-             "${config.SUFFIX}",
-             "${config.NAME_SPACE}",
-             "${config.DEPLOYMENT_ENVIRONMENT_TAGS[0]}")
+      tagImage("${config.APP_NAME}",
+               "${config.DEPLOYMENT_ENVIRONMENT_TAGS[0]}")
     }
   }
 }
