@@ -13,27 +13,14 @@ node {
 
   def config = load "../workspace@script/jenkins/${PIPELINE_NAME}/config.groovy"
 
-  stage("Build ${config.BASE_IMAGE_NAME} ...") {
-    script {
-      openshift.withCluster() {
-        openshift.withProject() {
-          echo "Building the base image ..."
-          build(openshift, 
-                "${config.BASE_IMAGE_NAME}",
-                config.WAIT_TIMEOUT)
-        }
-      }
-    }
-  }
-
-  stage("Build ${config.RUNTIME_IMAGE_NAME} ...") {
-    script {
-      openshift.withCluster() {
-        openshift.withProject() {
-          echo "Building the base image ..."
-          build(openshift, 
-                "${config.RUNTIME_IMAGE_NAME}",
-                config.WAIT_TIMEOUT)
+  config.BUILDS.each {
+    stage("Build ${it}") {
+      script {
+        openshift.withCluster() {
+          openshift.withProject() {
+            echo "Building the ${it} image ..."
+            build(openshift, "${it}", config.WAIT_TIMEOUT)
+          }
         }
       }
     }
