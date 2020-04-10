@@ -1,4 +1,4 @@
-def PIPELINE_NAME = "deployment/bc-prod"
+def PIPELINE_NAME = "deployment/prod"
 
 def LIB_NAME= "covid19-es-lib"
 def LIB_REPO = "https://github.com/bcgov/essential-services-delivery.git"
