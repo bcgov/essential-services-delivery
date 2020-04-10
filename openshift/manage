@@ -160,6 +160,11 @@ case "${_cmd}" in
     deleteResources ${appName}
     ;;
 
+  untag)
+    appName=${1:-issuer-kit}
+    untagImages ${appName}
+    ;;
+
   scaleup)
     scaleUp -w ${@}
     ;;
