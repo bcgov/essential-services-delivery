@@ -8,7 +8,7 @@
     "enabled": true,
     "oidcSettings": {
       "authority": "https://vc-oidc-controller.pathfinder.gov.bc.ca",
-      "clientId": "healthbc",
+      "clientId": "healthbc-dev",
       "redirectUri": "https://healthbc-dev.pathfinder.gov.bc.ca/oidc-callback",
       "redirect_uri": "https://healthbc-dev.pathfinder.gov.bc.ca/oidc-callback-error",
       "responseType": "code",
@@ -20,10 +20,12 @@
         "pres_req_conf_id": "verified-person"
       },
       "metadata": {
+        "issuer": "https://vc-oidc-controller.pathfinder.gov.bc.ca",
         "authorization_endpoint": "https://vc-oidc-controller.pathfinder.gov.bc.ca/vc/connect/authorize",
-        "token_endpoint": "https://vc-oidc-controller.pathfinder.gov.bc.ca/connect/token",
-        "userinfo_endpoint": "https://vc-oidc-controller.pathfinder.gov.bc.ca/connect/userinfo",
-        "jwks_uri": "https://vc-oidc-controller.pathfinder.gov.bc.ca/.well-known/openid-configuration/jwks"
+        "token_endpoint": "https://vc-oidc-controller.pathfinder.gov.bc.ca/vc/connect/token",
+        "userinfo_endpoint": "https://vc-oidc-controller.pathfinder.gov.bc.ca/vc/connect/userinfo",
+        "jwks_uri": "https://vc-oidc-controller.pathfinder.gov.bc.ca/.well-known/openid-configuration/jwks",
+        "end_session_endpoint": "https://healthbc-dev.pathfinder.gov.bc.ca"
       },
       "loadUserInfo": false
     }

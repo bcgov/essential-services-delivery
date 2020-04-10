@@ -10,7 +10,7 @@ function setExpiryDate(params) {
 
   var date = new Date();
   date.setFullYear(
-    date.getFullYear + (3 + Math.floor(Math.random() * Math.floor(max)))
+    date.getFullYear() + (3 + Math.floor(Math.random() * Math.floor(2)))
   );
   survey.setValue(dateField, date.toISOString().substr(0, 10));
 
