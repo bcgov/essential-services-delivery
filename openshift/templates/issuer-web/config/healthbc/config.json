@@ -1,32 +1,42 @@
 {
-  "env": "development",
+  "env": "production",
   "issuer": {
-    "name": "Issuer Name"
+    "name": "Health Gateway"
   },
   "inviteRequired": false,
   "authentication": {
-    "enabled": false,
+    "enabled": true,
     "oidcSettings": {
-      "authority": "http://localhost:8180/auth/realms/identity-kit",
-      "clientId": "identity-kit-public",
-      "redirectUri": "http://localhost:4251/oidc-callback",
-      "redirect_uri": "http://localhost:4251/oidc-callback-error",
+      "authority": "https://vc-oidc-controller.pathfinder.gov.bc.ca",
+      "clientId": "healthbc",
+      "redirectUri": "https://healthbc-dev.pathfinder.gov.bc.ca/oidc-callback",
+      "redirect_uri": "https://healthbc-dev.pathfinder.gov.bc.ca/oidc-callback-error",
       "responseType": "code",
-      "scope": "openid profile email",
+      "scope": "openid profile vc_authn",
       "automaticSilentRenew": true,
-      "silentRedirectUri": "http://localhost:4251/silent-renew-oidc.html",
-      "post_logout_redirect_uri": "http://localhost:4251"
+      "silentRedirectUri": "https://healthbc-dev.pathfinder.gov.bc.ca/silent-renew-oidc.html",
+      "post_logout_redirect_uri": "https://healthbc-dev.pathfinder.gov.bc.ca",
+      "extraQueryParams": {
+        "pres_req_conf_id": "verified-person"
+      },
+      "metadata": {
+        "authorization_endpoint": "https://vc-oidc-controller.pathfinder.gov.bc.ca/vc/connect/authorize",
+        "token_endpoint": "https://vc-oidc-controller.pathfinder.gov.bc.ca/connect/token",
+        "userinfo_endpoint": "https://vc-oidc-controller.pathfinder.gov.bc.ca/connect/userinfo",
+        "jwks_uri": "https://vc-oidc-controller.pathfinder.gov.bc.ca/.well-known/openid-configuration/jwks"
+      },
+      "loadUserInfo": false
     }
   },
   "apiServer": {
-    "url": "http://localhost:5000"
+    "url": "/api"
   },
   "issuedSuccess": {
-    "successText": "To try out your new credential:",
+    "successText": "You can now proceed to get your Essential Service credential:",
     "links": [
       {
-        "url": "https://csb-audio.pathfinder.gov.bc.ca",
-        "description": "CSB Audio"
+        "url": "https://www.google.ca",
+        "description": "Essential Services Accreditation"
       }
     ]
   }
