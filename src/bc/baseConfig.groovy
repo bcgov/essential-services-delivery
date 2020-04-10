@@ -15,5 +15,5 @@ class baseConfig {
   public static final String  SUFFIX = ''
 
   // Apps - Listed in the order they should be tagged
-  public static final String[] APPS = ['agent', 'wallet', 'issuer-web', 'api', 'db']
+  public static final String[] APPS = ['db', 'wallet', 'issuer-web', 'agent', 'api']
 }
