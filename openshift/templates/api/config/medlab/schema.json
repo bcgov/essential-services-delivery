@@ -1,0 +1,8 @@
+{
+  "attributes": [
+      "phn",
+      "expiry_date"
+  ],
+  "schema_name": "personal_health_number",
+  "schema_version": "0.1.0"
+}
