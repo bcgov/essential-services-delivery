@@ -1,8 +1,9 @@
 {
   "attributes": [
       "phn",
+      "test_outcome",
       "expiry_date"
   ],
-  "schema_name": "personal_health_number",
+  "schema_name": "medlab_covid19_test",
   "schema_version": "0.1.0"
 }

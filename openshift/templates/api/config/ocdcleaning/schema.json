@@ -1,8 +1,12 @@
 {
   "attributes": [
-      "phn",
-      "expiry_date"
+      "organization_id",
+      "organization_name",
+      "given_names",
+      "family_name",
+      "service_type",
+      "service_id"
   ],
-  "schema_name": "personal_health_number",
+  "schema_name": "essential_service_authoriaztion",
   "schema_version": "0.1.0"
 }
