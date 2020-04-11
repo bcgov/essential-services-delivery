@@ -23,6 +23,12 @@ usage () {
         Example;
           $0 -p default -e null createNewProfile travelauth
 
+    configureProof <baseUrl> <payLoadPath> [namespace] [secretName] [key]
+      - Post a proof configuration to a vc-authn-oidc controller.
+
+        Example;
+          $0 -p default -e null configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
+
     clean
       - Remove the application components from a given environment.
         Specify the environment using the -e option.
@@ -203,6 +209,32 @@ createNewProfile() {
     cat ${templateConfig} | sed s~${templateProfile}~${profileName}~ > ${destPath}
   done
 }
+
+configureProof() {
+  baseUrl=${1}
+  payLoadPath=${2}
+  namespace=${3}
+  secretName=${4}
+  key=${5}
+  if [ -z "${baseUrl}" ] || [ -z "${payLoadPath}" ]|| [ -z "${namespace}" ]|| [ -z "${secretName}" ]|| [ -z "${key}" ]; then
+    echoError "\nconfigureProof; You MUST specify the following parameters:\n- baseUrl\n- payLoadPath\n- namespace\n- secretName\n- key"
+    exit 1
+  fi
+
+  apiKey=$(getSecret "${secretName}" "${key}" "${namespace}")
+  if [ -z "${apiKey}" ]; then
+    echoError "\nconfigureProof; Unable to process request:\n - Unable to locate the API Key for ${baseUrl}.\n   Please ensure you are logged into OpenShift and have access to the following resources.\n   - Namespace: ${namespace}\n   - Secret Name: ${secretName}\n   - Key: ${key}"
+    exit 1
+  fi
+
+  curl \
+    -X POST \
+    -H X-Api-Key:${apiKey} \
+    -H accept:application/json \
+    -H Content-Type:application/json-patch+json \
+    --data @${payLoadPath} \
+    ${baseUrl}/api/vc-configs
+}
 # =================================================================================================================
 
 pushd ${SCRIPT_HOME} >/dev/null
@@ -229,6 +261,15 @@ case "${_cmd}" in
     profileName=${1}
     templateProfile=${2:-healthbc}
     createNewProfile ${profileName} ${templateProfile}
+    ;;
+
+  configureproof)
+    baseUrl=${1}
+    payLoadPath=${2}
+    namespace=${3:-devex-von-prod}
+    secretName=${4:-vc-oidc-controller}
+    key=${5:-controller-api-key}
+    configureProof ${baseUrl} ${payLoadPath} ${namespace} ${secretName} ${key}
     ;;
 
   scaleup)
