@@ -1,7 +1,7 @@
 {
   "env": "test",
   "issuer": {
-    "name": "OCD Cleaning"
+    "name": "Sparkling Cleaners"
   },
   "inviteRequired": false,
   "authentication": {
