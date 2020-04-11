@@ -25,9 +25,11 @@ usage () {
 
     configureProof <baseUrl> <payLoadPath> [namespace] [secretName] [key]
       - Post a proof configuration to a vc-authn-oidc controller.
+      - To update, PUT, use the '-u' (update) option; see examples below.
 
-        Example;
+        Examples;
           $0 -p default -e null configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
+          $0 -p default -e null -u configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
 
     clean
       - Remove the application components from a given environment.
@@ -227,8 +229,14 @@ configureProof() {
     exit 1
   fi
 
+  if createOperation; then
+    httpCommand="POST"
+  else
+    httpCommand="PUT"
+  fi
+
   curl \
-    -X POST \
+    -X ${httpCommand} \
     -H X-Api-Key:${apiKey} \
     -H accept:application/json \
     -H Content-Type:application/json-patch+json \
