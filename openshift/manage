@@ -13,26 +13,40 @@ usage () {
   Usage:
     $0 [options] [commands]
 
-
   Commands:
   ========
+    createNewProfile <profileName> [templateProfileName]
+      - Create a new deployment configuration profile from an existing one.
+      - Automatically performs the rename of the profile name within the copied files.
+        All other content is left unchanged.
+
+        Example;
+          $0 -p default -e null createNewProfile travelauth
+
     clean
       - Remove the application components from a given environment.
         Specify the environment using the -e option.
 
+    delete
+      - Delete allapplication components from a given environment.
+        Specify the environment using the -e option.
+
+    untag
+      - Untag all of the application images.  Deletes all tags except 'latest'.
+
     scaleUp
       - Scale up one or more pods.
-        For example;
+        Example;
           $0 -e prod scaleUp motomo
 
     scaleDown
       - Scale down one or more pods.
-        For example;
+        Example;
           $0 -e prod scaleDown motomo
 
     recycle
       - Recycle one or more pods.
-        For example;
+        Example;
           $0 -e prod recycle motomo
 EOF
 }
@@ -116,8 +130,7 @@ fi
 # -----------------------------------------------------------------------------------------------------------------
 # Functions:
 # -----------------------------------------------------------------------------------------------------------------
-deleteResources()
-{
+deleteResources() {
   (
     _appName=${1}
     if [ -z "${_appName}" ]; then
@@ -130,8 +143,7 @@ deleteResources()
   )
 }
 
-cleanResources()
-{
+cleanResources() {
   (
     _appName=${1}
     if [ -z "${_appName}" ]; then
@@ -142,6 +154,54 @@ cleanResources()
     echoWarning "Cleaning out resources for '${_appName}'.  Secrets and PVCs will be retained."
     oc -n $(getProjectName) delete all,configmap,NetworkSecurityPolicy -l app-group=${_appName}
   )
+}
+
+createNewProfile() {
+  profileName=${1}
+  templateProfile=${2:-healthbc}
+  if [ -z "${profileName}" ]; then
+    echoError "\ncreateNewProfile; You MUST specify a profile name.\n"
+    exit 1
+  fi
+
+  echo -e "\nCreating a new settings profile ..."
+  settingsProfile="settings.${profileName}.sh"
+  echo " - ${settingsProfile}"
+  echo "# Just used to allow the profile to be set." > ${settingsProfile}
+
+  echo -e "\nCreating the base set of deployment .param files ..."
+  searchPath="./templates"
+  searchFilter="*-deploy.${templateProfile}.param"
+  templateParams=$(find ${searchPath} -type f -name "${searchFilter}")
+  for templateParam in ${templateParams}; do
+    destPath=$(echo ${templateParam} | sed s~${templateProfile}~${profileName}~)
+    echo " - ${destPath}"
+    cat ${templateParam} | sed s~${templateProfile}~${profileName}~ > ${destPath}
+  done
+
+  echo -e "\nCreating the base api profile configuration(s) ..."
+  searchPath="./templates"
+  searchFilter="*/${templateProfile}/schema.json"
+  templateConfigDir=$(getDirectory $(find ${searchPath} -type f -path "${searchFilter}"))
+  templateConfigs=$(find ${templateConfigDir} -type f)
+  for templateConfig in ${templateConfigs}; do
+    destPath=$(echo ${templateConfig} | sed s~${templateProfile}~${profileName}~)
+    echo " - ${destPath}"
+    mkdir -p $(getDirectory ${destPath})
+    cat ${templateConfig} | sed s~${templateProfile}~${profileName}~ > ${destPath}
+  done
+
+  echo -e "\nCreating the base issuer-web profile configurations ..."
+  searchPath="./templates"
+  searchFilter="*/${templateProfile}/logo.svg"
+  templateConfigDir=$(getDirectory $(find ${searchPath} -type f -path "${searchFilter}"))
+  templateConfigs=$(find ${templateConfigDir} -type f)
+  for templateConfig in ${templateConfigs}; do
+    destPath=$(echo ${templateConfig} | sed s~${templateProfile}~${profileName}~)
+    echo " - ${destPath}"
+    mkdir -p $(getDirectory ${destPath})
+    cat ${templateConfig} | sed s~${templateProfile}~${profileName}~ > ${destPath}
+  done
 }
 # =================================================================================================================
 
@@ -163,6 +223,12 @@ case "${_cmd}" in
   untag)
     appName=${1:-issuer-kit}
     untagImages ${appName}
+    ;;
+
+  createnewprofile)
+    profileName=${1}
+    templateProfile=${2:-healthbc}
+    createNewProfile ${profileName} ${templateProfile}
     ;;
 
   scaleup)
