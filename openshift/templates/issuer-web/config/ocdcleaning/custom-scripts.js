@@ -1,49 +1,40 @@
 /* Include all your custom JS code in here, it will be available to the app instance */
 
-function setExpiryDate(params) {
+function setRandomId(params) {
   if (params.length < 2) {
-    throw new Error("setExpiryDate is missing one or more required parameters");
+    throw new Error("setRandomId is missing one or more required parameters");
   }
-  var placeholder = params[0];
-  var dateField = params[1];
+  var field = params[0];
+  var range = params[1];
+  var prefix = params[2] ? `${params[2]}-` : "";
   var survey = this.survey;
 
-  var date = new Date();
-  date.setFullYear(
-    date.getFullYear() + (3 + Math.floor(Math.random() * Math.floor(2)))
-  );
-  survey.setValue(dateField, date.toISOString().substr(0, 10));
-
-  survey.clearValue(placeholder);
+  var randomId = Math.floor(Math.random() * Math.floor(range));
+  survey.setValue(field, `${prefix}${randomId}`);
 }
 
-function setPHN(params) {
-  if (params.length < 2) {
-    throw new Error("setExpiryDate is missing one or more required parameters");
+function pickRandomService(params) {
+  if (params.length < 1) {
+    throw new Error("pickRandomService is missing one or more required parameters");
   }
-  var placeholder = params[0];
-  var phnField = params[1];
+  var field = params[0];
   var survey = this.survey;
 
-  // Credit to: https://www.w3resource.com/javascript-exercises/javascript-math-exercise-23.php
-  var create_UUID = function () {
-    var dt = new Date().getTime();
-    var uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
-      /[xy]/g,
-      function (c) {
-        var r = (dt + Math.random() * 16) % 16 | 0;
-        dt = Math.floor(dt / 16);
-        return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
-      }
-    );
-    return uuid;
-  };
-  survey.setValue(phnField, create_UUID());
+  var serviceList = [
+    "Vacuuming",
+    "Floor Mopping",
+    "Dusting",
+    "Desinfecting",
+    "Window Cleaning",
+    "Bathroom Cleaning",
+    "Garbage & Compost"
+  ];
 
-  survey.clearValue(placeholder);
+  var randomId = Math.floor(Math.random() * Math.floor(serviceList.length - 1));
+  survey.setValue(field, serviceList[randomId]);
 }
 
 /* An array containing custom functions that will be automatically registered with
  * SurveyJS so that they can be used in triggers.
  */
-surveyFunctions = [setExpiryDate, setPHN];
+surveyFunctions = [setRandomId, pickRandomService];

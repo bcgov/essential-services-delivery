@@ -1,7 +1,7 @@
 {
-  "env": "production",
+  "env": "test",
   "issuer": {
-    "name": "Health Gateway"
+    "name": "OCD Cleaning"
   },
   "inviteRequired": false,
   "authentication": {
@@ -34,11 +34,11 @@
     "url": "/api"
   },
   "issuedSuccess": {
-    "successText": "You can now proceed to get your Essential Service credential:",
+    "successText": "You can now request your COVID-19 clearance:",
     "links": [
       {
-        "url": "https://www.google.ca",
-        "description": "Essential Services Accreditation"
+        "url": "https://medlab-test.pathfinder.gov.bc.ca",
+        "description": "MedLab COVID-19 Test Clearance"
       }
     ]
   }
