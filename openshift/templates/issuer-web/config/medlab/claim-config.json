@@ -1,0 +1,35 @@
+{
+  "questions": [
+    {
+      "type": "text",
+      "name": "phn",
+      "title": "Personal Health Number:",
+      "readOnly": true,
+      "isRequired": true
+    },
+    {
+      "type": "text",
+      "name": "test_outcome",
+      "title": "Test Outcome:",
+      "readOnly": true,
+      "isRequired": true,
+      "defaultValue": "CLEAR"
+    },
+    {
+      "type": "text",
+      "name": "expiry_date",
+      "inputType": "date",
+      "title": "Expiry Date:",
+      "readOnly": true,
+      "isRequired": true,
+      "visibleIf": "{expiry_date} notempty"
+    }
+  ],
+  "triggers": [
+    {
+      "type": "runexpression",
+      "expression": "{test_outcome} notempty",
+      "runExpression": "setExpiryDate('expiry_date')"
+    }
+  ]
+}

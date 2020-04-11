@@ -1,0 +1,60 @@
+{
+  "questions": [
+    {
+      "type": "text",
+      "name": "organization_id",
+      "title": "Organization ID:",
+      "readOnly": true,
+      "isRequired": true,
+      "defaultValue": "INC-192783"
+    },
+    {
+      "type": "text",
+      "name": "organization_name",
+      "title": "Organization Name:",
+      "readOnly": true,
+      "isRequired": true,
+      "defaultValue": "O.C.D. Cleaning"
+    },
+    {
+      "type": "text",
+      "name": "given_names",
+      "title": "Employee First Name:",
+      "readOnly": true,
+      "isRequired": true
+    },
+    {
+      "type": "text",
+      "name": "family_name",
+      "title": "Employee Last Name:",
+      "readOnly": true,
+      "isRequired": true
+    },
+    {
+      "type": "text",
+      "name": "service_type",
+      "title": "Service Type:",
+      "readOnly": true,
+      "isRequired": true
+    },
+    {
+      "type": "text",
+      "name": "service_id",
+      "title": "Service ID:",
+      "readOnly": true,
+      "isRequired": true
+    }
+  ],
+  "triggers": [
+    {
+      "type": "runexpression",
+      "expression": "{organization_name} notempty",
+      "runExpression": "pickRandomService('service_type')"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{organization_name} notempty",
+      "runExpression": "setRandomId('service_id', 999)"
+    }
+  ]
+}
