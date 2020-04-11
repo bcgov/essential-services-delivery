@@ -14,7 +14,7 @@
       "title": "Organization Name:",
       "readOnly": true,
       "isRequired": true,
-      "defaultValue": "O.C.D. Cleaning"
+      "defaultValue": "Sparkling Cleaners"
     },
     {
       "type": "text",

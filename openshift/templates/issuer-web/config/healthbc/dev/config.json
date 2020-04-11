@@ -37,8 +37,8 @@
     "successText": "Next step:",
     "links": [
       {
-        "url": "https://ocdcleaning-dev.pathfinder.gov.bc.ca",
-        "description": "OCD Cleaning Essential Service Authorization"
+        "url": "https://cleaningservice-dev.pathfinder.gov.bc.ca",
+        "description": "Sparkling Cleaners Essential Service Authorization"
       }
     ]
   }
