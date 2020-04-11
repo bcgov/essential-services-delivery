@@ -1,0 +1,91 @@
+{
+  "id": "verified-person",
+  "subject_identifier": "given_names",
+  "configuration": {
+    "name": "verified-person",
+    "version": "1.0",
+    "requested_attributes": [
+      {
+        "name": "given_names",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "family_name",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "birthdate",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "street_address",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "postal_code",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "locality",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "region",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "country",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      }
+    ],
+    "requested_predicates": []
+  }
+}

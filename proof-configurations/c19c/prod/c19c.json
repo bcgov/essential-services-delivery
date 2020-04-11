@@ -1,0 +1,153 @@
+{
+  "id": "c19c",
+  "subject_identifier": "phn",
+  "configuration": {
+    "name": "c19c",
+    "version": "1.0",
+    "requested_attributes": [
+      {
+        "name": "given_names",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          },
+          {
+            "schema_name": "essential_service_authorization",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "family_name",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          },
+          {
+            "schema_name": "essential_service_authorization",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "birthdate",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "street_address",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "postal_code",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "locality",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "region",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "country",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "phn",
+        "restrictions": [
+          {
+            "schema_name": "personal_health_number",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "expiry_date",
+        "restrictions": [
+          {
+            "schema_name": "personal_health_number",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "organization_id",
+        "restrictions": [
+          {
+            "schema_name": "essential_service_authorization",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "organization_name",
+        "restrictions": [
+          {
+            "schema_name": "essential_service_authorization",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "service_type",
+        "restrictions": [
+          {
+            "schema_name": "essential_service_authorization",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "service_id",
+        "restrictions": [
+          {
+            "schema_name": "essential_service_authorization",
+            "schema_version": "0.1.0"
+          }
+        ]
+      }
+    ],
+    "requested_predicates": []
+  }
+}
