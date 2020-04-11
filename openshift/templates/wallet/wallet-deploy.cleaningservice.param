@@ -5,8 +5,8 @@
 #=========================================================
 NAME=wallet
 APP_NAME=issuer
-APP_GROUP=ocdcleaning
-SUFFIX=-ocdcleaning
+APP_GROUP=cleaningservice
+SUFFIX=-cleaningservice
 ROLE=wallet
 IMAGE_NAMESPACE=bztwou-tools
 SOURCE_IMAGE_NAME=wallet
