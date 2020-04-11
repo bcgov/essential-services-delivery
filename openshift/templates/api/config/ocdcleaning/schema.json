@@ -7,6 +7,6 @@
       "service_type",
       "service_id"
   ],
-  "schema_name": "essential_service_authoriaztion",
+  "schema_name": "essential_service_authorization",
   "schema_version": "0.1.0"
 }
