@@ -1,0 +1,175 @@
+{
+  "id": "safe_entry_c19",
+  "subject_identifier": "region",
+  "configuration": {
+    "name": "Traveller Safe Entry",
+    "version": "1.0",
+    "requested_attributes": [
+      {
+        "name": "given_names",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "family_name",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "org_legal_name",
+        "restrictions": [
+          {
+            "schema_name": "service_provider",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "org_registries_id",
+        "restrictions": [
+          {
+            "schema_name": "service_provider",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "essential",
+        "restrictions": [
+          {
+            "schema_name": "service_provider",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "services",
+        "restrictions": [
+          {
+            "schema_name": "service_provider",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "issued",
+        "restrictions": [
+          {
+            "schema_name": "service_provider",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "issued",
+        "restrictions": [
+          {
+            "schema_name": "authorized_access",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "country",
+        "restrictions": [
+          {
+            "schema_name": "authorized_access",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "postal_code",
+        "restrictions": [
+          {
+            "schema_name": "authorized_access",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "region",
+        "restrictions": [
+          {
+            "schema_name": "authorized_access",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "locality",
+        "restrictions": [
+          {
+            "schema_name": "authorized_access",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "street_address",
+        "restrictions": [
+          {
+            "schema_name": "authorized_access",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "reason",
+        "restrictions": [
+          {
+            "schema_name": "authorized_access",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "facility",
+        "restrictions": [
+          {
+            "schema_name": "authorized_access",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "expiry",
+        "restrictions": [
+          {
+            "schema_name": "authorized_access",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "virus",
+        "restrictions": [
+          {
+            "schema_name": "c19_status",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "expiry",
+        "restrictions": [
+          {
+            "schema_name": "c19_status",
+            "schema_version": "0.1.0"
+          }
+        ]
+      }
+    ],
+    "requested_predicates": []
+  }
+}
