@@ -1,0 +1,33 @@
+#=========================================================
+# OpenShift template parameters for:
+# Component: .
+# Template File: ../openshift/templates/api/api-deploy.json
+#=========================================================
+NAME=api
+APP_NAME=issuer
+APP_GROUP=esr1
+SUFFIX=-esr1
+ROLE=controller
+IMAGE_NAMESPACE=bztwou-tools
+SERVICE_PORT=8080
+DB_SERVICE=db
+DB_PORT=27017
+DB_NAME=issuer_db
+SOURCE_IMAGE_NAME=api
+TAG_NAME=dev
+AGENT_SERVICE_NAME=agent
+AGENT_ADMIN_PORT=8024
+SMTP_SERVER_ADDRESS=
+SMTP_SERVER_PORT=
+ADMIN_EMAIL=
+PUBLIC_SITE_URL=https://esr1-issuer-dev.pathfinder.gov.bc.ca/
+EXISTING_SCHEMA_ID=
+APP_CONFIG_MAP_NAME=api-config
+CUSTOM_SCHEMA_PATH=/tmp
+CUSTOM_SCHEMA_FILE=schema.json
+MIN_REPLICAS=1
+MAX_REPLICAS=2
+CPU_REQUEST=10m
+CPU_LIMIT=300m
+MEMORY_REQUEST=10Mi
+MEMORY_LIMIT=256Mi

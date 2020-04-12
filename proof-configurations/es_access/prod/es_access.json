@@ -1,0 +1,39 @@
+{
+  "id": "es_access",
+  "subject_identifier": "given_names",
+  "configuration": {
+    "name": "Essential Services Access",
+    "version": "1.0",
+    "requested_attributes": [
+      {
+        "name": "given_names",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "essential",
+        "restrictions": [
+          {
+            "schema_name": "service_provider",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "services",
+        "restrictions": [
+          {
+            "schema_name": "service_provider",
+            "schema_version": "0.1.0"
+          }
+        ]
+      }
+    ],
+    "requested_predicates": []
+  }
+}
