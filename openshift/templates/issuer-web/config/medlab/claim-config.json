@@ -2,34 +2,88 @@
   "questions": [
     {
       "type": "text",
-      "name": "phn",
-      "title": "Personal Health Number:",
+      "name": "virus",
+      "defaultValue": "coronavirus",
       "readOnly": true,
-      "isRequired": true
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
     },
     {
       "type": "text",
-      "name": "test_outcome",
-      "title": "Test Outcome:",
+      "name": "checktime",
+      "title": "Date of test:",
       "readOnly": true,
       "isRequired": true,
-      "defaultValue": "CLEAR"
+      "requiredErrorText": "Required Field"
     },
     {
       "type": "text",
-      "name": "expiry_date",
-      "inputType": "date",
-      "title": "Expiry Date:",
+      "name": "checkedlocation",
+      "title": "Location of test:",
       "readOnly": true,
       "isRequired": true,
-      "visibleIf": "{expiry_date} notempty"
+      "defaultValue": "Victoria, British Columbia, Canada",
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "type": "text",
+      "name": "checkedby",
+      "title": "Checked by:",
+      "readOnly": true,
+      "isRequired": true,
+      "defaultValue": "Dr. Anne Edwards",
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "type": "text",
+      "name": "checkedfacility",
+      "title": "Checked at:",
+      "readOnly": true,
+      "isRequired": true,
+      "defaultValue": "MedLab, Victoria, BC",
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "type": "text",
+      "name": "diagnosismethod",
+      "title": "Diagnosis method:",
+      "readOnly": true,
+      "isRequired": true,
+      "defaultValue": "[ \"rRT-PCR\" ]",
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "type": "text",
+      "name": "issued",
+      "title": "Issued:",
+      "readOnly": true,
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "type": "text",
+      "name": "expiry",
+      "title": "Expiry:",
+      "readOnly": true,
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
     }
   ],
   "triggers": [
     {
       "type": "runexpression",
-      "expression": "{test_outcome} notempty",
-      "runExpression": "setExpiryDate('expiry_date')"
+      "expression": "{virus} notempty",
+      "runExpression": "setCheckTime('checktime')"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{virus} notempty",
+      "runExpression": "setCurrentISODate('issued')"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{virus} notempty",
+      "runExpression": "setFutureDate('expiry')"
     }
   ]
 }
