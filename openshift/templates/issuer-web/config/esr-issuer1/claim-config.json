@@ -1,0 +1,67 @@
+{
+  "questions": [
+    {
+      "type": "text",
+      "name": "org_legal_name",
+      "title": "Organization Legal Name:",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "type": "text",
+      "name": "org_registries_id",
+      "title": "BC Registries ID:",
+      "readOnly": true,
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "type": "radiogroup",
+      "name": "essential",
+      "title": "Essential:",
+      "isRequired": true,
+      "requiredErrorText": "Required Field",
+      "hasNone": false,
+      "colCount": 2,
+      "choices": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "type": "text",
+      "name": "services",
+      "title": "Services:",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "type": "text",
+      "name": "issued",
+      "title": "Issued:",
+      "readOnly": true,
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "type": "text",
+      "name": "placeholder",
+      "title": "placeholder",
+      "readOnly": true,
+      "visibleIf": "{issued} empty",
+      "defaultValue": "default"
+    }
+  ],
+  "triggers": [
+    {
+      "type": "runexpression",
+      "expression": "{placeholder} notempty",
+      "runExpression": "setRandomId('org_registries_id', 999999)"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{placeholder} notempty",
+      "runExpression": "setCurrentISODate('issued')"
+    }
+  ]
+}
