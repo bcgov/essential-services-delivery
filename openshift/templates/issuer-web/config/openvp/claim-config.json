@@ -1,0 +1,39 @@
+{
+  "questions": [
+    {
+      "type": "text",
+      "name": "placeholder",
+      "defaultValue": "placeholder",
+      "readOnly": true,
+      "visibleIf": "{issued} empty"
+    },
+    {
+      "type": "text",
+      "name": "phn",
+      "title": "Personal Health Number:",
+      "readOnly": true,
+      "isRequired": true,
+      "visibleIf": "{phn} notempty"
+    },
+    {
+      "type": "text",
+      "name": "issued",
+      "title": "Issued:",
+      "readOnly": true,
+      "isRequired": true,
+      "visibleIf": "{issued} notempty"
+    }
+  ],
+  "triggers": [
+    {
+      "type": "runexpression",
+      "expression": "{placeholder} notempty",
+      "runExpression": "setCurrentISODate('issued')"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{placeholder} notempty",
+      "runExpression": "setPHN('phn')"
+    }
+  ]
+}
