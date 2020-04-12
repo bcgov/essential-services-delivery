@@ -37,7 +37,7 @@
     "successText": "You can now request your COVID-19 clearance:",
     "links": [
       {
-        "url": "https://medlab.pathfinder.gov.bc.ca",
+        "url": "https://medlab-issuer.pathfinder.gov.bc.ca",
         "description": "MedLab COVID-19 Test Clearance"
       }
     ]

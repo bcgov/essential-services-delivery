@@ -37,7 +37,7 @@
     "successText": "Next steps:",
     "links": [
       {
-        "url": "https://medlab-test.pathfinder.gov.bc.ca",
+        "url": "https://medlab-issuer-test.pathfinder.gov.bc.ca",
         "description": "Obtain Covid-19 clearance"
       },
       {
