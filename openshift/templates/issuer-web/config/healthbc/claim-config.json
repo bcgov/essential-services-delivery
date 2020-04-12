@@ -10,7 +10,7 @@
     {
       "type": "text",
       "name": "phn",
-      "title": "Personal Health Number:",
+      "title": "BC Personal Health Number:",
       "readOnly": true,
       "isRequired": true,
       "visibleIf": "{phn} notempty"
