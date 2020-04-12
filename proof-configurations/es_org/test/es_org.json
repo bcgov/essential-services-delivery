@@ -1,0 +1,21 @@
+{
+    "id": "es_org-test",
+    "subject_identifier": "region",
+    "configuration": {
+      "name": "Essential Services Organization",
+      "version": "1.0",
+      "requested_attributes": [
+        {
+          "name": "region",
+          "restrictions": [
+            {
+              "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+              "schema_name": "verified_person",
+              "schema_version": "1.4.0"
+            }
+          ]
+        }
+      ],
+      "requested_predicates": []
+    }
+  }
