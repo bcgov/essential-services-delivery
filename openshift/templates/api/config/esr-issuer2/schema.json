@@ -1,0 +1,15 @@
+{
+  "attributes": [
+    "facility",
+    "reason",
+    "street_address",
+    "locality",
+    "region",
+    "postal_code",
+    "country",
+    "issued",
+    "expiry"
+  ],
+  "schema_name": "esr_access",
+  "schema_version": "0.1.0"
+}
