@@ -44,6 +44,15 @@
         ]
       },
       {
+        "name": "essential",
+        "restrictions": [
+          {
+            "schema_name": "service_provider",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
         "name": "services",
         "restrictions": [
           {
@@ -132,17 +141,6 @@
             "schema_version": "0.1.0"
           }
         ]
-      }
-    ],
-    "requested_predicates": [
-      {
-        "name": "essential",
-        "restrictions": [
-          {
-            "schema_name": "service_provider",
-            "schema_version": "0.1.0"
-          }
-        ]
       },
       {
         "name": "expiry",
@@ -153,6 +151,7 @@
           }
         ]
       }
-    ]
+    ],
+    "requested_predicates": []
   }
 }
