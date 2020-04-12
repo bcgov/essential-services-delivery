@@ -1,9 +1,14 @@
 {
   "attributes": [
-      "phn",
-      "test_outcome",
-      "expiry_date"
+    "virus",
+    "checktime",
+    "checkedlocation",
+    "checkedby",
+    "checkedfacility",
+    "diagnosismethod",
+    "issued",
+    "expiry"
   ],
-  "schema_name": "medlab_covid19_test",
+  "schema_name": "c19_status",
   "schema_version": "0.1.0"
 }
