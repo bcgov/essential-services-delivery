@@ -39,6 +39,15 @@ usage () {
           $0 -p default -e null configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
           $0 -p default -e null -u configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
 
+    deployAllProfiles
+      - Helper script to deploy all of the profiles to a given environment.
+      - All options, such as the '-e' and '-u' flags, are passed from the options specified on the manage command.
+
+        Examples;
+          $0 -p default -e test deployAllProfiles         - Deploy all profiles
+          $0 -p default -e test -u deployAllProfiles      - Update all profiles
+          $0 -p default -e test -g deployAllProfiles      - Create (generate only) all profiles
+
     clean
       - Remove the application components from a given environment.
         Specify the environment using the -e option.
@@ -277,6 +286,30 @@ configureProof() {
     --data @${payLoadPath} \
     ${baseUrl}/api/vc-configs
 }
+
+deployAllProfiles() {
+  profiles=$(getProfiles)
+  for profile in ${profiles}; do
+    if [ ${profile} != "default" ]; then
+
+      printAndAskToContinue "Deploying '${profile}' to '${DEPLOYMENT_ENV_NAME}' ..."
+
+      # Override the current profile settings ...
+      export PROFILE=${profile}
+      export SKIP_PIPELINE_PROCESSING=
+      export ignore_templates=
+      export include_templates=
+
+      # Load the desired profile settings ...
+      _settingsFile=settings.${PROFILE}.sh
+      echo -e "Loading settings from ${PWD}/${_settingsFile##*/} ..."
+      . ${_settingsFile}
+
+      # Options for genDepls.sh script come from the options used for the ./manage script ...
+      genDepls.sh
+    fi
+  done
+}
 # =================================================================================================================
 
 pushd ${SCRIPT_HOME} >/dev/null
@@ -318,6 +351,10 @@ case "${_cmd}" in
     secretName=${4:-vc-oidc-controller}
     key=${5:-controller-api-key}
     configureProof ${baseUrl} ${payLoadPath} ${namespace} ${secretName} ${key}
+    ;;
+
+  deployallprofiles)
+    deployAllProfiles
     ;;
 
   scaleup)
