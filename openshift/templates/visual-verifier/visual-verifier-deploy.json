@@ -269,28 +269,6 @@
           }
         }
       }
-    },
-    {
-      "kind": "HorizontalPodAutoscaler",
-      "apiVersion": "autoscaling/v1",
-      "metadata": {
-        "name": "${NAME}${SUFFIX}",
-        "labels": {
-          "name": "${NAME}${SUFFIX}",
-          "app": "${APP_NAME}${SUFFIX}",
-          "app-group": "${APP_GROUP}",
-          "role": "${ROLE}",
-          "env": "${TAG_NAME}"
-        }
-      },
-      "spec": {
-        "scaleTargetRef": {
-          "kind": "DeploymentConfig",
-          "name": "${NAME}${SUFFIX}"
-        },
-        "minReplicas": "${{MIN_REPLICAS}}",
-        "maxReplicas": "${{MAX_REPLICAS}}"
-      }
     }
   ],
   "parameters": [
@@ -432,20 +410,6 @@
       "description": "OIDC Claims Required",
       "required": true,
       "value": ""
-    },
-    {
-      "name": "MIN_REPLICAS",
-      "displayName": "Minimum Replicas",
-      "description": "The minimum number of pods to have running.",
-      "required": true,
-      "value": "1"
-    },
-    {
-      "name": "MAX_REPLICAS",
-      "displayName": "Maximum Replicas",
-      "description": "The maximum number of pods to have running.",
-      "required": true,
-      "value": "2"
     },
     {
       "name": "CPU_REQUEST",
