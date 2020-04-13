@@ -23,7 +23,7 @@
         "name": "${NAME}${SUFFIX}"
       },
       "spec": {
-        "replicas": 2,
+        "replicas": 1,
         "selector": {
           "name": "${NAME}${SUFFIX}",
           "deploymentconfig": "${NAME}${SUFFIX}"
