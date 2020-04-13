@@ -23,6 +23,14 @@ usage () {
         Example;
           $0 -p default -e null createNewIssuerProfile travelauth
 
+    createNewVerifierProfile <profileName> [templateProfileName]
+      - Create a new visual-verifier deployment configuration profile from an existing one.
+      - Automatically performs the rename of the profile name within the copied files.
+        All other content is left unchanged.
+
+        Example;
+          $0 -p default -e null createNewVerifierProfile travelauth
+
     configureProof <baseUrl> <payLoadPath> [namespace] [secretName] [key]
       - Post a proof configuration to a vc-authn-oidc controller.
       - To update, PUT, use the '-u' (update) option; see examples below.
