@@ -223,7 +223,7 @@ createNewIssuerProfile() {
 
 createNewVerifierProfile() {
   profileName=${1}
-  templateProfile=${2:-client}
+  templateProfile=${2:-safe-entry}
   if [ -z "${profileName}" ]; then
     echoError "\ncreateNewVerifierProfile; You MUST specify a profile name.\n"
     exit 1
@@ -307,7 +307,7 @@ case "${_cmd}" in
 
   createnewverifierprofile)
     profileName=${1}
-    templateProfile=${2:-client}
+    templateProfile=${2:-safe-entry}
     createNewVerifierProfile ${profileName} ${templateProfile}
     ;;
 
