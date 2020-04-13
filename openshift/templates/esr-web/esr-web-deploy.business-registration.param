@@ -1,0 +1,26 @@
+#=========================================================
+# OpenShift template parameters for:
+# Component: .
+# Template File: ../openshift/templates/esr-web/esr-web-deploy.yaml
+#=========================================================
+NAME=esr-web
+APP_NAME=esr
+APP_GROUP=business-registration
+SUFFIX=-business-registration
+ROLE=esr-web
+IMAGE_NAMESPACE=bztwou-tools
+CADDY_CONFIG_FILE_NAME=Caddyfile
+CADDY_CONFIG_MAP_NAME=esr-web-caddy-conf
+CADDY_CONFIG_MOUNT_PATH=/etc/
+WEB_HOST_NAME=0.0.0.0
+WEB_HOST_PORT=8080
+WEB_HOST_TLS=off
+API_HOST=api
+API_PORT=8080
+APPLICATION_DOMAIN=esr-business-registration-dev.pathfinder.gov.bc.ca
+SOURCE_IMAGE_NAME=esr-web
+TAG_NAME=dev
+CPU_REQUEST=10m
+CPU_LIMIT=250m
+MEMORY_REQUEST=100Mi
+MEMORY_LIMIT=256Mi

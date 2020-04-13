@@ -1,16 +1,16 @@
 #=========================================================
 # OpenShift template parameters for:
 # Component: .
-# Template File: ../openshift/templates/issuer-web/issuer-web-build.json
+# Template File: ../openshift/templates/esr-web/esr-web-build.json
 #=========================================================
-NAME=issuer-web
+NAME=esr-web
 APP_NAME=issuer-kit
 APP_GROUP=issuer-kit-runtime
 OUTPUT_IMAGE_TAG=latest
 SOURCE_IMAGE_TAG=1.0.3-no-stats
 SOURCE_IMAGE_NAME=abiosoft/caddy
 SOURCE_IMAGE_KIND=DockerImage
-ARTIFACT_IMAGE_NAME=issuer-web-base-image
+ARTIFACT_IMAGE_NAME=esr-web-base-image
 ARTIFACT_IMAGE_TAG=latest
 ARTIFACT_IMAGE_NAMESPACE=bztwou-tools
 ARTIFACT_IMAGE_KIND=ImageStreamTag

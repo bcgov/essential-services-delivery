@@ -23,7 +23,7 @@
         "name": "${NAME}${SUFFIX}"
       },
       "spec": {
-        "replicas": 2,
+        "replicas": 1,
         "selector": {
           "name": "${NAME}${SUFFIX}",
           "deploymentconfig": "${NAME}${SUFFIX}"
@@ -404,7 +404,7 @@
       "displayName": "Image Namespace",
       "name": "IMAGE_NAMESPACE",
       "required": true,
-      "value": "devex-von-tools"
+      "value": "bztwou-tools"
     },
     {
       "name": "CADDY_CONFIG_FILE_NAME",
