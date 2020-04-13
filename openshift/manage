@@ -173,9 +173,10 @@ createNewIssuerProfile() {
   fi
 
   echo -e "\nCreating a new settings profile ..."
-  settingsProfile="settings.${profileName}.sh"
-  echo " - ${settingsProfile}"
-  echo "# Just used to allow the profile to be set." > ${settingsProfile}
+  sourceSettings="settings.${templateProfile}.sh"
+  destSettings="settings.${profileName}.sh"
+  echo " - ${destSettings}"
+  cat ${sourceSettings} > ${destSettings}
 
   echo -e "\nCreating the base set of deployment .param files ..."
   searchPath="./templates"
@@ -209,6 +210,31 @@ createNewIssuerProfile() {
     echo " - ${destPath}"
     mkdir -p $(getDirectory ${destPath})
     cat ${templateConfig} | sed s~${templateProfile}~${profileName}~ > ${destPath}
+  done
+}
+
+createNewVerifierProfile() {
+  profileName=${1}
+  templateProfile=${2:-client}
+  if [ -z "${profileName}" ]; then
+    echoError "\ncreateNewVerifierProfile; You MUST specify a profile name.\n"
+    exit 1
+  fi
+
+  echo -e "\nCreating a new settings profile ..."
+  sourceSettings="settings.${templateProfile}.sh"
+  destSettings="settings.${profileName}.sh"
+  echo " - ${destSettings}"
+  cat ${sourceSettings} > ${destSettings}
+
+  echo -e "\nCreating the base set of deployment .param files ..."
+  searchPath="./templates"
+  searchFilter="*-deploy.${templateProfile}.param"
+  templateParams=$(find ${searchPath} -type f -name "${searchFilter}")
+  for templateParam in ${templateParams}; do
+    destPath=$(echo ${templateParam} | sed s~${templateProfile}~${profileName}~)
+    echo " - ${destPath}"
+    cat ${templateParam} | sed s~${templateProfile}~${profileName}~ > ${destPath}
   done
 }
 
@@ -269,6 +295,12 @@ case "${_cmd}" in
     profileName=${1}
     templateProfile=${2:-medlab}
     createNewIssuerProfile ${profileName} ${templateProfile}
+    ;;
+
+  createnewverifierprofile)
+    profileName=${1}
+    templateProfile=${2:-client}
+    createNewVerifierProfile ${profileName} ${templateProfile}
     ;;
 
   configureproof)
