@@ -15,13 +15,13 @@ usage () {
 
   Commands:
   ========
-    createNewProfile <profileName> [templateProfileName]
-      - Create a new deployment configuration profile from an existing one.
+    createNewIssuerProfile <profileName> [templateProfileName]
+      - Create a new issuer deployment configuration profile from an existing one.
       - Automatically performs the rename of the profile name within the copied files.
         All other content is left unchanged.
 
         Example;
-          $0 -p default -e null createNewProfile travelauth
+          $0 -p default -e null createNewIssuerProfile travelauth
 
     configureProof <baseUrl> <payLoadPath> [namespace] [secretName] [key]
       - Post a proof configuration to a vc-authn-oidc controller.
@@ -164,11 +164,11 @@ cleanResources() {
   )
 }
 
-createNewProfile() {
+createNewIssuerProfile() {
   profileName=${1}
   templateProfile=${2:-healthbc}
   if [ -z "${profileName}" ]; then
-    echoError "\ncreateNewProfile; You MUST specify a profile name.\n"
+    echoError "\ncreateNewIssuerProfile; You MUST specify a profile name.\n"
     exit 1
   fi
 
@@ -265,10 +265,10 @@ case "${_cmd}" in
     untagImages ${appName}
     ;;
 
-  createnewprofile)
+  createnewissuerprofile)
     profileName=${1}
-    templateProfile=${2:-healthbc}
-    createNewProfile ${profileName} ${templateProfile}
+    templateProfile=${2:-medlab}
+    createNewIssuerProfile ${profileName} ${templateProfile}
     ;;
 
   configureproof)
