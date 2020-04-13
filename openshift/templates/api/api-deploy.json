@@ -236,28 +236,6 @@
       }
     },
     {
-      "kind": "HorizontalPodAutoscaler",
-      "apiVersion": "autoscaling/v1",
-      "metadata": {
-        "name": "${NAME}${SUFFIX}",
-        "labels": {
-          "name": "${NAME}${SUFFIX}",
-          "app": "${APP_NAME}${SUFFIX}",
-          "app-group": "${APP_GROUP}",
-          "role": "${ROLE}",
-          "env": "${TAG_NAME}"
-        }
-      },
-      "spec": {
-        "scaleTargetRef": {
-          "kind": "DeploymentConfig",
-          "name": "${NAME}${SUFFIX}"
-        },
-        "minReplicas": "${{MIN_REPLICAS}}",
-        "maxReplicas": "${{MAX_REPLICAS}}"
-      }
-    },
-    {
       "kind": "NetworkSecurityPolicy",
       "apiVersion": "secops.pathfinder.gov.bc.ca/v1alpha1",
       "metadata": {
@@ -478,20 +456,6 @@
       "description": "Specifies the name of the file containing a custom schema definition. If set, the controller will try to use this schema instead of the default one.",
       "required": false,
       "value": "schema.json"
-    },
-    {
-      "name": "MIN_REPLICAS",
-      "displayName": "Minimum Replicas",
-      "description": "The minimum number of pods to have running.",
-      "required": true,
-      "value": "1"
-    },
-    {
-      "name": "MAX_REPLICAS",
-      "displayName": "Maximum Replicas",
-      "description": "The maximum number of pods to have running.",
-      "required": true,
-      "value": "2"
     },
     {
       "name": "CPU_REQUEST",

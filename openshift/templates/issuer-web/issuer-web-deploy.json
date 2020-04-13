@@ -330,28 +330,6 @@
       }
     },
     {
-      "kind": "HorizontalPodAutoscaler",
-      "apiVersion": "autoscaling/v1",
-      "metadata": {
-        "name": "${NAME}${SUFFIX}",
-        "labels": {
-          "app": "${APP_NAME}${SUFFIX}",
-          "name": "${NAME}${SUFFIX}",
-          "app-group": "${APP_GROUP}",
-          "role": "${ROLE}",
-          "env": "${TAG_NAME}"
-        }
-      },
-      "spec": {
-        "scaleTargetRef": {
-          "kind": "DeploymentConfig",
-          "name": "${NAME}${SUFFIX}"
-        },
-        "minReplicas": 1,
-        "maxReplicas": 2
-      }
-    },
-    {
       "kind": "NetworkSecurityPolicy",
       "apiVersion": "secops.pathfinder.gov.bc.ca/v1alpha1",
       "metadata": {
