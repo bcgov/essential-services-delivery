@@ -395,7 +395,7 @@
       "displayName": "OIDC RP Scopes",
       "description": "OIDC RP Scopes",
       "required": false,
-      "value": ""
+      "value": "openid profile vc_authn"
     },
     {
       "name": "VC_AUTHN_PRES_REQ_CONF_ID",
