@@ -41,7 +41,7 @@
         "description": "Obtain Covid-19 clearance"
       },
       {
-        "url": "https://esr-issuer2-dev.pathfinder.gov.bc.ca",
+        "url": "https://esr2-issuer-dev.pathfinder.gov.bc.ca",
         "description": "Obtain Essential Service access credential"
       }
     ]

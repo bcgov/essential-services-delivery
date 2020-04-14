@@ -37,8 +37,12 @@
     "successText": "Next steps:",
     "links": [
       {
-        "url": "https://cleaningservice.pathfinder.gov.bc.ca",
-        "description": "Sparkling Cleaners Essential Service Authorization"
+        "url": "https://esr1-issuer.pathfinder.gov.bc.ca",
+        "description": "Essential Service - Organization Credential"
+      },
+      {
+        "url": "https://esr2-issuer.pathfinder.gov.bc.ca",
+        "description": "Essential Service - Authorization Credential"
       }
     ]
   }
