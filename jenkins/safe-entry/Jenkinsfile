@@ -1,0 +1,36 @@
+def PIPELINE_NAME = "safe-entry"
+
+def LIB_NAME= "covid19-es-lib"
+def LIB_REPO = "https://github.com/bcgov/essential-services-delivery.git"
+def LIB_BRANCH = "master"
+library identifier: "${LIB_NAME}@${LIB_BRANCH}", 
+        retriever: modernSCM(
+          [$class: 'GitSCMSource',
+          remote: "${LIB_REPO}",
+          branches: [[name: "*/${LIB_BRANCH}"]]])  
+
+node {
+
+  def config = load "../workspace@script/jenkins/${PIPELINE_NAME}/config.groovy"
+
+  config.BUILDS.each {
+    stage("Build ${it}") {
+      script {
+        openshift.withCluster() {
+          openshift.withProject() {
+            echo "Building the ${it} image ..."
+            build(openshift, "${it}", config.WAIT_TIMEOUT)
+          }
+        }
+      }
+    }
+  }
+
+  // The image is used by more than one deployment configuration, just tag it ...
+  stage("Deploy ${config.APP_NAME} to ${config.DEPLOYMENT_ENVIRONMENT_TAGS[0]}") {
+    script {
+      tagImage("${config.APP_NAME}",
+               "${config.DEPLOYMENT_ENVIRONMENT_TAGS[0]}")
+    }
+  }
+}
