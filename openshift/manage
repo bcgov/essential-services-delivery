@@ -48,6 +48,12 @@ usage () {
           $0 -p default -e test -u deployAllProfiles      - Update all profiles
           $0 -p default -e test -g deployAllProfiles      - Create (generate only) all profiles
 
+    createProdParams
+      - Helper script to create '*.prod.param' files from '*.test.param' files.
+
+        Examples;
+          $0 -p default -e null createProdParams
+
     clean
       - Remove the application components from a given environment.
         Specify the environment using the -e option.
@@ -60,19 +66,19 @@ usage () {
       - Untag all of the application images.  Deletes all tags except 'latest'.
 
     scaleUp
-      - Scale up one or more pods.
+      - Scale up one or more pods based on their profile.
         Example;
-          $0 -e prod scaleUp motomo
+          $0 -p medlab -e prod scaleUp agent api issuer-web
 
     scaleDown
-      - Scale down one or more pods.
+      - Scale down one or more pods based on their profile.
         Example;
-          $0 -e prod scaleDown motomo
+          $0 -p medlab -e prod scaleDown agent api issuer-web
 
     recycle
       - Recycle one or more pods.
         Example;
-          $0 -e prod recycle motomo
+          $0 -p medlab -e prod recycle agent api issuer-web
 EOF
 }
 
@@ -310,6 +316,28 @@ deployAllProfiles() {
     fi
   done
 }
+
+createProdParams() {
+  sourceEnvironmentProfile="test"
+  targetEnvironmentProfile="prod"
+
+  echo -e "\nCreating a '${targetEnvironmentProfile}' set of deployment .param files, using the '${sourceEnvironmentProfile}' profile as the template ..."
+  searchPath="./templates"
+  searchFilter="*-deploy.*.${sourceEnvironmentProfile}.param"
+  templateParams=$(find ${searchPath} -type f -name "${searchFilter}")
+  for templateParam in ${templateParams}; do
+    destPath=$(echo ${templateParam} | sed s~${sourceEnvironmentProfile}~${targetEnvironmentProfile}~)
+    echo " - ${destPath}"
+    cat ${templateParam} | sed s~${sourceEnvironmentProfile}~${targetEnvironmentProfile}~ | sed s~\-${targetEnvironmentProfile}~~ | sed s~${targetEnvironmentProfile}\.bcovrin~${sourceEnvironmentProfile}\.bcovrin~ > ${destPath}
+  done
+}
+
+formatContainerList() {
+  for container in ${@}; do
+    containerList+=" ${container}-${PROFILE}"
+  done
+  echo $(echo -e "${containerList}" | sed -e 's/^[[:space:]]*//')
+}
 # =================================================================================================================
 
 pushd ${SCRIPT_HOME} >/dev/null
@@ -357,14 +385,18 @@ case "${_cmd}" in
     deployAllProfiles
     ;;
 
+  createprodparams)
+    createProdParams
+    ;;
+
   scaleup)
-    scaleUp -w ${@}
+    scaleUp -w $(formatContainerList ${@})
     ;;
   scaledown)
-    scaleDown -w ${@}
+    scaleDown -w $(formatContainerList ${@})
     ;;
   recycle)
-    recyclePods -w ${@}
+    recyclePods -w $(formatContainerList ${@})
     ;;
 
   *)
