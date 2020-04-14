@@ -10,6 +10,6 @@
     "issued",
     "expiry"
   ],
-  "schema_name": "esr_access",
+  "schema_name": "authorized_access",
   "schema_version": "0.1.0"
 }
