@@ -34,11 +34,15 @@
     "url": "/api"
   },
   "issuedSuccess": {
-    "successText": "You can use your credential to access the following facilities:",
+    "successText": "You can use your credential at the following entry points:",
     "links": [
       {
-        "url": "T.B.D.",
-        "description": "Long Term Care Facility"
+        "url": "https://safe-entry-verifier.pathfinder.gov.bc.ca",
+        "description": "Traveller Safe Entry"
+      },
+      {
+        "url": "https://safe-entry-c19-verifier.pathfinder.gov.bc.ca",
+        "description": "Covid-19 Safe Entry"
       }
     ]
   }
