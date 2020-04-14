@@ -34,10 +34,12 @@ usage () {
     configureProof <baseUrl> <payLoadPath> [namespace] [secretName] [key]
       - Post a proof configuration to a vc-authn-oidc controller.
       - To update, PUT, use the '-u' (update) option; see examples below.
+      - To POST/PUT ALL proof configurations, specify 'all' for <payLoadPath>.
 
         Examples;
           $0 -p default -e null configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
           $0 -p default -e null -u configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
+          $0 -p default -e null -u configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca all
 
     deployAllProfiles
       - Helper script to deploy all of the profiles to a given environment.
@@ -284,13 +286,24 @@ configureProof() {
     httpCommand="PUT"
   fi
 
-  curl \
-    -X ${httpCommand} \
-    -H X-Api-Key:${apiKey} \
-    -H accept:application/json \
-    -H Content-Type:application/json-patch+json \
-    --data @${payLoadPath} \
-    ${baseUrl}/api/vc-configs
+  if [ ${payLoadPath} == "all" ]; then
+    searchPath="../proof-configurations"
+    searchFilter="*.json"
+    payLoadPaths=$(find ${searchPath} -type f -name "${searchFilter}")
+  else
+    payLoadPaths=${payLoadPath}
+  fi
+
+  for payLoadPath in ${payLoadPaths}; do
+    echo -e "\n${httpCommand}ing '${payLoadPath}' to ${baseUrl} ...\n"
+    curl \
+      -X ${httpCommand} \
+      -H X-Api-Key:${apiKey} \
+      -H accept:application/json \
+      -H Content-Type:application/json-patch+json \
+      --data @${payLoadPath} \
+      ${baseUrl}/api/vc-configs
+  done
 }
 
 deployAllProfiles() {
