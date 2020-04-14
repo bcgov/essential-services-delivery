@@ -7,6 +7,7 @@
     "requested_attributes": [
       {
         "name": "given_names",
+        "label": "Given Names",
         "restrictions": [
           {
             "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
@@ -17,6 +18,7 @@
       },
       {
         "name": "family_name",
+        "label": "Family Name",
         "restrictions": [
           {
             "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
@@ -27,6 +29,7 @@
       },
       {
         "name": "org_legal_name",
+        "label": "Organization Name",
         "restrictions": [
           {
             "schema_name": "service_provider",
@@ -36,6 +39,7 @@
       },
       {
         "name": "org_registries_id",
+        "label": "Org. BC Registries ID",
         "restrictions": [
           {
             "schema_name": "service_provider",
@@ -45,6 +49,7 @@
       },
       {
         "name": "essential",
+        "label": "Essential Service",
         "restrictions": [
           {
             "schema_name": "service_provider",
@@ -54,6 +59,7 @@
       },
       {
         "name": "services",
+        "label": "Services Offered",
         "restrictions": [
           {
             "schema_name": "service_provider",
@@ -63,6 +69,7 @@
       },
       {
         "name": "issued",
+        "label": "Issued Date (Service Provider)",
         "restrictions": [
           {
             "schema_name": "service_provider",
@@ -72,6 +79,7 @@
       },
       {
         "name": "issued",
+        "label": "Issued Date (Authorized Access)",
         "restrictions": [
           {
             "schema_name": "authorized_access",
@@ -81,6 +89,7 @@
       },
       {
         "name": "country",
+        "label": "Country",
         "restrictions": [
           {
             "schema_name": "authorized_access",
@@ -90,6 +99,7 @@
       },
       {
         "name": "postal_code",
+        "label": "Postal Code",
         "restrictions": [
           {
             "schema_name": "authorized_access",
@@ -99,6 +109,7 @@
       },
       {
         "name": "region",
+        "label": "Province",
         "restrictions": [
           {
             "schema_name": "authorized_access",
@@ -108,6 +119,7 @@
       },
       {
         "name": "locality",
+        "label": "City",
         "restrictions": [
           {
             "schema_name": "authorized_access",
@@ -117,6 +129,7 @@
       },
       {
         "name": "street_address",
+        "label": "Street Address",
         "restrictions": [
           {
             "schema_name": "authorized_access",
@@ -126,6 +139,7 @@
       },
       {
         "name": "reason",
+        "label": "Reason for Access",
         "restrictions": [
           {
             "schema_name": "authorized_access",
@@ -135,6 +149,7 @@
       },
       {
         "name": "facility",
+        "label": "Facility Name",
         "restrictions": [
           {
             "schema_name": "authorized_access",
@@ -144,6 +159,7 @@
       },
       {
         "name": "expiry",
+        "label": "Authorized Access Expiry Date",
         "restrictions": [
           {
             "schema_name": "authorized_access",
