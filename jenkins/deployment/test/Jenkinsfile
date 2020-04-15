@@ -12,7 +12,7 @@ library identifier: "${LIB_NAME}@${LIB_BRANCH}",
 node {
   def config = load "../workspace@script/jenkins/${PIPELINE_NAME}/config.groovy"
 
-  config.APPS.each { appName ->
+  config.DEPLOY_APPS.each { appName ->
     stage("Deploying ${appName} to ${config.DESTINATION_TAG}") {
       script {
         openshift.withCluster() {
