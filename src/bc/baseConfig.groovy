@@ -14,6 +14,9 @@ class baseConfig {
   // Instance Suffix
   public static final String  SUFFIX = ''
 
-  // Apps - Listed in the order they should be tagged
+  // Apps - Listed in the order they should be built
   public static final String[] APPS = ['db', 'wallet', 'visual-verifier', 'issuer-web', 'agent', 'api']
+
+  // Apps - Listed in the order they should be tagged for deployment
+  public static final String[] DEPLOY_APPS = ['db', 'wallet', 'esr-web', 'safe-entry', 'visual-verifier', 'issuer-web', 'agent', 'api']
 }
