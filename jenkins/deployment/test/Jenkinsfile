@@ -3,25 +3,33 @@ def PIPELINE_NAME = "deployment/test"
 def LIB_NAME= "covid19-es-lib"
 def LIB_REPO = "https://github.com/bcgov/essential-services-delivery.git"
 def LIB_BRANCH = "master"
-library identifier: "${LIB_NAME}@${LIB_BRANCH}", 
+library identifier: "${LIB_NAME}@${LIB_BRANCH}",
         retriever: modernSCM(
           [$class: 'GitSCMSource',
           remote: "${LIB_REPO}",
-          branches: [[name: "*/${LIB_BRANCH}"]]])  
+          branches: [[name: "*/${LIB_BRANCH}"]]])
 
 node {
   def config = load "../workspace@script/jenkins/${PIPELINE_NAME}/config.groovy"
 
-  config.DEPLOY_APPS.each { appName ->
-    stage("Deploying ${appName} to ${config.DESTINATION_TAG}") {
-      script {
-        openshift.withCluster() {
-          openshift.withProject() {
-            echo "Tagging ${appName}:${config.SOURCE_TAG} for deployment to ${config.DESTINATION_TAG} ..."
-            openshift.tag("${appName}:${config.SOURCE_TAG}", "${appName}:${config.DESTINATION_TAG}")
+  notifyRocketChat("Starting deployment to ${config.DESTINATION_TAG} ...")
+  try {
+    config.DEPLOY_APPS.each { appName ->
+      stage("Deploying ${appName} to ${config.DESTINATION_TAG}") {
+        script {
+          openshift.withCluster() {
+            openshift.withProject() {
+              echo "Tagging ${appName}:${config.SOURCE_TAG} for deployment to ${config.DESTINATION_TAG} ..."
+              openshift.tag("${appName}:${config.SOURCE_TAG}", "${appName}:${config.DESTINATION_TAG}")
+            }
           }
         }
       }
     }
+  } catch(err) {
+    notifyRocketChat("Deployment to ${config.DESTINATION_TAG} failed.")
+    throw(err)
   }
+
+  notifyRocketChat("All images where successfully tagged for deployment to ${config.DESTINATION_TAG}.")
 }
