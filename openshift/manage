@@ -47,6 +47,7 @@ usage () {
 
         Examples;
           $0 -p default -e test deployAllProfiles         - Deploy all profiles
+          $0 -p default -e test deployAllProfiles -q      - Deploy all profiles, without asking.
           $0 -p default -e test -u deployAllProfiles      - Update all profiles
           $0 -p default -e test -g deployAllProfiles      - Create (generate only) all profiles
 
@@ -307,11 +308,25 @@ configureProof() {
 }
 
 deployAllProfiles() {
+
+  local OPTIND
+  unset local quiet
+  while getopts q FLAG; do
+    case $FLAG in
+      q ) local quiet=1
+        ;;
+    esac
+  done
+  shift $((OPTIND-1))
+
   profiles=$(getProfiles)
   for profile in ${profiles}; do
     if [ ${profile} != "default" ]; then
-
-      printAndAskToContinue "Deploying '${profile}' to '${DEPLOYMENT_ENV_NAME}' ..."
+      if [ -z ${quiet} ]; then
+        printAndAskToContinue "Deploying '${profile}' to '${DEPLOYMENT_ENV_NAME}' ..."
+      else
+        echoWarning "Deploying '${profile}' to '${DEPLOYMENT_ENV_NAME}' ..."
+      fi
 
       # Override the current profile settings ...
       export PROFILE=${profile}
@@ -395,7 +410,7 @@ case "${_cmd}" in
     ;;
 
   deployallprofiles)
-    deployAllProfiles
+    deployAllProfiles ${@}
     ;;
 
   createprodparams)
