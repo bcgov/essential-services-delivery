@@ -20,7 +20,8 @@
       "title": "Street Address:",
       "placeHolder": "",
       "isRequired": true,
-      "requiredErrorText": "Required Field"
+      "requiredErrorText": "Required Field",
+      "defaultValue": "501 Belleville St."
     },
     {
       "name": "postal_code",
@@ -28,7 +29,8 @@
       "title": "Postal Code:",
       "placeHolder": "",
       "isRequired": true,
-      "requiredErrorText": "Required Field"
+      "requiredErrorText": "Required Field",
+      "defaultValue": "V8V 2L8"
     },
     {
       "name": "locality",
@@ -36,7 +38,8 @@
       "title": "City:",
       "placeHolder": "",
       "isRequired": true,
-      "requiredErrorText": "Required Field"
+      "requiredErrorText": "Required Field",
+      "defaultValue": "Victoria"
     },
     {
       "name": "region",
@@ -44,7 +47,8 @@
       "title": "Province:",
       "placeHolder": "",
       "isRequired": true,
-      "requiredErrorText": "Required Field"
+      "requiredErrorText": "Required Field",
+      "defaultValue": "British Columbia"
     },
     {
       "name": "country",
@@ -52,7 +56,8 @@
       "title": "Country:",
       "placeHolder": "",
       "isRequired": true,
-      "requiredErrorText": "Required Field"
+      "requiredErrorText": "Required Field",
+      "defaultValue": "Canada"
     },
     {
       "type": "text",
