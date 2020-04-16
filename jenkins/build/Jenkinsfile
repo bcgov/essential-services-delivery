@@ -10,7 +10,6 @@ library identifier: "${LIB_NAME}@${LIB_BRANCH}",
           branches: [[name: "*/${LIB_BRANCH}"]]])  
 
 node {
-
   def config = load "../workspace@script/jenkins/${PIPELINE_NAME}/config.groovy"
 
   config.APPS.each { appName ->
