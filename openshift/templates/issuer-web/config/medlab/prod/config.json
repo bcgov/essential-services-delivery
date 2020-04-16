@@ -1,7 +1,7 @@
 {
   "env": "production",
   "issuer": {
-    "name": "Health Gateway"
+    "name": "Med Lab"
   },
   "inviteRequired": false,
   "authentication": {
