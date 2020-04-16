@@ -31,5 +31,6 @@ node {
     throw(err)
   }
 
-  notifyRocketChat("All images where successfully tagged for deployment to ${config.DESTINATION_TAG}.")
+  def imageList = config.DEPLOY_APPS.join(',')
+  notifyRocketChat("All images where successfully tagged for deployment to ${config.DESTINATION_TAG}; ${imageList}.")
 }

@@ -3,11 +3,11 @@ def PIPELINE_NAME = "build"
 def LIB_NAME= "covid19-es-lib"
 def LIB_REPO = "https://github.com/bcgov/essential-services-delivery.git"
 def LIB_BRANCH = "master"
-library identifier: "${LIB_NAME}@${LIB_BRANCH}", 
+library identifier: "${LIB_NAME}@${LIB_BRANCH}",
         retriever: modernSCM(
           [$class: 'GitSCMSource',
           remote: "${LIB_REPO}",
-          branches: [[name: "*/${LIB_BRANCH}"]]])  
+          branches: [[name: "*/${LIB_BRANCH}"]]])
 
 node {
   def config = load "../workspace@script/jenkins/${PIPELINE_NAME}/config.groovy"
