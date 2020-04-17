@@ -8,7 +8,7 @@
 # APP_GROUP=safe-entry
 # SUFFIX=-safe-entry
 # ROLE=visual-verifier
-APPLICATION_DOMAIN=safe-entry-verifier.pathfinder.gov.bc.ca
+APPLICATION_DOMAIN=lngpipeline-camp.vonx.io
 # IMAGE_NAMESPACE=bztwou-tools
 TAG_NAME=prod
 # APP_FILE=
