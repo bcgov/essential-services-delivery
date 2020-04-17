@@ -37,11 +37,11 @@
     "successText": "You can use your credential at the following entry points:",
     "links": [
       {
-        "url": "https://safe-entry-verifier.pathfinder.gov.bc.ca",
+        "url": "https://lngpipeline-camp.vonx.io",
         "description": "Traveller Safe Entry"
       },
       {
-        "url": "https://safe-entry-c19-verifier.pathfinder.gov.bc.ca",
+        "url": "https://long-term-care-facility.vonx.io",
         "description": "Essential Service Safe Entry"
       }
     ]
