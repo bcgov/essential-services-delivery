@@ -1,7 +1,7 @@
 {
   "env": "development",
   "issuer": {
-    "name": "\"Open\" Verified Person Issuer"
+    "name": "Unverified Person Issuer"
   },
   "inviteRequired": false,
   "authentication": {
