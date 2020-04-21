@@ -13,6 +13,10 @@
             "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
             "schema_name": "verified_person",
             "schema_version": "1.4.0"
+          },
+          {
+            "schema_name": "unverified_person",
+            "schema_version": "0.1.0"
           }
         ]
       },
@@ -24,6 +28,10 @@
             "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
             "schema_name": "verified_person",
             "schema_version": "1.4.0"
+          },
+          {
+            "schema_name": "unverified_person",
+            "schema_version": "0.1.0"
           }
         ]
       },
