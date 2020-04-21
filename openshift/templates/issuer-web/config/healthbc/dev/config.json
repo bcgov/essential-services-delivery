@@ -17,7 +17,7 @@
       "silentRedirectUri": "https://healthbc-issuer-dev.pathfinder.gov.bc.ca/silent-renew-oidc.html",
       "post_logout_redirect_uri": "https://healthbc-issuer-dev.pathfinder.gov.bc.ca",
       "extraQueryParams": {
-        "pres_req_conf_id": "verified-person"
+        "pres_req_conf_id": "contact_address-dev"
       },
       "metadata": {
         "issuer": "https://vc-oidc-controller.pathfinder.gov.bc.ca",
