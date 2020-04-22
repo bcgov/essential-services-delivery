@@ -38,8 +38,14 @@ usage () {
 
         Examples;
           $0 -p default -e null configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
+            - POST verified-person.json
           $0 -p default -e null -u configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
+            - PUT verified-person.json
+
+          $0 -p default -e dev -u configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca all
+            - PUT all proof configurations for the 'dev' environment.
           $0 -p default -e null -u configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca all
+            - PUT all proof configurations for all environments.
 
     deployAllProfiles
       - Helper script to deploy all of the profiles to a given environment.
@@ -214,6 +220,26 @@ createNewIssuerProfile() {
     cat ${templateParam} | sed s~${templateProfile}~${profileName}~ > ${destPath}
   done
 
+  echo -e "\nCreating the base set of deployment test.param files ..."
+  searchPath="./templates"
+  searchFilter="*-deploy.${templateProfile}.test.param"
+  templateParams=$(find ${searchPath} -type f -name "${searchFilter}")
+  for templateParam in ${templateParams}; do
+    destPath=$(echo ${templateParam} | sed s~${templateProfile}~${profileName}~)
+    echo " - ${destPath}"
+    cat ${templateParam} | sed s~${templateProfile}~${profileName}~ > ${destPath}
+  done
+
+  echo -e "\nCreating the base set of deployment prod.param files ..."
+  searchPath="./templates"
+  searchFilter="*-deploy.${templateProfile}.prod.param"
+  templateParams=$(find ${searchPath} -type f -name "${searchFilter}")
+  for templateParam in ${templateParams}; do
+    destPath=$(echo ${templateParam} | sed s~${templateProfile}~${profileName}~)
+    echo " - ${destPath}"
+    cat ${templateParam} | sed s~${templateProfile}~${profileName}~ > ${destPath}
+  done
+
   echo -e "\nCreating the base api profile configuration(s) ..."
   searchPath="./templates"
   searchFilter="*/${templateProfile}/schema.json"
@@ -262,6 +288,26 @@ createNewVerifierProfile() {
     echo " - ${destPath}"
     cat ${templateParam} | sed s~${templateProfile}~${profileName}~ > ${destPath}
   done
+
+  echo -e "\nCreating the base set of deployment test.param files ..."
+  searchPath="./templates"
+  searchFilter="*-deploy.${templateProfile}.test.param"
+  templateParams=$(find ${searchPath} -type f -name "${searchFilter}")
+  for templateParam in ${templateParams}; do
+    destPath=$(echo ${templateParam} | sed s~${templateProfile}~${profileName}~)
+    echo " - ${destPath}"
+    cat ${templateParam} | sed s~${templateProfile}~${profileName}~ > ${destPath}
+  done
+
+  echo -e "\nCreating the base set of deployment prod.param files ..."
+  searchPath="./templates"
+  searchFilter="*-deploy.${templateProfile}.prod.param"
+  templateParams=$(find ${searchPath} -type f -name "${searchFilter}")
+  for templateParam in ${templateParams}; do
+    destPath=$(echo ${templateParam} | sed s~${templateProfile}~${profileName}~)
+    echo " - ${destPath}"
+    cat ${templateParam} | sed s~${templateProfile}~${profileName}~ > ${destPath}
+  done
 }
 
 configureProof() {
@@ -288,7 +334,12 @@ configureProof() {
   fi
 
   if [ ${payLoadPath} == "all" ]; then
-    searchPath="../proof-configurations"
+    if [ "${DEPLOYMENT_ENV_NAME}" != "null" ]; then
+      searchPath="../proof-configurations/**/${DEPLOYMENT_ENV_NAME}"
+    else
+      searchPath="../proof-configurations"
+    fi
+
     searchFilter="*.json"
     payLoadPaths=$(find ${searchPath} -type f -name "${searchFilter}")
   else
