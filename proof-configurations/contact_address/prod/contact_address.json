@@ -1,0 +1,139 @@
+{
+  "id": "contact_address",
+  "subject_identifier": "given_names",
+  "configuration": {
+    "name": "Contact Address",
+    "version": "1.0.0",
+    "requested_attributes": [
+      {
+        "name": "given_names",
+        "label": "Given Names",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          },
+          {
+            "issuer_did": "YXCtXE4YhVjULgj5hrk4ML",
+            "schema_name": "unverified_person",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "family_name",
+        "label": "Family Name",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          },
+          {
+            "issuer_did": "YXCtXE4YhVjULgj5hrk4ML",
+            "schema_name": "unverified_person",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "birthdate",
+        "label": "Date of Birth",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          },
+          {
+            "issuer_did": "YXCtXE4YhVjULgj5hrk4ML",
+            "schema_name": "unverified_person",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "street_address",
+        "label": "Street Address",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          },
+          {
+            "issuer_did": "YXCtXE4YhVjULgj5hrk4ML",
+            "schema_name": "unverified_person",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "postal_code",
+        "label": "Postal Code",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          },
+          {
+            "issuer_did": "YXCtXE4YhVjULgj5hrk4ML",
+            "schema_name": "unverified_person",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "locality",
+        "label": "City",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          },
+          {
+            "issuer_did": "YXCtXE4YhVjULgj5hrk4ML",
+            "schema_name": "unverified_person",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "region",
+        "label": "Province",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          },
+          {
+            "issuer_did": "YXCtXE4YhVjULgj5hrk4ML",
+            "schema_name": "unverified_person",
+            "schema_version": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "country",
+        "label": "Country",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          },
+          {
+            "issuer_did": "YXCtXE4YhVjULgj5hrk4ML",
+            "schema_name": "unverified_person",
+            "schema_version": "0.1.0"
+          }
+        ]
+      }
+    ],
+    "requested_predicates": []
+  }
+}

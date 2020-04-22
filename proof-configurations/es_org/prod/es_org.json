@@ -1,26 +1,27 @@
 {
-    "id": "es_org",
-    "subject_identifier": "region",
-    "configuration": {
-      "name": "Essential Services Organization",
-      "version": "1.0",
-      "requested_attributes": [
-        {
-          "name": "region",
-          "label": "Province",
-          "restrictions": [
-            {
-              "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
-              "schema_name": "verified_person",
-              "schema_version": "1.4.0"
-            },
-            {
-              "schema_name": "unverified_person",
-              "schema_version": "0.1.0"
-            }
-          ]
-        }
-      ],
-      "requested_predicates": []
-    }
+  "id": "es_org",
+  "subject_identifier": "region",
+  "configuration": {
+    "name": "Essential Services Organization",
+    "version": "1.0.1",
+    "requested_attributes": [
+      {
+        "name": "region",
+        "label": "Province",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          },
+          {
+            "issuer_did": "YXCtXE4YhVjULgj5hrk4ML",
+            "schema_name": "unverified_person",
+            "schema_version": "0.1.0"
+          }
+        ]
+      }
+    ],
+    "requested_predicates": []
   }
+}

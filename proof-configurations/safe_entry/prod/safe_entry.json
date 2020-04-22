@@ -3,7 +3,7 @@
   "subject_identifier": "region",
   "configuration": {
     "name": "Traveller Safe Entry",
-    "version": "1.0",
+    "version": "1.0.1",
     "requested_attributes": [
       {
         "name": "given_names",
@@ -15,6 +15,7 @@
             "schema_version": "1.4.0"
           },
           {
+            "issuer_did": "YXCtXE4YhVjULgj5hrk4ML",
             "schema_name": "unverified_person",
             "schema_version": "0.1.0"
           }
@@ -30,6 +31,7 @@
             "schema_version": "1.4.0"
           },
           {
+            "issuer_did": "YXCtXE4YhVjULgj5hrk4ML",
             "schema_name": "unverified_person",
             "schema_version": "0.1.0"
           }
@@ -40,6 +42,7 @@
         "label": "Organization Name",
         "restrictions": [
           {
+            "issuer_did": "U9aa9xX2iiFnKzPa3Ms6nY",
             "schema_name": "service_provider",
             "schema_version": "0.1.0"
           }
@@ -50,6 +53,7 @@
         "label": "Org. BC Registries ID",
         "restrictions": [
           {
+            "issuer_did": "U9aa9xX2iiFnKzPa3Ms6nY",
             "schema_name": "service_provider",
             "schema_version": "0.1.0"
           }
@@ -60,6 +64,7 @@
         "label": "Essential Service",
         "restrictions": [
           {
+            "issuer_did": "U9aa9xX2iiFnKzPa3Ms6nY",
             "schema_name": "service_provider",
             "schema_version": "0.1.0"
           }
@@ -70,6 +75,7 @@
         "label": "Services Offered",
         "restrictions": [
           {
+            "issuer_did": "U9aa9xX2iiFnKzPa3Ms6nY",
             "schema_name": "service_provider",
             "schema_version": "0.1.0"
           }
@@ -90,6 +96,7 @@
         "label": "Issued Date (Authorized Access)",
         "restrictions": [
           {
+            "issuer_did": "zsQVc9yQht6vT27epAhU2",
             "schema_name": "authorized_access",
             "schema_version": "0.1.0"
           }
@@ -100,6 +107,7 @@
         "label": "Country",
         "restrictions": [
           {
+            "issuer_did": "zsQVc9yQht6vT27epAhU2",
             "schema_name": "authorized_access",
             "schema_version": "0.1.0"
           }
@@ -110,6 +118,7 @@
         "label": "Postal Code",
         "restrictions": [
           {
+            "issuer_did": "zsQVc9yQht6vT27epAhU2",
             "schema_name": "authorized_access",
             "schema_version": "0.1.0"
           }
@@ -120,6 +129,7 @@
         "label": "Province",
         "restrictions": [
           {
+            "issuer_did": "zsQVc9yQht6vT27epAhU2",
             "schema_name": "authorized_access",
             "schema_version": "0.1.0"
           }
@@ -130,6 +140,7 @@
         "label": "City",
         "restrictions": [
           {
+            "issuer_did": "zsQVc9yQht6vT27epAhU2",
             "schema_name": "authorized_access",
             "schema_version": "0.1.0"
           }
@@ -140,6 +151,7 @@
         "label": "Street Address",
         "restrictions": [
           {
+            "issuer_did": "zsQVc9yQht6vT27epAhU2",
             "schema_name": "authorized_access",
             "schema_version": "0.1.0"
           }
@@ -150,6 +162,7 @@
         "label": "Reason for Access",
         "restrictions": [
           {
+            "issuer_did": "zsQVc9yQht6vT27epAhU2",
             "schema_name": "authorized_access",
             "schema_version": "0.1.0"
           }
@@ -160,6 +173,7 @@
         "label": "Facility Name",
         "restrictions": [
           {
+            "issuer_did": "zsQVc9yQht6vT27epAhU2",
             "schema_name": "authorized_access",
             "schema_version": "0.1.0"
           }
@@ -170,6 +184,7 @@
         "label": "Authorized Access Expiry Date",
         "restrictions": [
           {
+            "issuer_did": "zsQVc9yQht6vT27epAhU2",
             "schema_name": "authorized_access",
             "schema_version": "0.1.0"
           }

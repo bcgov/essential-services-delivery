@@ -3,13 +3,14 @@
   "subject_identifier": "phn",
   "configuration": {
     "name": "c19c",
-    "version": "1.0",
+    "version": "1.0.1",
     "requested_attributes": [
       {
         "name": "phn",
         "label": "BC Personal Health Number",
         "restrictions": [
           {
+            "issuer_did": "UYKn4kYyeSsyqfvid4tz7F",
             "schema_name": "vp_phn",
             "schema_version": "0.1.0"
           }
@@ -20,6 +21,7 @@
         "label": "Essential Service",
         "restrictions": [
           {
+            "issuer_did": "3q7ycKnbnP4NoMVVLE7YpE",
             "schema_name": "service_provider",
             "schema_version": "0.1.0"
           }
