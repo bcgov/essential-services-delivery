@@ -199,6 +199,11 @@
             "issuer_did": "MaGrPzgME3nRzmupNWcWYa",
             "schema_name": "c19_status",
             "schema_version": "0.1.0"
+          },
+          {
+            "issuer_did": "QfuwopKZiKRhJaRY3YadPu",
+            "schema_name": "c19_status",
+            "schema_version": "0.1.0"
           }
         ]
       },
@@ -208,6 +213,11 @@
         "restrictions": [
           {
             "issuer_did": "MaGrPzgME3nRzmupNWcWYa",
+            "schema_name": "c19_status",
+            "schema_version": "0.1.0"
+          },
+          {
+            "issuer_did": "QfuwopKZiKRhJaRY3YadPu",
             "schema_name": "c19_status",
             "schema_version": "0.1.0"
           }
