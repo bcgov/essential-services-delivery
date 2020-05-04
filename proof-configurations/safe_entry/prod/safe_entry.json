@@ -6,51 +6,8 @@
     "version": "1.0.1",
     "requested_attributes": [
       {
-        "name": "given_names",
-        "label": "Given Names",
-        "restrictions": [
-          {
-            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
-            "schema_name": "verified_person",
-            "schema_version": "1.4.0"
-          },
-          {
-            "issuer_did": "YXCtXE4YhVjULgj5hrk4ML",
-            "schema_name": "unverified_person",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "family_name",
-        "label": "Family Name",
-        "restrictions": [
-          {
-            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
-            "schema_name": "verified_person",
-            "schema_version": "1.4.0"
-          },
-          {
-            "issuer_did": "YXCtXE4YhVjULgj5hrk4ML",
-            "schema_name": "unverified_person",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
         "name": "org_legal_name",
         "label": "Organization Name",
-        "restrictions": [
-          {
-            "issuer_did": "U9aa9xX2iiFnKzPa3Ms6nY",
-            "schema_name": "service_provider",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "org_registries_id",
-        "label": "Org. BC Registries ID",
         "restrictions": [
           {
             "issuer_did": "U9aa9xX2iiFnKzPa3Ms6nY",
@@ -71,117 +28,8 @@
         ]
       },
       {
-        "name": "services",
-        "label": "Services Offered",
-        "restrictions": [
-          {
-            "issuer_did": "U9aa9xX2iiFnKzPa3Ms6nY",
-            "schema_name": "service_provider",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "issued",
-        "label": "Issued Date (Service Provider)",
-        "restrictions": [
-          {
-            "schema_name": "service_provider",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "issued",
-        "label": "Issued Date (Authorized Access)",
-        "restrictions": [
-          {
-            "issuer_did": "zsQVc9yQht6vT27epAhU2",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "country",
-        "label": "Country",
-        "restrictions": [
-          {
-            "issuer_did": "zsQVc9yQht6vT27epAhU2",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "postal_code",
-        "label": "Postal Code",
-        "restrictions": [
-          {
-            "issuer_did": "zsQVc9yQht6vT27epAhU2",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "region",
-        "label": "Province",
-        "restrictions": [
-          {
-            "issuer_did": "zsQVc9yQht6vT27epAhU2",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "locality",
-        "label": "City",
-        "restrictions": [
-          {
-            "issuer_did": "zsQVc9yQht6vT27epAhU2",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "street_address",
-        "label": "Street Address",
-        "restrictions": [
-          {
-            "issuer_did": "zsQVc9yQht6vT27epAhU2",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "reason",
-        "label": "Reason for Access",
-        "restrictions": [
-          {
-            "issuer_did": "zsQVc9yQht6vT27epAhU2",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
         "name": "facility",
         "label": "Facility Name",
-        "restrictions": [
-          {
-            "issuer_did": "zsQVc9yQht6vT27epAhU2",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "expiry",
-        "label": "Authorized Access Expiry Date",
         "restrictions": [
           {
             "issuer_did": "zsQVc9yQht6vT27epAhU2",
