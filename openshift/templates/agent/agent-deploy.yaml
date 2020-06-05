@@ -373,7 +373,7 @@ parameters:
     displayName: Genesis File URL
     description: The URL from which the genesis file can be downloaded.
     required: true
-    value: http://test.bcovrin.vonx.io/genesis
+    value: https://raw.githubusercontent.com/sovrin-foundation/sovrin/stable/sovrin/pool_transactions_sandbox_genesis
   - name: LOG_LEVEL
     displayName: Log Level
     description: The logging level for the agent.

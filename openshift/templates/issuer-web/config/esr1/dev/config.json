@@ -7,7 +7,7 @@
   "authentication": {
     "enabled": true,
     "oidcSettings": {
-      "authority": "https://vc-oidc-controller.pathfinder.gov.bc.ca",
+      "authority": "https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca",
       "clientId": "esr1-dev",
       "redirectUri": "https://esr1-issuer-dev.pathfinder.gov.bc.ca/oidc-callback",
       "redirect_uri": "https://esr1-issuer-dev.pathfinder.gov.bc.ca/oidc-callback-error",
@@ -20,11 +20,11 @@
         "pres_req_conf_id": "es_org-dev"
       },
       "metadata": {
-        "issuer": "https://vc-oidc-controller.pathfinder.gov.bc.ca",
-        "authorization_endpoint": "https://vc-oidc-controller.pathfinder.gov.bc.ca/vc/connect/authorize",
-        "token_endpoint": "https://vc-oidc-controller.pathfinder.gov.bc.ca/vc/connect/token",
-        "userinfo_endpoint": "https://vc-oidc-controller.pathfinder.gov.bc.ca/vc/connect/userinfo",
-        "jwks_uri": "https://vc-oidc-controller.pathfinder.gov.bc.ca/.well-known/openid-configuration/jwks",
+        "issuer": "https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca",
+        "authorization_endpoint": "https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca/vc/connect/authorize",
+        "token_endpoint": "https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca/vc/connect/token",
+        "userinfo_endpoint": "https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca/vc/connect/userinfo",
+        "jwks_uri": "https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca/.well-known/openid-configuration/jwks",
         "end_session_endpoint": "https://esr1-issuer-dev.pathfinder.gov.bc.ca"
       },
       "loadUserInfo": false

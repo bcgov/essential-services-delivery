@@ -7,7 +7,7 @@
   "authentication": {
     "enabled": true,
     "oidcSettings": {
-      "authority": "https://vc-oidc-controller.pathfinder.gov.bc.ca",
+      "authority": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca",
       "clientId": "medlab-test",
       "redirectUri": "https://medlab-issuer-test.pathfinder.gov.bc.ca/oidc-callback",
       "redirect_uri": "https://medlab-issuer-test.pathfinder.gov.bc.ca/oidc-callback-error",
@@ -20,11 +20,11 @@
         "pres_req_conf_id": "c19c-test"
       },
       "metadata": {
-        "issuer": "https://vc-oidc-controller.pathfinder.gov.bc.ca",
-        "authorization_endpoint": "https://vc-oidc-controller.pathfinder.gov.bc.ca/vc/connect/authorize",
-        "token_endpoint": "https://vc-oidc-controller.pathfinder.gov.bc.ca/vc/connect/token",
-        "userinfo_endpoint": "https://vc-oidc-controller.pathfinder.gov.bc.ca/vc/connect/userinfo",
-        "jwks_uri": "https://vc-oidc-controller.pathfinder.gov.bc.ca/.well-known/openid-configuration/jwks",
+        "issuer": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca",
+        "authorization_endpoint": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca/vc/connect/authorize",
+        "token_endpoint": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca/vc/connect/token",
+        "userinfo_endpoint": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca/vc/connect/userinfo",
+        "jwks_uri": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca/.well-known/openid-configuration/jwks",
         "end_session_endpoint": "https://medlab-issuer-test.pathfinder.gov.bc.ca"
       },
       "loadUserInfo": false
@@ -37,11 +37,11 @@
     "successText": "You can use your credential at the following entry points:",
     "links": [
       {
-        "url": "https://lngpipeline-camp.vonx.io",
+        "url": "https://safe-entry-verifier-test.pathfinder.gov.bc.ca",
         "description": "Traveller Safe Entry"
       },
       {
-        "url": "https://long-term-care-facility.vonx.io",
+        "url": "https://safe-entry-c19-verifier-test.pathfinder.gov.bc.ca",
         "description": "Essential Service Safe Entry"
       }
     ]

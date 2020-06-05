@@ -37,14 +37,14 @@ usage () {
       - To POST/PUT ALL proof configurations, specify 'all' for <payLoadPath>.
 
         Examples;
-          $0 -p default -e null configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
+          $0 -p default -e null configureProof https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
             - POST verified-person.json
-          $0 -p default -e null -u configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
+          $0 -p default -e null -u configureProof https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
             - PUT verified-person.json
 
-          $0 -p default -e dev -u configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca all
+          $0 -p default -e dev -u configureProof https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca all
             - PUT all proof configurations for the 'dev' environment.
-          $0 -p default -e null -u configureProof https://vc-oidc-controller.pathfinder.gov.bc.ca all
+          $0 -p default -e null -u configureProof https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca all
             - PUT all proof configurations for all environments.
 
     deployAllProfiles
@@ -454,8 +454,8 @@ case "${_cmd}" in
   configureproof)
     baseUrl=${1}
     payLoadPath=${2}
-    namespace=${3:-devex-von-prod}
-    secretName=${4:-vc-oidc-controller}
+    namespace=${3:-nnfbch-dev}
+    secretName=${4:-vc-authn-controller}
     key=${5:-controller-api-key}
     configureProof ${baseUrl} ${payLoadPath} ${namespace} ${secretName} ${key}
     ;;
