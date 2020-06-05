@@ -37,11 +37,11 @@
     "successText": "You can use your credential to access the following facilities:",
     "links": [
       {
-        "url": "https://safe-entry-verifier-test.pathfinder.gov.bc.ca",
+        "url": "https://lngpipeline-camp.vonx.io",
         "description": "Traveller Safe Entry"
       },
       {
-        "url": "https://safe-entry-c19-verifier-test.pathfinder.gov.bc.ca",
+        "url": "https://long-term-care-facility.vonx.io",
         "description": "Essential Service Safe Entry"
       }
     ]
