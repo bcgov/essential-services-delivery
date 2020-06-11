@@ -11,6 +11,27 @@
   },
   "objects": [
     {
+      "kind": "Secret",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "${NAME}${SUFFIX}",
+        "labels": {
+          "name": "${NAME}${SUFFIX}",
+          "app": "${APP_NAME}${SUFFIX}",
+          "app-group": "${APP_GROUP}",
+          "role": "${ROLE}",
+          "env": "${TAG_NAME}"
+        }
+      },
+      "stringData": {
+        "smtp-host": "${SMTP_SERVER_ADDRESS}",
+        "smtp-port": "${SMTP_SERVER_PORT}",
+        "admin-email": "${ADMIN_EMAIL}",
+        "invite-subject": "${EMAIL_SUBJECT}"
+      },
+      "type": "Opaque"
+    },
+    {
       "kind": "Service",
       "apiVersion": "v1",
       "metadata": {
@@ -97,13 +118,37 @@
           "spec": {
             "volumes": [
               {
-                "name": "${NAME}${SUFFIX}-custom-schema-volume",
+                "name": "${NAME}${SUFFIX}-app-config-volume",
                 "configMap": {
                   "name": "${APP_CONFIG_MAP_NAME}${SUFFIX}",
                   "items": [
                     {
-                      "key": "${CUSTOM_SCHEMA_FILE}",
-                      "path": "${CUSTOM_SCHEMA_FILE}"
+                      "key": "${APP_CONFIG_FILE_NAME}",
+                      "path": "${APP_CONFIG_FILE_NAME}"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "${NAME}${SUFFIX}-schema-config-volume",
+                "configMap": {
+                  "name": "${APP_CONFIG_MAP_NAME}${SUFFIX}",
+                  "items": [
+                    {
+                      "key": "${APP_SCHEMAS_FILE_NAME}",
+                      "path": "${APP_SCHEMAS_FILE_NAME}"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "${NAME}${SUFFIX}-invite-template-volume",
+                "configMap": {
+                  "name": "${APP_CONFIG_MAP_NAME}${SUFFIX}",
+                  "items": [
+                    {
+                      "key": "${APP_EMAIL_INVITE_FILE_NAME}",
+                      "path": "${APP_EMAIL_INVITE_FILE_NAME}"
                     }
                   ]
                 }
@@ -125,7 +170,7 @@
                   "initialDelaySeconds": 3,
                   "timeoutSeconds": 20,
                   "httpGet": {
-                    "path": "/health",
+                    "path": "/",
                     "port": "${{SERVICE_PORT}}"
                   }
                 },
@@ -135,7 +180,7 @@
                   "initialDelaySeconds": 30,
                   "timeoutSeconds": 20,
                   "httpGet": {
-                    "path": "/health",
+                    "path": "/",
                     "port": "${{SERVICE_PORT}}"
                   }
                 },
@@ -189,27 +234,43 @@
                   },
                   {
                     "name": "SMTP_HOST",
-                    "value": "${SMTP_SERVER_ADDRESS}"
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "name": "${NAME}${SUFFIX}",
+                        "key": "smtp-host"
+                      }
+                    }
                   },
                   {
                     "name": "SMTP_PORT",
-                    "value": "${SMTP_SERVER_PORT}"
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "name": "${NAME}${SUFFIX}",
+                        "key": "smtp-port"
+                      }
+                    }
                   },
                   {
                     "name": "ADMIN_EMAIL",
-                    "value": "${ADMIN_EMAIL}"
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "name": "${NAME}${SUFFIX}",
+                        "key": "admin-email"
+                      }
+                    }
+                  },
+                  {
+                    "name": "EMAIL_SUBJECT",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "name": "${NAME}${SUFFIX}",
+                        "key": "invite-subject"
+                      }
+                    }
                   },
                   {
                     "name": "PUBLIC_SITE_URL",
                     "value": "${PUBLIC_SITE_URL}"
-                  },
-                  {
-                    "name": "EXISTING_SCHEMA_ID",
-                    "value": "${EXISTING_SCHEMA_ID}"
-                  },
-                  {
-                    "name": "CUSTOM_SCHEMA_PATH",
-                    "value": "${CUSTOM_SCHEMA_PATH}/${CUSTOM_SCHEMA_FILE}"
                   }
                 ],
                 "resources": {
@@ -224,9 +285,19 @@
                 },
                 "volumeMounts": [
                   {
-                    "name": "${NAME}${SUFFIX}-custom-schema-volume",
-                    "mountPath": "${CUSTOM_SCHEMA_PATH}/${CUSTOM_SCHEMA_FILE}",
-                    "subPath": "${CUSTOM_SCHEMA_FILE}"
+                    "name": "${NAME}${SUFFIX}-app-config-volume",
+                    "mountPath": "${APP_CONFIG_MOUNT_PATH}${APP_CONFIG_FILE_NAME}",
+                    "subPath": "${APP_CONFIG_FILE_NAME}"
+                  },
+                  {
+                    "name": "${NAME}${SUFFIX}-schema-config-volume",
+                    "mountPath": "${APP_CONFIG_MOUNT_PATH}${APP_SCHEMAS_FILE_NAME}",
+                    "subPath": "${APP_SCHEMAS_FILE_NAME}"
+                  },
+                  {
+                    "name": "${NAME}${SUFFIX}-invite-template-volume",
+                    "mountPath": "${APP_CONFIG_MOUNT_PATH}${APP_EMAIL_INVITE_FILE_NAME}",
+                    "subPath": "${APP_EMAIL_INVITE_FILE_NAME}"
                   }
                 ]
               }
@@ -308,21 +379,21 @@
       "displayName": "Name",
       "description": "The name assigned to all of the OpenShift resources associated to the server instance.",
       "required": true,
-      "value": "issuer-kit-controller"
+      "value": "identity-kit-controller"
     },
     {
       "name": "APP_NAME",
       "displayName": "App Name",
       "description": "Used to group components together in the OpenShift console.",
       "required": true,
-      "value": "issuer"
+      "value": "identity-kit"
     },
     {
       "name": "APP_GROUP",
       "displayName": "App Group",
       "description": "The name assigned to all of the deployments in this project.",
       "required": true,
-      "value": "issuer-kit-controller"
+      "value": "identity-kit-controller"
     },
     {
       "name": "SUFFIX",
@@ -343,7 +414,7 @@
       "displayName": "Image Namespace",
       "required": true,
       "description": "The namespace of the OpenShift project containing the imagestream for the application.",
-      "value": "bztwou-tools"
+      "value": "devex-von-tools"
     },
     {
       "name": "SERVICE_PORT",
@@ -357,7 +428,7 @@
       "displayName": "Database Service Name",
       "description": "The name of the database server/service.",
       "required": true,
-      "value": "db"
+      "value": "identity-kit-db"
     },
     {
       "name": "DB_PORT",
@@ -371,14 +442,14 @@
       "displayName": "Database Name",
       "required": true,
       "description": "Name of the deployed database (see environment variables in deployed database).",
-      "value": "issuer_db"
+      "value": "identity_kit_db"
     },
     {
       "name": "SOURCE_IMAGE_NAME",
       "displayName": "Source Image Name",
       "description": "The name of the image to use for this resource.",
       "required": true,
-      "value": "api"
+      "value": "identity-kit-controller"
     },
     {
       "name": "TAG_NAME",
@@ -392,7 +463,7 @@
       "displayName": "Agent Service name",
       "description": "Agent service name",
       "required": true,
-      "value": "agent"
+      "value": "identity-kit-agent"
     },
     {
       "name": "AGENT_ADMIN_PORT",
@@ -418,23 +489,23 @@
     {
       "name": "ADMIN_EMAIL",
       "displayName": "Admin Email",
-      "description": "The email address to be used as sender for outging messages.",
+      "description": "The email address to be used as sender for outgoing messages.",
       "required": true,
       "value": ""
+    },
+    {
+      "name": "EMAIL_SUBJECT",
+      "displayName": "Invite Email Subject",
+      "description": "The subject line for the email invites.",
+      "required": true,
+      "value": "Invite from Issuer-Kit"
     },
     {
       "name": "PUBLIC_SITE_URL",
       "displayName": "Public Site URL",
       "description": "Public Site URL",
       "required": true,
-      "value": "https://issuer-kit.pathfinder.gov.bc.ca/"
-    },
-    {
-      "name": "EXISTING_SCHEMA_ID",
-      "displayName": "Existing Schema ID",
-      "description": "Specifies the id of a schema that has already been published to the target ledger and should be used rather than creating a new schema.",
-      "required": false,
-      "value": ""
+      "value": "https://identity-kit.pathfinder.gov.bc.ca/"
     },
     {
       "name": "APP_CONFIG_MAP_NAME",
@@ -444,18 +515,32 @@
       "value": "api-config"
     },
     {
-      "name": "CUSTOM_SCHEMA_PATH",
-      "displayName": "Custom Schema Path",
-      "description": "Specifies the path to a file containing a custom schema definition. If set, the controller will try to use this schema instead of the default one.",
-      "required": false,
-      "value": ""
+      "name": "APP_CONFIG_MOUNT_PATH",
+      "displayName": "Application Config Mount Path",
+      "description": "The path to use to mount the configuration file(s).",
+      "required": true,
+      "value": "/opt/app-root/src/config/"
     },
     {
-      "name": "CUSTOM_SCHEMA_FILE",
-      "displayName": "Custom Schema File",
-      "description": "Specifies the name of the file containing a custom schema definition. If set, the controller will try to use this schema instead of the default one.",
-      "required": false,
-      "value": "schema.json"
+      "name": "APP_CONFIG_FILE_NAME",
+      "displayName": "Application Config File Name",
+      "description": "The name of the application configuration file.",
+      "required": true,
+      "value": "default.json"
+    },
+    {
+      "name": "APP_SCHEMAS_FILE_NAME",
+      "displayName": "Application Schemas Config File Name",
+      "description": "The name of the application schemas configuration file.",
+      "required": true,
+      "value": "schemas.json"
+    },
+    {
+      "name": "APP_EMAIL_INVITE_FILE_NAME",
+      "displayName": "Application Email Invite File Name",
+      "description": "The name of the application email invite file.",
+      "required": true,
+      "value": "invite-email.html"
     },
     {
       "name": "CPU_REQUEST",

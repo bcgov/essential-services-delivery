@@ -1,0 +1,11 @@
+[
+  {
+    "attributes": [
+      "phn",
+      "issued"
+    ],
+    "schema_name": "vp_phn",
+    "schema_version": "0.1.0",
+    "default": true
+  }
+]
