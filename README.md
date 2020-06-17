@@ -20,7 +20,7 @@ This is an instance of [bcgov/dts-safe-entry-demo](https://github.com/bcgov/dts-
 
 ## A Number of Credential Issuer Services
 
-All of the Issuer Services are instances of [bcgov/identity-kit-poc](https://github.com/bcgov/identity-kit-poc)
+All of the Issuer Services are instances of [bcgov/issuer-kit](https://github.com/bcgov/issuer-kit)
 
 ### [Unverified Person Issuer](https://openvp-issuer.pathfinder.gov.bc.ca/)
 
