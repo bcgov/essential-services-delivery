@@ -9,6 +9,7 @@ APP_GROUP=openvp
 SUFFIX=-openvp
 ROLE=controller
 IMAGE_NAMESPACE=bztwou-tools
+NAMESPACE_NAME=bztwou
 SERVICE_PORT=8080
 DB_SERVICE=db
 DB_PORT=27017
