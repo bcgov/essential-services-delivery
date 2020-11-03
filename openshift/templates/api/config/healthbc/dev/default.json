@@ -33,9 +33,13 @@
     "url": "PUBLIC_SITE_URL"
   },
   "issuer": {
-    "name": "Essential Services - Organization",
-    "offerComment": "Credential offer from Essential Services - Organization",
+    "name": "HealthBC",
+    "offerComment": "Credential offer from HealthBC",
     "validityDays": -1,
     "multiUse": true
+  },
+  "authentication": {
+    "jwksUri": "https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca/.well-known/openid-configuration/jwks",
+    "algorithms": ["RS256"]
   }
 }

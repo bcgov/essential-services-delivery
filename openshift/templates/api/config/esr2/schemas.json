@@ -13,6 +13,7 @@
     ],
     "schema_name": "authorized_access",
     "schema_version": "0.1.0",
-    "default": true
+    "default": true,
+    "public": false
   }
 ]
