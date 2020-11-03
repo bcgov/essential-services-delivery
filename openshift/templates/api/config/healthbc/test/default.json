@@ -33,9 +33,13 @@
     "url": "PUBLIC_SITE_URL"
   },
   "issuer": {
-    "name": "Unverified Person Issuer",
-    "offerComment": "Credential offer from Unverified Person Issuer",
+    "name": "HealthBC",
+    "offerComment": "Credential offer from HealthBC",
     "validityDays": -1,
     "multiUse": true
+  },
+  "authentication": {
+    "jwksUri": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca/.well-known/openid-configuration/jwks",
+    "algorithms": ["RS256"]
   }
 }
