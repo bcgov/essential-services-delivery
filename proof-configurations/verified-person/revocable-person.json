@@ -1,0 +1,29 @@
+{
+  "id": "revocable-person",
+  "subject_identifier": "given_names",
+  "configuration": {
+    "name": "revocable-person",
+    "version": "0.0.1",
+    "requested_attributes": [
+      {
+        "names": [
+          "given_names",
+          "family_name",
+          "birthdate",
+          "street_address",
+          "postal_code",
+          "locality",
+          "region",
+          "country"
+        ],
+        "restrictions": [
+          {
+            "schema_name": "unverified_person",
+            "schema_version": "0.2.0"
+          }
+        ]
+      }
+    ],
+    "requested_predicates": []
+  }
+}
