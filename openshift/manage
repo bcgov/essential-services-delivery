@@ -313,7 +313,7 @@ createNewVerifierProfile() {
 configureProof() {
   baseUrl=${1}
   payLoadPath=${2}
-  namespace=${3}
+  namespace=${3}-${DEPLOYMENT_ENV_NAME}
   secretName=${4}
   key=${5}
   if [ -z "${baseUrl}" ] || [ -z "${payLoadPath}" ]|| [ -z "${namespace}" ]|| [ -z "${secretName}" ]|| [ -z "${key}" ]; then
@@ -454,7 +454,7 @@ case "${_cmd}" in
   configureproof)
     baseUrl=${1}
     payLoadPath=${2}
-    namespace=${3:-nnfbch-dev}
+    namespace=${3:-nnfbch}
     secretName=${4:-vc-authn-controller}
     key=${5:-controller-api-key}
     configureProof ${baseUrl} ${payLoadPath} ${namespace} ${secretName} ${key}
