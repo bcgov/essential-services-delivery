@@ -3,11 +3,13 @@
   "subject_identifier": "region",
   "configuration": {
     "name": "Traveller Safe Entry",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "requested_attributes": [
       {
-        "name": "given_names",
-        "label": "Given Names",
+        "names": [
+          "given_names",
+          "family_name"
+        ],
         "restrictions": [
           {
             "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
@@ -22,24 +24,13 @@
         ]
       },
       {
-        "name": "family_name",
-        "label": "Family Name",
-        "restrictions": [
-          {
-            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
-            "schema_name": "verified_person",
-            "schema_version": "1.4.0"
-          },
-          {
-            "issuer_did": "NCwGwDrzbZEqesYQummzWW",
-            "schema_name": "unverified_person",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "org_legal_name",
-        "label": "Organization Name",
+        "names": [
+          "org_legal_name",
+          "org_registries_id",
+          "essential",
+          "services",
+          "issued"
+        ],
         "restrictions": [
           {
             "issuer_did": "Usu65r4T1iR1ZnBMNBwiCP",
@@ -49,52 +40,17 @@
         ]
       },
       {
-        "name": "org_registries_id",
-        "label": "Org. BC Registries ID",
-        "restrictions": [
-          {
-            "issuer_did": "Usu65r4T1iR1ZnBMNBwiCP",
-            "schema_name": "service_provider",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "essential",
-        "label": "Essential Service",
-        "restrictions": [
-          {
-            "issuer_did": "Usu65r4T1iR1ZnBMNBwiCP",
-            "schema_name": "service_provider",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "services",
-        "label": "Services Offered",
-        "restrictions": [
-          {
-            "issuer_did": "Usu65r4T1iR1ZnBMNBwiCP",
-            "schema_name": "service_provider",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "issued",
-        "label": "Issued Date (Service Provider)",
-        "restrictions": [
-          {
-            "issuer_did": "Usu65r4T1iR1ZnBMNBwiCP",
-            "schema_name": "service_provider",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "issued",
-        "label": "Issued Date (Authorized Access)",
+        "names": [
+          "issued",
+          "country",
+          "postal_code",
+          "region",
+          "locality",
+          "street_address",
+          "reason",
+          "facility",
+          "expiry"
+        ],
         "restrictions": [
           {
             "issuer_did": "8rrkThEVKUCUUJT4paKTPM",
@@ -104,107 +60,10 @@
         ]
       },
       {
-        "name": "country",
-        "label": "Country",
-        "restrictions": [
-          {
-            "issuer_did": "8rrkThEVKUCUUJT4paKTPM",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "postal_code",
-        "label": "Postal Code",
-        "restrictions": [
-          {
-            "issuer_did": "8rrkThEVKUCUUJT4paKTPM",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "region",
-        "label": "Region",
-        "restrictions": [
-          {
-            "issuer_did": "8rrkThEVKUCUUJT4paKTPM",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "locality",
-        "label": "City",
-        "restrictions": [
-          {
-            "issuer_did": "8rrkThEVKUCUUJT4paKTPM",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "street_address",
-        "label": "Street Address",
-        "restrictions": [
-          {
-            "issuer_did": "8rrkThEVKUCUUJT4paKTPM",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "reason",
-        "label": "Reason for Access",
-        "restrictions": [
-          {
-            "issuer_did": "8rrkThEVKUCUUJT4paKTPM",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "facility",
-        "label": "Facility NAme",
-        "restrictions": [
-          {
-            "issuer_did": "8rrkThEVKUCUUJT4paKTPM",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "expiry",
-        "label": "Authorized Access Expiry Date",
-        "restrictions": [
-          {
-            "issuer_did": "8rrkThEVKUCUUJT4paKTPM",
-            "schema_name": "authorized_access",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "virus",
-        "label": "Clearance Acquired For",
-        "restrictions": [
-          {
-            "issuer_did": "GUfcrL4YS4DdXaYssdF1xb",
-            "schema_name": "c19_status",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "expiry",
-        "label": "Clearance Expiry Date",
+        "names": [
+          "virus",
+          "expiry"
+        ],
         "restrictions": [
           {
             "issuer_did": "GUfcrL4YS4DdXaYssdF1xb",
