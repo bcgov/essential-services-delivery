@@ -3,7 +3,7 @@
   "subject_identifier": "given_names",
   "configuration": {
     "name": "Essential Services Access",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "requested_attributes": [
       {
         "name": "given_names",
@@ -22,19 +22,10 @@
         ]
       },
       {
-        "name": "essential",
-        "label": "Essential Service",
-        "restrictions": [
-          {
-            "issuer_did": "Usu65r4T1iR1ZnBMNBwiCP",
-            "schema_name": "service_provider",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "services",
-        "label": "Services Offered",
+        "names": [
+          "essential",
+          "services"
+        ],
         "restrictions": [
           {
             "issuer_did": "Usu65r4T1iR1ZnBMNBwiCP",

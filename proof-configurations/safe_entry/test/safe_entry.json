@@ -3,22 +3,13 @@
   "subject_identifier": "region",
   "configuration": {
     "name": "Traveller Safe Entry",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "requested_attributes": [
       {
-        "name": "org_legal_name",
-        "label": "Organization Name",
-        "restrictions": [
-          {
-            "issuer_did": "3q7ycKnbnP4NoMVVLE7YpE",
-            "schema_name": "service_provider",
-            "schema_version": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "essential",
-        "label": "Essential Service",
+        "names": [
+          "org_legal_name",
+          "essential"
+        ],
         "restrictions": [
           {
             "issuer_did": "3q7ycKnbnP4NoMVVLE7YpE",

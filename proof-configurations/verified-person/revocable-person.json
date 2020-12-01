@@ -1,9 +1,9 @@
 {
-  "id": "verified-person",
+  "id": "revocable-person",
   "subject_identifier": "given_names",
   "configuration": {
-    "name": "verified-person",
-    "version": "1.1.0",
+    "name": "revocable-person",
+    "version": "0.0.1",
     "requested_attributes": [
       {
         "names": [
@@ -18,13 +18,8 @@
         ],
         "restrictions": [
           {
-            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
-            "schema_name": "verified_person",
-            "schema_version": "1.4.0"
-          },
-          {
             "schema_name": "unverified_person",
-            "schema_version": "0.1.0"
+            "schema_version": "0.2.0"
           }
         ]
       }
