@@ -1,0 +1,66 @@
+{
+  "questions": [
+    {
+      "name": "inoculator_name",
+      "type": "text",
+      "title": "Inoculator Name:",
+      "placeHolder": "",
+      "readOnly": true,
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "patient_name",
+      "type": "text",
+      "title": "Patient Name:",
+      "placeHolder": "Last Name, First Name",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "inoculated_substance",
+      "type": "text",
+      "title": "Vaccine Name:",
+      "placeHolder": "",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "inoculation_datetime",
+      "type": "text",
+      "inputType": "text",
+      "title": "Inoculation Date:",
+      "placeHolder": "",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "type": "text",
+      "name": "given_names",
+      "title": "Inoculator Given Name",
+      "readOnly": true,
+      "visibleIf": "{inoculator_name} empty",
+      "defaultValue": ""
+    },
+    {
+      "type": "text",
+      "name": "family_name",
+      "title": "Inoculator Family Name",
+      "readOnly": true,
+      "visibleIf": "{inoculator_name} empty",
+      "defaultValue": ""
+    }
+  ],
+  "triggers": [
+    {
+      "type": "runexpression",
+      "expression": "{given_names} notempty or {family_name} notempty",
+      "runExpression": "setInoculatorName('inoculator_name')"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{given_names} notempty or {family_name} notempty",
+      "runExpression": "setCurrentISODate('inoculation_datetime')"
+    }
+  ]
+}
