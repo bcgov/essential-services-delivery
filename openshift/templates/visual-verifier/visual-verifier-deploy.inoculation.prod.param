@@ -5,10 +5,10 @@
 #=========================================================
 # NAME=visual-verifier
 # APP_NAME=visual-verifier
-# APP_GROUP=visual-verifier
-# SUFFIX=
+# APP_GROUP=inoculation
+# SUFFIX=-inoculation
 # ROLE=visual-verifier
-APPLICATION_DOMAIN=visual-verifier-bztwou-prod.pathfinder.gov.bc.ca
+APPLICATION_DOMAIN=inoculation-verifier.pathfinder.gov.bc.ca
 # IMAGE_NAMESPACE=bztwou-tools
 TAG_NAME=prod
 # APP_FILE=
@@ -16,7 +16,7 @@ TAG_NAME=prod
 # APP_MODULE=
 # #DJANGO_SECRET_KEY=[\w]{50}
 # DJANGO_DEBUG=False
-# VERIFIER_NAME=VC Visual Verifier
+# VERIFIER_NAME=Inoculation Verifier
 # OIDC_RP_PROVIDER_ENDPOINT=
 # OIDC_RP_CLIENT_ID=
 # OIDC_RP_CLIENT_SECRET=
