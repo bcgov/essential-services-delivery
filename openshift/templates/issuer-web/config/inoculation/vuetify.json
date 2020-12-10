@@ -8,13 +8,13 @@
     },
     "themes": {
       "light": {
-        "primary": "#dee1e3",
-        "secondary": "#acbdbd",
-        "accent": "#82B1FF",
+        "primary": "#00305A",
+        "secondary": "#006EB4",
+        "accent": "#00A0FC",
         "error": "#FF5252",
-        "info": "#2196F3",
-        "success": "#4CAF50",
-        "warning": "#FFC107"
+        "info": "#333333",
+        "success": "#555555",
+        "warning": "#F35607"
       }
     }
   }
