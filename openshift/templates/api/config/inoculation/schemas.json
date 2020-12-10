@@ -1,0 +1,14 @@
+[
+  {
+    "attributes": [
+      "inoculator_name",
+      "patient_name",
+      "inoculated_substance",
+      "inoculation_datetime"
+    ],
+    "schema_name": "inoculation_record",
+    "schema_version": "0.1.0",
+    "default": true,
+    "public": false
+  }
+]
