@@ -17,7 +17,7 @@
       "silentRedirectUri": "https://inoculation-issuer-test.pathfinder.gov.bc.ca/silent-renew-oidc.html",
       "post_logout_redirect_uri": "https://inoculation-issuer-test.pathfinder.gov.bc.ca",
       "extraQueryParams": {
-        "pres_req_conf_id": "c19c-test"
+        "pres_req_conf_id": "verified-person"
       },
       "metadata": {
         "issuer": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca",
