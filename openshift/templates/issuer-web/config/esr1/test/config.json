@@ -6,6 +6,7 @@
   "inviteRequired": false,
   "authentication": {
     "enabled": true,
+    "autoSignOut": true,
     "oidcSettings": {
       "authority": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca",
       "clientId": "esr1-test",
