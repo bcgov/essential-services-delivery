@@ -6,6 +6,7 @@
   "inviteRequired": false,
   "authentication": {
     "enabled": true,
+    "autoSignOut": false,
     "oidcSettings": {
       "authority": "https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca",
       "clientId": "inoculation-dev",
