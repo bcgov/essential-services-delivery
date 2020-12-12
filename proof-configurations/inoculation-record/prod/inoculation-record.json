@@ -8,8 +8,6 @@
         {
           "names": [
             "inoculator_name",
-            "patient_name",
-            "inoculated_substance",
             "inoculation_datetime"
           ],
           "restrictions": [
