@@ -8,9 +8,44 @@
 </style>
 
 <div class="content">
+  <h3><strong>About this Proof of Concept Service</strong></h3>
+  <p class="paragraph">
+    This is a proof-of-concept service demonstrating a possible workflow for inoculating a series of patients with a vaccine 
+    and in parallel, providing them with a record of the inoculation in the form of a digital credential. The digital credential
+    can be presented where needed to prove that they have received the vaccine. As much as possible, the use of a digital credential
+    matches that of a paper credential, but with much higher security, is impossible to forge and does not rely on a person to
+    verify the credential.
+  </p>
+  <h4>The Scenario</h4>
+  <p class="paragraph">
+    The user of the service (you!) is participating in a clinic to provide vaccines to a group of patients. You might
+    be administering the vaccine, or working in concert with the person administering the vaccine. Your role is to issue the digital
+    credential after the vaccine has been given.
+  </p>
+  <p class="paragraph">
+    To gain access to this service you must provide proof of your identity. Once in the system
+    you will loop through a sequence of inoculating a patient, collecting/entering their name, and issuing them a digital credential about their inoculation.
+    The patient will use their digital wallet to scan a QR code on the screen to receive their digital vaccine credential. While you loop back to
+    issue another digital credential to another patient, the patient with the credential can go to a site and prove they have been vaccinated.
+  </p>
+  <h4>Requirements</h4>
+  <p class="paragraph">
+    To prove your identity to access the system, you and the patients need to have a compatible wallet smartphone app. Instructions to get such a wallet
+    are available <a href="https://vonx.io/getwallet" target="_blank">here</a>. Once you have your wallet, you will also need a credential to gain access
+    to the service. For this Proof of Concept we're using an "Unverified Person" credential as a stand in for a "real" set of credentials
+    that could be used, such as a government ID credential in combination with a medical credential, a health authority authorization, and perhaps even a credential showing
+    that you have been trained in giving vaccines. For this service, please go <a href="https://openvp-issuer.pathfinder.gov.bc.ca/" target="_blank">here</a>
+    to get your "Unverified Person" credential.
+  </p>
   <h3><strong>Terms of Service</strong></h3>
   <p class="paragraph">
-    This is a proof-of-concept service demonstrating a workflow for inoculating a patient with a vaccine 
-    and providing them with a record of the inoculation in the form of a digital credential.  
+    Since this is just a proof-of-concept service, the only Terms is an understanding that this is not a real service, that the data being processed is not real, and the data is it not saved by the service.
   </p>
+  <p class="paragraph">
+    A real instance of this kind of service would have a more thorough definition of the responsibilities of the users of the service and on the use of any data collected.
+  </p>
+  <p class="paragraph">
+    Before proceeding, please make sure you have a compatible digital wallet and an "Unverified Person" credentials as outlined above.
+  </p>
+
 </div>
