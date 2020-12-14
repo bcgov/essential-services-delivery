@@ -3,14 +3,12 @@
     "subject_identifier": "patient_name",
     "configuration": {
       "name": "Inoculation Record",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "requested_attributes": [
         {
           "names": [
-            "inoculator_name",
             "patient_name",
-            "inoculated_substance",
-            "inoculation_datetime"
+            "inoculated_substance"
           ],
           "restrictions": [
             {
