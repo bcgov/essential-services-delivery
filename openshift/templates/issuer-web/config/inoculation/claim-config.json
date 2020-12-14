@@ -19,11 +19,17 @@
     },
     {
       "name": "inoculated_substance",
-      "type": "text",
+      "type": "dropdown",
       "title": "Vaccine Name:",
-      "placeHolder": "",
+      "placeHolder": "Select inoculated substance",
       "isRequired": true,
-      "requiredErrorText": "Required Field"
+      "colCount": 0,
+      "requiredErrorText": "Required Field",
+      "choices": [
+        "Tozinameran - Pfizer-BioNTech",
+        "mRNA-1273 - Moderna",
+        "AZD1222 - Oxford-AstraZeneca"
+      ]
     },
     {
       "name": "inoculation_datetime",
