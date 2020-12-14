@@ -39,7 +39,7 @@
     "multiUse": true
   },
   "authentication": {
-    "jwksUri": "https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca/.well-known/openid-configuration/jwks",
+    "jwksUri": "https://dev.oidc.gov.bc.ca/auth/realms/gzyg46lx/protocol/openid-connect/certs",
     "algorithms": ["RS256"]
   }
 }
