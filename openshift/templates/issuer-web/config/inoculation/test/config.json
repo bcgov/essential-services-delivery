@@ -6,7 +6,7 @@
   "inviteRequired": false,
   "authentication": {
     "enabled": true,
-    "autoSignOut": false,
+    "autoSignOut": true,
     "oidcSettings": {
       "authority": "https://test.oidc.gov.bc.ca/auth/realms/gzyg46lx",
       "clientId": "inoculation-issuer",
