@@ -1,24 +1,26 @@
 {
-    "id": "inoculation-record-dev",
-    "subject_identifier": "patient_name",
-    "configuration": {
-      "name": "Inoculation Record",
-      "version": "0.1.1",
-      "requested_attributes": [
-        {
-          "names": [
-            "patient_name",
-            "inoculated_substance"
-          ],
-          "restrictions": [
-            {
-              "issuer_did": "HSqhvJoTMVQeJ3bLSdmr9h",
-              "schema_name": "inoculation_record",
-              "schema_version": "0.1.0"
-            }
-          ]
-        }
-      ],
-      "requested_predicates": []
-    }
+  "id": "inoculation-record-dev",
+  "subject_identifier": "patient_name",
+  "configuration": {
+    "name": "Inoculation Record",
+    "version": "0.2.0",
+    "requested_attributes": [
+      {
+        "names": [
+          "patient_name",
+          "inoculated_substance",
+          "inoculation_date",
+          "inoculation_cycle_completed"
+        ],
+        "restrictions": [
+          {
+            "issuer_did": "HSqhvJoTMVQeJ3bLSdmr9h",
+            "schema_name": "inoculation_record",
+            "schema_version": "0.2.0"
+          }
+        ]
+      }
+    ],
+    "requested_predicates": []
   }
+}

@@ -1,15 +1,6 @@
 {
   "questions": [
     {
-      "name": "inoculator_name",
-      "type": "text",
-      "title": "Inoculator Name:",
-      "placeHolder": "",
-      "readOnly": true,
-      "isRequired": true,
-      "requiredErrorText": "Required Field"
-    },
-    {
       "name": "patient_name",
       "type": "text",
       "title": "Patient Name:",
@@ -32,7 +23,7 @@
       ]
     },
     {
-      "name": "inoculation_datetime",
+      "name": "inoculation_date",
       "type": "text",
       "inputType": "text",
       "title": "Inoculation Date:",
@@ -41,19 +32,32 @@
       "requiredErrorText": "Required Field"
     },
     {
+      "name": "inoculation_cycle_completed",
+      "type": "dropdown",
+      "title": "Inoculation Cycle Completed:",
+      "placeHolder": "Is the inoculation cycle complete?",
+      "isRequired": true,
+      "requiredErrorText": "Required Field",
+      "colCount": 0,
+      "choices": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
       "type": "text",
       "name": "given_names",
-      "title": "Inoculator Given Name",
+      "title": "Patient Given Name",
       "readOnly": true,
-      "visibleIf": "{inoculator_name} empty",
+      "visibleIf": "{patient_name} empty",
       "defaultValue": ""
     },
     {
       "type": "text",
       "name": "family_name",
-      "title": "Inoculator Family Name",
+      "title": "Patient Family Name",
       "readOnly": true,
-      "visibleIf": "{inoculator_name} empty",
+      "visibleIf": "{patient_name} empty",
       "defaultValue": ""
     }
   ],
@@ -61,12 +65,22 @@
     {
       "type": "runexpression",
       "expression": "{given_names} notempty or {family_name} notempty",
-      "runExpression": "setInoculatorName('inoculator_name')"
+      "runExpression": "setPatientName('patient_name')"
     },
     {
       "type": "runexpression",
       "expression": "{given_names} notempty or {family_name} notempty",
-      "runExpression": "setCurrentISODate('inoculation_datetime')"
+      "runExpression": "setInoculationDate('inoculation_date')"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{given_names} notempty or {family_name} notempty",
+      "runExpression": "setInoculatedSubstance('inoculated_substance')"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{given_names} notempty or {family_name} notempty",
+      "runExpression": "setInoculationCycle('inoculation_cycle_completed')"
     }
   ]
 }

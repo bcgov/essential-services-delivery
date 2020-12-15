@@ -1,38 +1,67 @@
 /* Include all your custom JS code in here, it will be available to the app instance */
 
-function setInoculatorName(params) {
+function setPatientName(params) {
   if (params.length < 1) {
     throw new Error(
-      "setInoculatorName is missing one or more required parameters"
+      "setPatientName is missing one or more required parameters"
     );
   }
-  var inoculatorNameField = params[0];
+  var patientNameField = params[0];
   var survey = this.survey;
 
-  var inoculatorFirst = survey.getValue("given_names") || "";
-  var inoculatorLast = survey.getValue("family_name") || "";
-  var nameSeparator = (inoculatorFirst && inoculatorLast) ? ", " : "";
+  var patientFirst = survey.getValue("given_names") || "";
+  var patientLast = survey.getValue("family_name") || "";
+  var nameSeparator = (patientFirst && patientLast) ? ", " : "";
 
-  var inoculatorFull = inoculatorLast + nameSeparator + inoculatorFirst;
+  var patientFull = patientLast + nameSeparator + patientFirst;
 
-  survey.setValue(inoculatorNameField, inoculatorFull);
+  survey.setValue(patientNameField, patientFull);
+  survey.getQuestionByName(patientNameField).readOnly = true;
 }
 
-function setCurrentISODate(params) {
+function setInoculationDate(params) {
   if (params.length < 1) {
     throw new Error(
-      "setCurrentISODate is missing one or more required parameters"
+      "setCurrentDate is missing one or more required parameters"
     );
   }
   var dateField = params[0];
   var survey = this.survey;
 
   var date = new Date();
-  survey.setValue(dateField, date.toISOString());
+  survey.setValue(dateField, new Intl.DateTimeFormat('en-CA').format(date));
   survey.getQuestionByName(dateField).readOnly = true;
+}
+
+function setInoculatedSubstance(params) {
+  if (params.length < 1) {
+    throw new Error("setInoculatedSubstance is missing one or more required parameters");
+  }
+  var field = params[0];
+  var survey = this.survey;
+  var range = survey.getQuestionByName(field).choices;
+
+  var randomNumber = Math.floor(Math.random() * Math.floor(range.length));
+
+  survey.setValue(field, range[randomNumber].value);
+  survey.getQuestionByName(field).readOnly = true;
+}
+
+function setInoculationCycle(params) {
+  if (params.length < 1) {
+    throw new Error("setInoculationCycle is missing one or more required parameters");
+  }
+  var field = params[0];
+  var survey = this.survey;
+
+  var answerList = ["Yes", "No"];
+  var randomAnswer = Math.floor(Math.random() * Math.floor(answerList.length));
+
+  survey.setValue(field, answerList[randomAnswer]);
+  survey.getQuestionByName(field).readOnly = true;
 }
 
 /* An array containing custom functions that will be automatically registered with
 * SurveyJS so that they can be used in triggers.
 */
-surveyFunctions = [setInoculatorName, setCurrentISODate];
+surveyFunctions = [setPatientName, setInoculationDate, setInoculatedSubstance, setInoculationCycle];
