@@ -8,8 +8,8 @@
     "enabled": true,
     "autoSignOut": false,
     "oidcSettings": {
-      "authority": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca",
-      "clientId": "inoculation",
+      "authority": "https://oidc.gov.bc.ca/auth/realms/gzyg46lx",
+      "clientId": "inoculation-issuer",
       "redirectUri": "https://inoculation-issuer.pathfinder.gov.bc.ca/oidc-callback",
       "redirect_uri": "https://inoculation-issuer.pathfinder.gov.bc.ca/oidc-callback-error",
       "responseType": "code",
@@ -18,17 +18,8 @@
       "silentRedirectUri": "https://inoculation-issuer.pathfinder.gov.bc.ca/silent-renew-oidc.html",
       "post_logout_redirect_uri": "https://inoculation-issuer.pathfinder.gov.bc.ca",
       "extraQueryParams": {
-        "pres_req_conf_id": "verified-person"
-      },
-      "metadata": {
-        "issuer": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca",
-        "authorization_endpoint": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca/vc/connect/authorize",
-        "token_endpoint": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca/vc/connect/token",
-        "userinfo_endpoint": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca/vc/connect/userinfo",
-        "jwks_uri": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca/.well-known/openid-configuration/jwks",
-        "end_session_endpoint": "https://inoculation-issuer.pathfinder.gov.bc.ca"
-      },
-      "loadUserInfo": false
+        "kc_idp_hint": "bcsc"
+      }
     }
   },
   "apiServer": {
@@ -37,10 +28,6 @@
   "issuedSuccess": {
     "successText": "Inoculation completed, patient certificate created successfully.",
     "links": [
-      {
-        "url": "/credential-data",
-        "description": "Start New Inoculation"
-      },
       {
         "url": "https://inoculation-verifier.pathfinder.gov.bc.ca/",
         "description": "Use the issued credential to prove the holder has been inoculated"
