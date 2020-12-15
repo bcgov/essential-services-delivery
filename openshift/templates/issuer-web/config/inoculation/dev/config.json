@@ -29,10 +29,6 @@
     "successText": "Inoculation completed, patient certificate created successfully.",
     "links": [
       {
-        "url": "/credential-data",
-        "description": "Start New Inoculation"
-      },
-      {
         "url": "https://inoculation-verifier-dev.pathfinder.gov.bc.ca/",
         "description": "Use the issued credential to prove the holder has been inoculated"
       }
