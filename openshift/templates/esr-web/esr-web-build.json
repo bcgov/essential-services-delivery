@@ -120,7 +120,7 @@
       "displayName": "Source Image Name",
       "description": "The name of the runtime image.",
       "required": true,
-      "value": "abiosoft/caddy"
+      "value": "docker.io/abiosoft/caddy"
     },
     {
       "name": "SOURCE_IMAGE_KIND",
