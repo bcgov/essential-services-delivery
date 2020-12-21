@@ -5,19 +5,19 @@
 #=========================================================
 # NAME=visual-verifier
 # APP_NAME=visual-verifier
-# APP_GROUP=safe-entry
-# SUFFIX=-safe-entry
+# APP_GROUP=visual-verifier
+# SUFFIX=
 # ROLE=visual-verifier
-APPLICATION_DOMAIN=safe-entry-verifier-test.pathfinder.gov.bc.ca
+APPLICATION_DOMAIN=visual-verifier-bztwou-test.pathfinder.gov.bc.ca
 # IMAGE_NAMESPACE=bztwou-tools
 TAG_NAME=test
 # APP_FILE=
 # APP_CONFIG=
 # APP_MODULE=
-# DJANGO_SECRET_KEY=[\w]{50}
+# #DJANGO_SECRET_KEY=[\w]{50}
 # DJANGO_DEBUG=False
-# VERIFIER_NAME=SafeEntryBC - Controlled Entry Point
-OIDC_RP_PROVIDER_ENDPOINT=https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca
+# VERIFIER_NAME=VC Visual Verifier
+# OIDC_RP_PROVIDER_ENDPOINT=
 # OIDC_RP_CLIENT_ID=
 # OIDC_RP_CLIENT_SECRET=
 # OIDC_RP_SCOPES=openid profile vc_authn

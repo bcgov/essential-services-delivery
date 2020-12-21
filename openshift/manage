@@ -273,6 +273,13 @@ createNewVerifierProfile() {
     exit 1
   fi
 
+  echo -e "\nCopying from template config folder into new profile config folder ..."
+  #copy config files from template to new vv
+  configPath="templates/visual-verifier/config/"
+  if [ ! -d "${configPath}${profileName}" ]; then
+    cp -r "${configPath}${templateProfile}" "${configPath}${profileName}"
+  fi
+
   echo -e "\nCreating a new settings profile ..."
   sourceSettings="settings.${templateProfile}.sh"
   destSettings="settings.${profileName}.sh"
