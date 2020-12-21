@@ -3,6 +3,10 @@
   "issuer": {
     "name": "Essential Services - Organization"
   },
+  "help": {
+    "enabled": false,
+    "displayOnFirstVisit": false
+  },
   "inviteRequired": false,
   "authentication": {
     "enabled": true,

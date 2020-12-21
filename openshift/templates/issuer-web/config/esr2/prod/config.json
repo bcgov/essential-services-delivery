@@ -3,6 +3,10 @@
   "issuer": {
     "name": "Essential Services - Access"
   },
+  "help": {
+    "enabled": false,
+    "displayOnFirstVisit": false
+  },
   "inviteRequired": false,
   "authentication": {
     "enabled": true,
