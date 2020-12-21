@@ -116,7 +116,7 @@
       "displayName": "Output Image Tag",
       "description": "The tag given to the built image.",
       "required": true,
-      "value": "dev"
+      "value": "latest"
     },
     {
       "name": "SOURCE_IMAGE_NAME",
