@@ -6,6 +6,7 @@
   "inviteRequired": false,
   "authentication": {
     "enabled": false,
+    "autoSignOut": true,
     "oidcSettings": {
       "authority": "https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca",
       "clientId": "openvp-dev",

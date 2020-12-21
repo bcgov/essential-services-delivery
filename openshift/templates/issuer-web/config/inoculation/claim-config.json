@@ -1,0 +1,86 @@
+{
+  "questions": [
+    {
+      "name": "patient_name",
+      "type": "text",
+      "title": "Patient Name:",
+      "placeHolder": "Last Name, First Name",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "inoculated_substance",
+      "type": "dropdown",
+      "title": "Vaccine Name:",
+      "placeHolder": "Select inoculated substance",
+      "isRequired": true,
+      "colCount": 0,
+      "requiredErrorText": "Required Field",
+      "choices": [
+        "Tozinameran - Pfizer-BioNTech",
+        "mRNA-1273 - Moderna",
+        "AZD1222 - Oxford-AstraZeneca"
+      ]
+    },
+    {
+      "name": "inoculation_date",
+      "type": "text",
+      "inputType": "text",
+      "title": "Inoculation Date:",
+      "placeHolder": "",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "inoculation_cycle_completed",
+      "type": "dropdown",
+      "title": "Inoculation Cycle Completed:",
+      "placeHolder": "Is the inoculation cycle complete?",
+      "isRequired": true,
+      "requiredErrorText": "Required Field",
+      "colCount": 0,
+      "choices": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "type": "text",
+      "name": "given_names",
+      "title": "Patient Given Name",
+      "readOnly": true,
+      "visibleIf": "{patient_name} empty",
+      "defaultValue": ""
+    },
+    {
+      "type": "text",
+      "name": "family_name",
+      "title": "Patient Family Name",
+      "readOnly": true,
+      "visibleIf": "{patient_name} empty",
+      "defaultValue": ""
+    }
+  ],
+  "triggers": [
+    {
+      "type": "runexpression",
+      "expression": "{given_names} notempty or {family_name} notempty",
+      "runExpression": "setPatientName('patient_name')"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{given_names} notempty or {family_name} notempty",
+      "runExpression": "setInoculationDate('inoculation_date')"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{given_names} notempty or {family_name} notempty",
+      "runExpression": "setInoculatedSubstance('inoculated_substance')"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{given_names} notempty or {family_name} notempty",
+      "runExpression": "setInoculationCycle('inoculation_cycle_completed')"
+    }
+  ]
+}
