@@ -5,10 +5,10 @@
 #=========================================================
 NAME=visual-verifier
 APP_NAME=visual-verifier
-APP_GROUP=visual-verifier
-SUFFIX=
+APP_GROUP=safe-entry
+SUFFIX=-safe-entry
 ROLE=visual-verifier
-APPLICATION_DOMAIN=visual-verifier-bztwou-dev.pathfinder.gov.bc.ca
+APPLICATION_DOMAIN=safe-entry-verifier-dev.pathfinder.gov.bc.ca
 IMAGE_NAMESPACE=bztwou-tools
 TAG_NAME=dev
 APP_FILE=
