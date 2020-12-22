@@ -148,7 +148,7 @@
       "displayName": "Source Image Namespace",
       "description": "The namespace containing the artifact image.",
       "required": true,
-      "value": "bztwou-tools"
+      "value": "4a9599-tools"
     },
     {
       "name": "ARTIFACT_IMAGE_KIND",

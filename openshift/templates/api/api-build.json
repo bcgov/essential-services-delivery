@@ -77,7 +77,7 @@
     },
     {
       "kind": "NetworkSecurityPolicy",
-      "apiVersion": "secops.pathfinder.gov.bc.ca/v1alpha1",
+      "apiVersion": "security.devops.gov.bc.ca/v1alpha1",
       "metadata": {
         "name": "pods-to-external-network",
         "labels": {
@@ -127,7 +127,7 @@
       "displayName": "Namespace Name",
       "description": "The name of the namespace being deployed to..",
       "required": true,
-      "value": "bztwou"
+      "value": "4a9599"
     },
     {
       "name": "ENV_NAME",

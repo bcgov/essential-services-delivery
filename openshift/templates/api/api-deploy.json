@@ -308,7 +308,7 @@
     },
     {
       "kind": "NetworkSecurityPolicy",
-      "apiVersion": "secops.pathfinder.gov.bc.ca/v1alpha1",
+      "apiVersion": "security.devops.gov.bc.ca/v1alpha1",
       "metadata": {
         "name": "custom-${APP_NAME}-${NAME}${SUFFIX}-pods-to-api",
         "labels": {
@@ -335,7 +335,7 @@
     },
     {
       "kind": "NetworkSecurityPolicy",
-      "apiVersion": "secops.pathfinder.gov.bc.ca/v1alpha1",
+      "apiVersion": "security.devops.gov.bc.ca/v1alpha1",
       "metadata": {
         "name": "custom-${APP_NAME}-${NAME}${SUFFIX}-policy",
         "labels": {
@@ -374,7 +374,7 @@
     },
     {
       "kind": "NetworkSecurityPolicy",
-      "apiVersion": "secops.pathfinder.gov.bc.ca/v1alpha1",
+      "apiVersion": "security.devops.gov.bc.ca/v1alpha1",
       "metadata": {
         "name": "${NAME}${SUFFIX}-to-external-network",
         "labels": {
@@ -451,7 +451,7 @@
       "displayName": "Namespace Name",
       "description": "The name of the namespace being deployed to..",
       "required": true,
-      "value": "bztwou"
+      "value": "4a9599"
     },
     {
       "name": "SERVICE_PORT",

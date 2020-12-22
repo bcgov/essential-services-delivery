@@ -302,7 +302,7 @@ objects:
               namespace: ${IMAGE_NAMESPACE}
 
   - kind: NetworkSecurityPolicy
-    apiVersion: secops.pathfinder.gov.bc.ca/v1alpha1
+    apiVersion: security.devops.gov.bc.ca/v1alpha1
     metadata:
       name: custom-${APP_NAME}-${NAME}${SUFFIX}-to-external-network
       labels:
@@ -323,7 +323,7 @@ objects:
         - - ext:network=any
 
   - kind: NetworkSecurityPolicy
-    apiVersion: secops.pathfinder.gov.bc.ca/v1alpha1
+    apiVersion: security.devops.gov.bc.ca/v1alpha1
     metadata:
       name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
       labels:
@@ -394,12 +394,12 @@ parameters:
   - name: IMAGE_NAMESPACE
     displayName: Namespace containing application images.
     required: true
-    value: bztwou-tools
+    value: 4a9599-tools
   - name: NAMESPACE_NAME
     displayName: Namespace Name
     description: The name of the namespace being deployed to.
     required: true
-    value: bztwou
+    value: 4a9599
   - name: SOURCE_IMAGE_NAME
     displayName: Source Image Name
     description: The name of the source image to use for the service.

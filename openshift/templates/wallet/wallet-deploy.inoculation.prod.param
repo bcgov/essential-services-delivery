@@ -8,7 +8,7 @@
 # APP_GROUP=inoculation
 # SUFFIX=-inoculation
 # ROLE=wallet
-# IMAGE_NAMESPACE=bztwou-tools
+# IMAGE_NAMESPACE=4a9599-tools
 # SOURCE_IMAGE_NAME=wallet
 TAG_NAME=prod
 # POSTGRESQL_DATABASE_NAME=identity_kit_wallet

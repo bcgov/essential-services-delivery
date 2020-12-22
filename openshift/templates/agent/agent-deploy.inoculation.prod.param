@@ -11,8 +11,8 @@
 APPLICATION_DOMAIN=inoculation-agent.pathfinder.gov.bc.ca
 ADMIN_APPLICATION_DOMAIN=inoculation-agent-admin.pathfinder.gov.bc.ca
 # ROUTE_TIMEOUT=120s
-# IMAGE_NAMESPACE=bztwou-tools
-# NAMESPACE_NAME=bztwou
+# IMAGE_NAMESPACE=4a9599-tools
+# NAMESPACE_NAME=4a9599
 # SOURCE_IMAGE_NAME=agent
 TAG_NAME=prod
 AGENT_LABEL_NAME=Island Health

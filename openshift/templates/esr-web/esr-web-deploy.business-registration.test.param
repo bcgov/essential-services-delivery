@@ -8,7 +8,7 @@
 # APP_GROUP=business-registration
 # SUFFIX=-business-registration
 # ROLE=esr-web
-# IMAGE_NAMESPACE=bztwou-tools
+# IMAGE_NAMESPACE=4a9599-tools
 # CADDY_CONFIG_FILE_NAME=Caddyfile
 # CADDY_CONFIG_MAP_NAME=esr-web-caddy-conf
 # CADDY_CONFIG_MOUNT_PATH=/etc/

@@ -348,7 +348,7 @@
     },
     {
       "kind": "NetworkSecurityPolicy",
-      "apiVersion": "secops.pathfinder.gov.bc.ca/v1alpha1",
+      "apiVersion": "security.devops.gov.bc.ca/v1alpha1",
       "metadata": {
         "name": "custom-${APP_NAME}-${NAME}${SUFFIX}-policy",
         "labels": {
@@ -421,14 +421,14 @@
       "displayName": "Image Namespace",
       "name": "IMAGE_NAMESPACE",
       "required": true,
-      "value": "bztwou-tools"
+      "value": "4a9599-tools"
     },
     {
       "name": "NAMESPACE_NAME",
       "displayName": "Namespace Name",
       "description": "The name of the namespace being deployed to..",
       "required": true,
-      "value": "bztwou"
+      "value": "4a9599"
     },
     {
       "name": "CADDY_CONFIG_FILE_NAME",
