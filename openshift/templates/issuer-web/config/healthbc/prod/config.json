@@ -3,6 +3,10 @@
   "issuer": {
     "name": "Health Gateway"
   },
+  "help": {
+    "enabled": false,
+    "displayOnFirstVisit": false
+  },
   "inviteRequired": false,
   "authentication": {
     "enabled": true,

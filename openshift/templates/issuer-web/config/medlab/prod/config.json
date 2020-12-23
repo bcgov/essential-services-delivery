@@ -3,6 +3,10 @@
   "issuer": {
     "name": "Med Lab"
   },
+  "help": {
+    "enabled": false,
+    "displayOnFirstVisit": false
+  },
   "inviteRequired": false,
   "authentication": {
     "enabled": true,
