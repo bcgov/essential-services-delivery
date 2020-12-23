@@ -22,7 +22,6 @@
 # APP_TERMS_FILE_NAME=terms-and-conditions.html
 # APP_UNAUTHORIZED_FILE_NAME=unauthorized.html
 # APP_HELP_FILE_NAME=help.html
-# APP_HELP_FILE_NAME=help.html
 # APP_VUETIFY_FILE_NAME=vuetify.json
 # WEB_HOST_NAME=
 # WEB_HOST_PORT=8080
