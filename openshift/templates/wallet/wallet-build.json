@@ -92,7 +92,7 @@
       "displayName": "Git Repo URL",
       "description": "The URL to your GIT repo.",
       "required": true,
-      "value": "https://github.com/bcgov/issuer-kit-poc.git"
+      "value": "https://github.com/bcgov/issuer-kit.git"
     },
     {
       "name": "GIT_REF",
@@ -106,7 +106,7 @@
       "displayName": "Source Context Directory",
       "description": "The source context directory.",
       "required": false,
-      "value": "wa-wallet/config"
+      "value": "wallet/config"
     },
     {
       "name": "SOURCE_IMAGE_KIND",

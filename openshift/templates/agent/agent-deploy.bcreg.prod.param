@@ -11,11 +11,11 @@
 APPLICATION_DOMAIN=bcreg-agent.pathfinder.gov.bc.ca
 ADMIN_APPLICATION_DOMAIN=bcreg-agent-admin.pathfinder.gov.bc.ca
 # ROUTE_TIMEOUT=120s
-# IMAGE_NAMESPACE=bztwou-tools
-# NAMESPACE_NAME=bztwou
+# IMAGE_NAMESPACE=devex-von-image-tools
+# NAMESPACE_NAME=devex-von-image
 # SOURCE_IMAGE_NAME=agent
 TAG_NAME=prod
-AGENT_LABEL_NAME=Island Health
+AGENT_LABEL_NAME=BC Registries (DEMO)
 AGENT_BASE_URL=https://bcreg-agent.pathfinder.gov.bc.ca
 # WEBHOOK_URL=http://api-bcreg:8080/webhooks
 # AGENT_ADMIN_PORT=8024

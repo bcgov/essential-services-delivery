@@ -70,39 +70,18 @@
       "requiredErrorText": "Required Field"
     },
     {
-      "name": "person_registration_id",
       "type": "text",
-      "inputType": "text",
-      "title": "Person Registration ID:",
+      "name": "placeholder",
+      "title": "placeholder",
       "readOnly": true,
-      "visibleIf": "{registration_id} empty"
-    },
-    {
-      "name": "org_registration_id",
-      "type": "text",
-      "inputType": "text",
-      "title": "Organization Registration ID:",
-      "readOnly": true,
-      "visibleIf": "{associated_registration_id} empty"
-    },
-    {
-      "name": "entity_name",
-      "type": "text",
-      "inputType": "text",
-      "title": "Organization Name:",
-      "readOnly": true,
-      "visibleIf": "{associated_registration_name} empty"
+      "visibleIf": "{effective_date} empty",
+      "defaultValue": "default"
     }
   ],
   "triggers": [
     {
       "type": "runexpression",
-      "expression": "{registration_id} notempty or {associated_registration_id} notempty or {associated_registration_name} notempty",
-      "runExpression": "setNamesAndIDs()"
-    },
-    {
-      "type": "runexpression",
-      "expression": "{effective_date} notempty",
+      "expression": "{placeholder} notempty",
       "runExpression": "setDateFields()"
     }
   ]

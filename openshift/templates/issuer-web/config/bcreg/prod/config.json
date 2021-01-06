@@ -1,7 +1,7 @@
 {
   "env": "production",
   "issuer": {
-    "name": "Vancouver Island Health Authority"
+    "name": "BC Registries"
   },
   "help": {
     "enabled": false,

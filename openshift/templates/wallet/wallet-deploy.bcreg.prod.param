@@ -8,7 +8,7 @@
 # APP_GROUP=bcreg
 # SUFFIX=-bcreg
 # ROLE=wallet
-# IMAGE_NAMESPACE=bztwou-tools
+# IMAGE_NAMESPACE=devex-von-image-tools
 # SOURCE_IMAGE_NAME=wallet
 TAG_NAME=prod
 # POSTGRESQL_DATABASE_NAME=identity_kit_wallet
