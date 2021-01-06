@@ -15,7 +15,7 @@
   },
   {
     "attributes": [
-      "registration_id",
+      "org_registration_id",
       "registration_date",
       "registration_expiry_date",
       "registration_renewal_effective",
