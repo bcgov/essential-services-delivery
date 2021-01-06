@@ -1,0 +1,109 @@
+{
+  "questions": [
+    {
+      "name": "registration_id",
+      "type": "text",
+      "title": "Verified Person ID:",
+      "isRequired": true,
+      "readOnly": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "associated_registration_id",
+      "type": "text",
+      "title": "Organization ID:",
+      "isRequired": true,
+      "readOnly": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "associated_registration_name",
+      "type": "text",
+      "title": "Organization Name:",
+      "isRequired": true,
+      "readOnly": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "relationship",
+      "type": "text",
+      "title": "Relationship:",
+      "isRequired": true,
+      "defaultValue": "DIR",
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "relationship_description",
+      "type": "text",
+      "title": "Relationship Description:",
+      "isRequired": true,
+      "defaultValue": "Director",
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "relationship_status",
+      "type": "text",
+      "title": "Relationship Status:",
+      "isRequired": true,
+      "defaultValue": "ACT",
+      "readOnly": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "relationship_status_effective",
+      "type": "text",
+      "inputType": "text",
+      "title": "Relationship Status Effective:",
+      "placeHolder": "",
+      "readOnly": true,
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "effective_date",
+      "type": "text",
+      "inputType": "text",
+      "title": "Effective Date:",
+      "placeHolder": "",
+      "readOnly": true,
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "person_registration_id",
+      "type": "text",
+      "inputType": "text",
+      "title": "Person Registration ID:",
+      "readOnly": true,
+      "visibleIf": "{registration_id} empty"
+    },
+    {
+      "name": "org_registration_id",
+      "type": "text",
+      "inputType": "text",
+      "title": "Organization Registration ID:",
+      "readOnly": true,
+      "visibleIf": "{associated_registration_id} empty"
+    },
+    {
+      "name": "entity_name",
+      "type": "text",
+      "inputType": "text",
+      "title": "Organization Name:",
+      "readOnly": true,
+      "visibleIf": "{associated_registration_name} empty"
+    }
+  ],
+  "triggers": [
+    {
+      "type": "runexpression",
+      "expression": "{registration_id} notempty or {associated_registration_id} notempty or {associated_registration_name} notempty",
+      "runExpression": "setNamesAndIDs()"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{effective_date} notempty",
+      "runExpression": "setDateFields()"
+    }
+  ]
+}
