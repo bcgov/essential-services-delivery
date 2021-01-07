@@ -1,0 +1,88 @@
+{
+  "questions": [
+    {
+      "name": "registration_id",
+      "type": "text",
+      "title": "Verified Person ID:",
+      "isRequired": true,
+      "readOnly": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "associated_registration_id",
+      "type": "text",
+      "title": "Organization ID:",
+      "isRequired": true,
+      "readOnly": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "associated_registration_name",
+      "type": "text",
+      "title": "Organization Name:",
+      "isRequired": true,
+      "readOnly": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "relationship",
+      "type": "text",
+      "title": "Relationship:",
+      "isRequired": true,
+      "defaultValue": "DIR",
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "relationship_description",
+      "type": "text",
+      "title": "Relationship Description:",
+      "isRequired": true,
+      "defaultValue": "Director",
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "relationship_status",
+      "type": "text",
+      "title": "Relationship Status:",
+      "isRequired": true,
+      "defaultValue": "ACT",
+      "readOnly": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "relationship_status_effective",
+      "type": "text",
+      "inputType": "text",
+      "title": "Relationship Status Effective:",
+      "placeHolder": "",
+      "readOnly": true,
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "effective_date",
+      "type": "text",
+      "inputType": "text",
+      "title": "Effective Date:",
+      "placeHolder": "",
+      "readOnly": true,
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "type": "text",
+      "name": "placeholder",
+      "title": "placeholder",
+      "readOnly": true,
+      "visibleIf": "{effective_date} empty",
+      "defaultValue": "default"
+    }
+  ],
+  "triggers": [
+    {
+      "type": "runexpression",
+      "expression": "{placeholder} notempty",
+      "runExpression": "setDateFields()"
+    }
+  ]
+}

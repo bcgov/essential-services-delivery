@@ -1,0 +1,34 @@
+#=========================================================
+# OpenShift template parameters for:
+# Component: .
+# Template File: ../openshift/templates/api/api-deploy.json
+#=========================================================
+# NAME=api
+# APP_NAME=issuer
+# APP_GROUP=bcreg
+# SUFFIX=-bcreg
+# ROLE=controller
+# IMAGE_NAMESPACE=devex-von-image-tools
+# NAMESPACE_NAME=devex-von-image
+# SERVICE_PORT=8080
+# DB_SERVICE=db
+# DB_PORT=27017
+# DB_NAME=issuer_db
+# SOURCE_IMAGE_NAME=api
+TAG_NAME=prod
+# AGENT_SERVICE_NAME=agent
+# AGENT_ADMIN_PORT=8024
+# SMTP_SERVER_ADDRESS=
+# SMTP_SERVER_PORT=
+# ADMIN_EMAIL=
+# EMAIL_SUBJECT=Invite from BC Registries
+PUBLIC_SITE_URL=https://bcreg-issuer.pathfinder.gov.bc.ca
+# APP_CONFIG_MAP_NAME=api-config
+# APP_CONFIG_MOUNT_PATH=/opt/app-root/src/config/
+# APP_CONFIG_FILE_NAME=default.json
+# APP_SCHEMAS_FILE_NAME=schemas.json
+# APP_EMAIL_INVITE_FILE_NAME=invite-email.html
+# CPU_REQUEST=10m
+# CPU_LIMIT=300m
+# MEMORY_REQUEST=10Mi
+# MEMORY_LIMIT=256Mi

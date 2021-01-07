@@ -1,0 +1,32 @@
+#=========================================================
+# OpenShift template parameters for:
+# Component: .
+# Template File: ../openshift/templates/visual-verifier/visual-verifier-deploy.json
+#=========================================================
+# NAME=visual-verifier
+# APP_NAME=visual-verifier
+# APP_GROUP=bcbank
+# SUFFIX=-bcbank
+# ROLE=visual-verifier
+APPLICATION_DOMAIN=bcbank-verifier-test.pathfinder.gov.bc.ca
+# IMAGE_NAMESPACE=devex-von-image-tools
+TAG_NAME=test
+# APP_FILE=
+# APP_CONFIG=
+# APP_MODULE=
+# APP_CONFIG_MAP_NAME=visual-verifier-config
+# CUSTOM_HOME_FILE_NAME=custom_home.html
+# CUSTOM_FILES_MOUNT_PATH=/opt/app-root/src/static/
+# DJANGO_SECRET_KEY=[\w]{50}
+# DJANGO_DEBUG=False
+# VERIFIER_NAME=Corporate Bank Verifier
+OIDC_RP_PROVIDER_ENDPOINT=https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca
+# OIDC_RP_CLIENT_ID=
+# OIDC_RP_CLIENT_SECRET=
+# OIDC_RP_SCOPES=openid profile vc_authn
+# VC_AUTHN_PRES_REQ_CONF_ID=
+# OIDC_CLAIMS_REQUIRED=
+# CPU_REQUEST=10m
+# CPU_LIMIT=300m
+# MEMORY_REQUEST=10Mi
+# MEMORY_LIMIT=256Mi

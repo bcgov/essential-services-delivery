@@ -1,0 +1,164 @@
+{
+  "questions": [
+    {
+      "name": "org_registration_id",
+      "type": "text",
+      "title": "Registration ID:",
+      "isRequired": true,
+      "readOnly": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "registration_date",
+      "type": "text",
+      "inputType": "text",
+      "title": "Registration Date:",
+      "placeHolder": "",
+      "readOnly": true,
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "registration_expiry_date",
+      "type": "text",
+      "inputType": "text",
+      "title": "Registration Expiry Date:",
+      "placeHolder": "",
+      "readOnly": true,
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "registration_renewal_effective",
+      "type": "text",
+      "inputType": "text",
+      "title": "Registration Renewal Effective Date:",
+      "placeHolder": "",
+      "readOnly": true,
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "entity_name",
+      "type": "text",
+      "title": "Entity Name:",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "entity_name_effective",
+      "type": "text",
+      "title": "Entity Name Effective:",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "entity_name_assumed",
+      "type": "text",
+      "title": "Entity Name Assumed:",
+      "defaultValue": "N/A",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "entity_name_assumed_effective",
+      "type": "text",
+      "title": "Entity Name Assumed Effective:",
+      "isRequired": true,
+      "readOnly": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "entity_name_trans",
+      "type": "text",
+      "title": "Entity Name Translated:",
+      "defaultValue": "N/A",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "entity_name_trans_effective",
+      "type": "text",
+      "title": "Entity Name Translated Effective:",
+      "isRequired": true,
+      "readOnly": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "entity_status",
+      "type": "text",
+      "title": "Entity Status:",
+      "defaultValue": "ACT",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "entity_status_effective",
+      "type": "text",
+      "title": "Entity Status Effective:",
+      "isRequired": true,
+      "readOnly": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "entity_type",
+      "type": "text",
+      "title": "Entity Type:",
+      "defaultValue": "BC Company",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "registered_jurisdiction",
+      "type": "text",
+      "title": "Registered Jurisdiction:",
+      "defaultValue": "BC",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "home_jurisdiction",
+      "type": "text",
+      "title": "Home Jurisdiction:",
+      "defaultValue": "N/A",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "extra_jurisdictional_registration",
+      "type": "text",
+      "title": "Extra Jurisdictional Registration:",
+      "defaultValue": "N/A",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "effective_date",
+      "type": "text",
+      "title": "Effective Date:",
+      "isRequired": true,
+      "readOnly": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "type": "text",
+      "name": "placeholder",
+      "title": "placeholder",
+      "readOnly": true,
+      "visibleIf": "{effective_date} empty",
+      "defaultValue": "default"
+    }
+  ],
+  "triggers": [
+    {
+      "type": "runexpression",
+      "expression": "{placeholder} notempty",
+      "runExpression": "setRegistrationId()"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{placeholder} notempty",
+      "runExpression": "setDateFields()"
+    }
+  ]
+}

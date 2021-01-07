@@ -1,0 +1,89 @@
+{
+  "questions": [
+    {
+      "name": "person_registration_id",
+      "type": "text",
+      "title": "Registration ID:",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "first_name",
+      "type": "text",
+      "title": "First Name:",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "last_name",
+      "type": "text",
+      "title": "Last Name:",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "email_address",
+      "type": "text",
+      "inputType": "email",
+      "title": "Email Address:",
+      "isRequired": true,
+      "requiredErrorText": "Required Field",
+      "validators": [
+        {
+          "type": "email"
+        }
+      ]
+    },
+    {
+      "name": "phone_number",
+      "type": "text",
+      "inputType": "tel",
+      "title": "Phone Number:",
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "name": "effective_date",
+      "type": "text",
+      "inputType": "text",
+      "title": "Effective Date:",
+      "placeHolder": "",
+      "readOnly": true,
+      "isRequired": true,
+      "requiredErrorText": "Required Field"
+    },
+    {
+      "type": "text",
+      "name": "given_names",
+      "title": "Given Names",
+      "readOnly": true,
+      "visibleIf": "{first_name} empty and {last_name} empty",
+      "defaultValue": ""
+    },
+    {
+      "type": "text",
+      "name": "family_name",
+      "title": "Family Name",
+      "readOnly": true,
+      "visibleIf": "{first_name} empty and {last_name} empty",
+      "defaultValue": ""
+    }
+  ],
+  "triggers": [
+    {
+      "type": "runexpression",
+      "expression": "{given_names} notempty or {family_name} notempty",
+      "runExpression": "setNameFields()"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{given_names} notempty or {family_name} notempty",
+      "runExpression": "setDateFields()"
+    },
+    {
+      "type": "runexpression",
+      "expression": "{given_names} notempty or {family_name} notempty",
+      "runExpression": "setRegistrationId()"
+    }
+  ]
+}

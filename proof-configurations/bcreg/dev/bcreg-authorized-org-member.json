@@ -1,0 +1,54 @@
+{
+    "id": "bcreg-authorized-org-member-dev",
+    "subject_identifier": "email_address",
+    "configuration": {
+        "name": "bcreg-authorized-org-member",
+        "version": "0.0.1",
+        "requested_attributes": [
+            {
+                "names": [
+                    "person_registration_id",
+                    "first_name",
+                    "last_name",
+                    "email_address",
+                    "phone_number",
+                    "effective_date"
+                ],
+                "restrictions": [
+                    {
+                        "schema_name": "demo.verified_person.registries.ca",
+                        "schema_version": "0.1.0"
+                    }
+                ]
+            },
+            {
+                "names": [
+                    "org_registration_id",
+                    "registration_date",
+                    "registration_expiry_date",
+                    "registration_renewal_effective",
+                    "entity_name",
+                    "entity_name_effective",
+                    "entity_name_assumed",
+                    "entity_name_assumed_effective",
+                    "entity_name_trans",
+                    "entity_name_trans_effective",
+                    "entity_status",
+                    "entity_status_effective",
+                    "entity_type",
+                    "registered_jurisdiction",
+                    "extra_jurisdictional_registration",
+                    "home_jurisdiction",
+                    "effective_date"
+                ],
+                "restrictions": [
+                    {
+                        "schema_name": "registration.registries.ca",
+                        "schema_version": "0.1.0"
+                    }
+                ]
+            }
+        ],
+        "requested_predicates": []
+    }
+}

@@ -242,7 +242,7 @@ createNewIssuerProfile() {
 
   echo -e "\nCreating the base api profile configuration(s) ..."
   searchPath="./templates"
-  searchFilter="*/${templateProfile}/schema.json"
+  searchFilter="*/${templateProfile}/schemas.json"
   templateConfigDir=$(getDirectory $(find ${searchPath} -type f -path "${searchFilter}"))
   templateConfigs=$(find ${templateConfigDir} -type f)
   for templateConfig in ${templateConfigs}; do
