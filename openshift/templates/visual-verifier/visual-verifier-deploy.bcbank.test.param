@@ -9,7 +9,7 @@
 # SUFFIX=-bcbank
 # ROLE=visual-verifier
 APPLICATION_DOMAIN=bcbank-verifier-test.pathfinder.gov.bc.ca
-# IMAGE_NAMESPACE=bztwou-tools
+# IMAGE_NAMESPACE=devex-von-image-tools
 TAG_NAME=test
 # APP_FILE=
 # APP_CONFIG=
