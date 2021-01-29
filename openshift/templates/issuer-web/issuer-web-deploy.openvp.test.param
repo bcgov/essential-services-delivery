@@ -28,7 +28,7 @@
 # WEB_HOST_TLS=off
 # API_HOST=api
 # API_PORT=8080
-APPLICATION_DOMAIN=openvp-issuer-test.pathfinder.gov.bc.ca
+APPLICATION_DOMAIN=openvp-issuer-test.apps.silver.devops.gov.bc.ca
 # SOURCE_IMAGE_NAME=issuer-web
 TAG_NAME=test
 # CPU_REQUEST=10m

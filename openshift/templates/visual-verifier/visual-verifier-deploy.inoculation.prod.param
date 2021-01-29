@@ -8,7 +8,7 @@
 # APP_GROUP=inoculation
 # SUFFIX=-inoculation
 # ROLE=visual-verifier
-APPLICATION_DOMAIN=inoculation-verifier.pathfinder.gov.bc.ca
+APPLICATION_DOMAIN=inoculation-verifier.apps.silver.devops.gov.bc.ca
 # IMAGE_NAMESPACE=bztwou-tools
 TAG_NAME=prod
 # APP_FILE=
