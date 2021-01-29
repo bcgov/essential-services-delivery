@@ -189,7 +189,7 @@ objects:
                   mountPath: ${APP_CONFIG_MOUNT_PATH}${APP_EMAIL_INVITE_FILE_NAME}
                   subPath: ${APP_EMAIL_INVITE_FILE_NAME}
   - kind: NetworkSecurityPolicy
-    apiVersion: secops.pathfinder.gov.bc.ca/v1alpha1
+    apiVersion: security.devops.gov.bc.ca/v1alpha1
     metadata:
       name: custom-${APP_NAME}-${NAME}${SUFFIX}-pods-to-api
       labels:
@@ -209,7 +209,7 @@ objects:
       destination:
         - - int:network=internal-cluster-api-endpoint
   - kind: NetworkSecurityPolicy
-    apiVersion: secops.pathfinder.gov.bc.ca/v1alpha1
+    apiVersion: security.devops.gov.bc.ca/v1alpha1
     metadata:
       name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
       labels:
@@ -238,7 +238,7 @@ objects:
           - env=${TAG_NAME}
           - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
   - kind: NetworkSecurityPolicy
-    apiVersion: secops.pathfinder.gov.bc.ca/v1alpha1
+    apiVersion: security.devops.gov.bc.ca/v1alpha1
     metadata:
       name: ${NAME}${SUFFIX}-to-external-network
       labels:

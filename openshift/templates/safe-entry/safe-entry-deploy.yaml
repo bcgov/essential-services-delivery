@@ -213,7 +213,7 @@ objects:
         weight: 100
 
 # - kind: NetworkSecurityPolicy
-#   apiVersion: secops.pathfinder.gov.bc.ca/v1alpha1
+#   apiVersion: security.devops.gov.bc.ca/v1alpha1
 #   metadata:
 #     name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
 #     labels:
