@@ -8,7 +8,7 @@
 # APP_GROUP=safe-entry
 # SUFFIX=-safe-entry
 # ROLE=visual-verifier
-APPLICATION_DOMAIN=safe-entry-verifier-test.pathfinder.gov.bc.ca
+APPLICATION_DOMAIN=safe-entry-verifier-test.apps.silver.devops.gov.bc.ca
 # IMAGE_NAMESPACE=a99fd4-tools
 TAG_NAME=test
 # APP_FILE=
