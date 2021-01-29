@@ -6,7 +6,7 @@
 NAME=api
 APP_NAME=identity-kit
 APP_GROUP=identity-kit-runtime
-NAMESPACE_NAME=bztwou
+NAMESPACE_NAME=a99fd4
 ENV_NAME=tools
 GIT_REPO_URL=https://github.com/bcgov/issuer-kit.git
 GIT_REF=master

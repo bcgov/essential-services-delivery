@@ -279,12 +279,12 @@ parameters:
     displayName: Image Namespace
     name: IMAGE_NAMESPACE
     required: true
-    value: bztwou-tools
+    value: a99fd4-tools
   - name: NAMESPACE_NAME
     displayName: Namespace Name
     description: The name of the namespace being deployed to..
     required: true
-    value: bztwou
+    value: a99fd4
   - name: CADDY_CONFIG_FILE_NAME
     displayName: CAddy Config File Name
     description: The name of the configuration file to be used for Caddy.

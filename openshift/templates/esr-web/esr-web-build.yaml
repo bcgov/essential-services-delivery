@@ -103,7 +103,7 @@ parameters:
     displayName: Source Image Namespace
     description: The namespace containing the artifact image.
     required: true
-    value: bztwou-tools
+    value: a99fd4-tools
   - name: ARTIFACT_IMAGE_KIND
     displayName: Artifact Image Kind
     description: The 'kind' (type) of the artifact image; typically ImageStreamTag,

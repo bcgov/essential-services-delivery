@@ -9,7 +9,7 @@ class baseConfig {
   public static final String[] DEPLOYMENT_ENVIRONMENT_TAGS = ['dev', 'test', 'prod']
 
   // The name of the project namespace(s).
-  public static final String  NAME_SPACE = 'bztwou'
+  public static final String  NAME_SPACE = 'a99fd4'
 
   // Instance Suffix
   public static final String  SUFFIX = ''

@@ -8,7 +8,7 @@
 # APP_GROUP=esr2
 # SUFFIX=-esr2
 # ROLE=db
-# IMAGE_NAMESPACE=bztwou-tools
+# IMAGE_NAMESPACE=a99fd4-tools
 # SOURCE_IMAGE_NAME=db
 TAG_NAME=prod
 # MONGODB_DATABASE=issuer_db

@@ -394,12 +394,12 @@ parameters:
   - name: IMAGE_NAMESPACE
     displayName: Namespace containing application images.
     required: true
-    value: bztwou-tools
+    value: a99fd4-tools
   - name: NAMESPACE_NAME
     displayName: Namespace Name
     description: The name of the namespace being deployed to.
     required: true
-    value: bztwou
+    value: a99fd4
   - name: SOURCE_IMAGE_NAME
     displayName: Source Image Name
     description: The name of the source image to use for the service.

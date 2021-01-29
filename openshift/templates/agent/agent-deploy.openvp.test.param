@@ -11,8 +11,8 @@
 APPLICATION_DOMAIN=openvp-agent-test.apps.silver.devops.gov.bc.ca
 ADMIN_APPLICATION_DOMAIN=openvp-agent-admin-test.apps.silver.devops.gov.bc.ca
 # ROUTE_TIMEOUT=120s
-# IMAGE_NAMESPACE=bztwou-tools
-# NAMESPACE_NAME=bztwou
+# IMAGE_NAMESPACE=a99fd4-tools
+# NAMESPACE_NAME=a99fd4
 # SOURCE_IMAGE_NAME=agent
 TAG_NAME=test
 AGENT_LABEL_NAME=Unverified Person (TEST)
