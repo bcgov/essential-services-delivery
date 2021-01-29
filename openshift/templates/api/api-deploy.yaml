@@ -296,7 +296,7 @@ parameters:
     displayName: Namespace Name
     description: The name of the namespace being deployed to..
     required: true
-    value: bztwou
+    value: a99fd4
   - name: SERVICE_PORT
     displayName: Service Port
     required: true
