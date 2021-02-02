@@ -1,12 +1,12 @@
 #=========================================================
 # OpenShift template parameters for:
 # Component: .
-# Template File: ../openshift/templates/wallet/wallet-deploy.json
+# Template File: ../openshift/templates/wallet/wallet-deploy.yaml
 #=========================================================
 # NAME=wallet
-# APP_NAME=issuer
-# APP_GROUP=medlab
-# SUFFIX=-medlab
+# APP_NAME=issuer-wallet
+# APP_GROUP=issuer
+# SUFFIX=
 # ROLE=wallet
 # IMAGE_NAMESPACE=a99fd4-tools
 # SOURCE_IMAGE_NAME=wallet
@@ -19,6 +19,6 @@ TAG_NAME=test
 # PERSISTENT_VOLUME_SIZE=1Gi
 # PERSISTENT_VOLUME_CLASS=netapp-file-standard
 # CPU_REQUEST=10m
-# CPU_LIMIT=512m
+# CPU_LIMIT=750m
 # MEMORY_REQUEST=10Mi
-# MEMORY_LIMIT=512Mi
+# MEMORY_LIMIT=256Mi

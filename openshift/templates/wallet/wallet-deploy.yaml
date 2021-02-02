@@ -181,12 +181,12 @@ parameters:
     description: The name assigned to all of the OpenShift resources associated to
       the server instance.
     required: true
-    value: issuer-kit-wallet
+    value: issuer-wallet
   - name: APP_NAME
     displayName: App Name
     description: Used to group components together in the OpenShift console.
     required: true
-    value: issuer
+    value: issuer-wallet
   - name: APP_GROUP
     displayName: App Group
     description: The name assigned to all of the deployments in this project.

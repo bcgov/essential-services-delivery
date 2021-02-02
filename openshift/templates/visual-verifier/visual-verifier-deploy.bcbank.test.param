@@ -9,7 +9,7 @@
 # SUFFIX=-bcbank
 # ROLE=visual-verifier
 APPLICATION_DOMAIN=bcbank-verifier-test.apps.silver.devops.gov.bc.ca
-# IMAGE_NAMESPACE=devex-von-image-tools
+# IMAGE_NAMESPACE=a99fd4-tools
 TAG_NAME=test
 # APP_FILE=
 # APP_CONFIG=

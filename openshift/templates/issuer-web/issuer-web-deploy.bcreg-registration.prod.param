@@ -8,8 +8,8 @@
 # APP_G# APP_GROUP=bcreg
 # SUFFIX=-bcreg
 # ROLE=public-frontend
-# IMAGE_NAMESPACE=devex-von-image-tools
-# NAMESPACE_NAME=devex-von-image
+# IMAGE_NAMESPACE=a99fd4-tools
+# NAMESPACE_NAME=a99fd4
 # CADDY_CONFIG_FILE_NAME=Caddyfile
 # CADDY_CONFIG_MAP_NAME=issuer-web-registration-caddy-conf
 # CADDY_CONFIG_MOUNT_PATH=/etc/caddy/

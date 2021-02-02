@@ -190,7 +190,7 @@ objects:
                 - name: WALLET_TYPE
                   value: ${WALLET_STORAGE_TYPE}
                 - name: POSTGRESQL_WALLET_HOST
-                  value: ${WALLET_HOST}${SUFFIX}
+                  value: ${WALLET_HOST}
                 - name: POSTGRESQL_WALLET_PORT
                   value: ${WALLET_HOST_PORT}
                 - name: WALLET_STORAGE_CONFIGURATION
@@ -200,17 +200,17 @@ objects:
                 - name: POSTGRESQL_WALLET_USER
                   valueFrom:
                     secretKeyRef:
-                      name: ${WALLET_HOST}${SUFFIX}
+                      name: ${WALLET_HOST}
                       key: database-user
                 - name: POSTGRESQL_WALLET_PASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: ${WALLET_HOST}${SUFFIX}
+                      name: ${WALLET_HOST}
                       key: database-password
                 - name: POSTGRESQL_WALLET_ADMIN_PASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: ${WALLET_HOST}${SUFFIX}
+                      name: ${WALLET_HOST}
                       key: admin-password
                 - name: WALLET_ENCRYPTION_KEY
                   valueFrom:
@@ -343,7 +343,7 @@ objects:
 
       destination:
         - - role=wallet
-          - app=${APP_NAME}${SUFFIX}
+          - app=${WALLET_APP_NAME}
           - env=${TAG_NAME}
           - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
         - - role=controller
@@ -465,7 +465,12 @@ parameters:
     displayName: PostgreSql Wallet Hostname
     required: true
     description: Hostname of the deployed database hosting the wallet.  Only used when WALLET_STORAGE_TYPE = postgres_storage.
-    value: wallet
+    value: issuer-wallet
+  - name: WALLET_APP_NAME
+    displayName: Wallet Application Name
+    required: true
+    description: The name of the wallet shared application
+    value: issuer-wallet
   - name: WALLET_HOST_PORT
     displayName: PostgreSql Wallet Port
     required: true
