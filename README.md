@@ -118,7 +118,10 @@ healthbc - settings.healthbc.sh
   - ../openshift/templates/issuer-web/issuer-web-deploy.json
   - ../openshift/templates/wallet/wallet-deploy.json
 ```
-
+We have moved to creating a single wallet pod across all essential services for greater resource sharing. To deploy the wallet pod run the following command and replace `-e dev` with the environment you intend to deploy to.
+```
+genDepls.sh -c wallet -p default -e dev
+```  
 To publish or update the settings and configuration for all application profiles you can use the `deployAllProfiles` helper command in the `manage` script, for example;
 ```
 Wade@hvWin10x64 MINGW64 /c/essential-services-delivery/openshift
