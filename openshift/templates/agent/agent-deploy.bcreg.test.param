@@ -33,6 +33,7 @@ AGENT_BASE_URL=https://bcreg-agent-test.apps.silver.devops.gov.bc.ca
 # WALLET_KEY=[a-zA-Z0-9]{10}
 # WALLET_SEED=[a-zA-Z0-9]{32}
 # WALLET_DID=[a-zA-Z0-9]{16}
+# WALLET_APP_NAME=issuer-wallet
 # TAILS_FILES_DIR=/home/indy/.indy_client/tails
 # TAILS_FILES_VOLUME_CLASS=netapp-file-standard
 # TAILS_FILES_VOLUME_SIZE=1Gi
