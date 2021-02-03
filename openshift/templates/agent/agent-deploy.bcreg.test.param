@@ -16,6 +16,7 @@ ADMIN_APPLICATION_DOMAIN=bcreg-agent-admin-test.apps.silver.devops.gov.bc.ca
 # SOURCE_IMAGE_NAME=agent
 TAG_NAME=test
 AGENT_LABEL_NAME=BC Registries (TEST-DEMO)
+# AGENT_READ_ONLY_LEDGER=false
 AGENT_BASE_URL=https://bcreg-agent-test.apps.silver.devops.gov.bc.ca
 # WEBHOOK_URL=http://api-bcreg:8080/webhooks
 # AGENT_ADMIN_PORT=8024

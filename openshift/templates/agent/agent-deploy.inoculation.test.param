@@ -16,6 +16,7 @@ ADMIN_APPLICATION_DOMAIN=inoculation-agent-admin-test.apps.silver.devops.gov.bc.
 # SOURCE_IMAGE_NAME=agent
 TAG_NAME=test
 AGENT_LABEL_NAME=Island Health (TEST)
+# AGENT_READ_ONLY_LEDGER=false
 AGENT_BASE_URL=https://inoculation-agent-test.apps.silver.devops.gov.bc.ca
 # WEBHOOK_URL=http://api-inoculation:8080/webhooks
 # AGENT_ADMIN_PORT=8024

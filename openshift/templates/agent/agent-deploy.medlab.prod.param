@@ -16,6 +16,7 @@ ADMIN_APPLICATION_DOMAIN=medlab-agent-admin.apps.silver.devops.gov.bc.ca
 # SOURCE_IMAGE_NAME=agent
 TAG_NAME=prod
 AGENT_LABEL_NAME=MedLab
+# AGENT_READ_ONLY_LEDGER=false
 AGENT_BASE_URL=https://medlab-agent.apps.silver.devops.gov.bc.ca
 # WEBHOOK_URL=http://api-medlab:8080/webhooks
 # AGENT_ADMIN_PORT=8024
