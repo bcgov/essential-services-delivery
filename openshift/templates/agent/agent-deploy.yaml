@@ -242,6 +242,8 @@ objects:
                   value: ${AGENT_LABEL_NAME}
                 - name: AGENT_ENDPOINT
                   value: ${AGENT_BASE_URL}
+                - name: ACAPY_READ_ONLY_LEDGER
+                  value: ${AGENT_READ_ONLY_LEDGER}
                 - name: AGENT_LOG_LEVEL
                   value: ${LOG_LEVEL}
                 - name: TAILS_FILES_DIR
@@ -415,6 +417,11 @@ parameters:
     description: The label/name of the agent
     required: true
     value: issuer-kit-agent
+  - name: AGENT_READ_ONLY_LEDGER
+    displayName: Set read only ledger flag.
+    description: Enable/Disable the read only ledger flag.  Controls the inclusion/exclusion of the agent '--read-only-ledger' startup parameter.  Defaults to disabled.
+    required: true
+    value: "true"
   - name: AGENT_BASE_URL
     displayName: Agent endpoint
     description: The endpoint of the agent
