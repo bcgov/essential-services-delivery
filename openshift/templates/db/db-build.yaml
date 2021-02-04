@@ -45,7 +45,7 @@ parameters:
     displayName: Name
     description: The name assigned to all of the resources defined in this template.
     required: true
-    value: db
+    value: issuer-kit-db
   - name: APP_NAME
     displayName: App Name
     description: Used to group components together in the OpenShift console.

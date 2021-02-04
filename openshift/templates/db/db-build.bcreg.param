@@ -3,7 +3,7 @@
 # Component: .
 # Template File: ../openshift/templates/db/db-build.json
 #=========================================================
-NAME=db
+NAME=issuer-kit-db
 APP_NAME=issuer-kit
 APP_GROUP=issuer-kit-storage
 GIT_REPO_URL=https://github.com/bcgov/covid-19-essential-services.git
