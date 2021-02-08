@@ -8,8 +8,8 @@
 # APP_GROUP=healthbc
 # SUFFIX=-healthbc
 # ROLE=public-frontend
-# IMAGE_NAMESPACE=bztwou-tools
-# NAMESPACE_NAME=bztwou
+# IMAGE_NAMESPACE=a99fd4-tools
+# NAMESPACE_NAME=a99fd4
 # CADDY_CONFIG_FILE_NAME=Caddyfile
 # CADDY_CONFIG_MAP_NAME=issuer-web-caddy-conf
 # CADDY_CONFIG_MOUNT_PATH=/etc/caddy/
@@ -28,7 +28,7 @@
 # WEB_HOST_TLS=off
 # API_HOST=api
 # API_PORT=8080
-APPLICATION_DOMAIN=healthbc-issuer-test.pathfinder.gov.bc.ca
+APPLICATION_DOMAIN=healthbc-issuer-test.apps.silver.devops.gov.bc.ca
 # SOURCE_IMAGE_NAME=issuer-web
 TAG_NAME=test
 # CPU_REQUEST=10m

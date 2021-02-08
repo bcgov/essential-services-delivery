@@ -8,8 +8,8 @@
 # APP_GROUP=medlab
 # SUFFIX=-medlab
 # ROLE=db
-# IMAGE_NAMESPACE=bztwou-tools
-# SOURCE_IMAGE_NAME=db
+# IMAGE_NAMESPACE=a99fd4-tools
+# SOURCE_IMAGE_NAME=issuer-kit-db
 TAG_NAME=prod
 # MONGODB_DATABASE=issuer_db
 # MONGODB_USER=[a-zA-Z_][a-zA-Z0-9_]{10}

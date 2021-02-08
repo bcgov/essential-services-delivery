@@ -190,7 +190,7 @@ objects:
                 - name: WALLET_TYPE
                   value: ${WALLET_STORAGE_TYPE}
                 - name: POSTGRESQL_WALLET_HOST
-                  value: ${WALLET_HOST}${SUFFIX}
+                  value: ${WALLET_HOST}
                 - name: POSTGRESQL_WALLET_PORT
                   value: ${WALLET_HOST_PORT}
                 - name: WALLET_STORAGE_CONFIGURATION
@@ -200,17 +200,17 @@ objects:
                 - name: POSTGRESQL_WALLET_USER
                   valueFrom:
                     secretKeyRef:
-                      name: ${WALLET_HOST}${SUFFIX}
+                      name: ${WALLET_HOST}
                       key: database-user
                 - name: POSTGRESQL_WALLET_PASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: ${WALLET_HOST}${SUFFIX}
+                      name: ${WALLET_HOST}
                       key: database-password
                 - name: POSTGRESQL_WALLET_ADMIN_PASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: ${WALLET_HOST}${SUFFIX}
+                      name: ${WALLET_HOST}
                       key: admin-password
                 - name: WALLET_ENCRYPTION_KEY
                   valueFrom:
@@ -242,6 +242,8 @@ objects:
                   value: ${AGENT_LABEL_NAME}
                 - name: AGENT_ENDPOINT
                   value: ${AGENT_BASE_URL}
+                - name: ACAPY_READ_ONLY_LEDGER
+                  value: ${AGENT_READ_ONLY_LEDGER}
                 - name: AGENT_LOG_LEVEL
                   value: ${LOG_LEVEL}
                 - name: TAILS_FILES_DIR
@@ -302,7 +304,7 @@ objects:
               namespace: ${IMAGE_NAMESPACE}
 
   - kind: NetworkSecurityPolicy
-    apiVersion: secops.pathfinder.gov.bc.ca/v1alpha1
+    apiVersion: security.devops.gov.bc.ca/v1alpha1
     metadata:
       name: custom-${APP_NAME}-${NAME}${SUFFIX}-to-external-network
       labels:
@@ -323,7 +325,7 @@ objects:
         - - ext:network=any
 
   - kind: NetworkSecurityPolicy
-    apiVersion: secops.pathfinder.gov.bc.ca/v1alpha1
+    apiVersion: security.devops.gov.bc.ca/v1alpha1
     metadata:
       name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
       labels:
@@ -343,7 +345,7 @@ objects:
 
       destination:
         - - role=wallet
-          - app=${APP_NAME}${SUFFIX}
+          - app=${WALLET_APP_NAME}
           - env=${TAG_NAME}
           - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
         - - role=controller
@@ -394,12 +396,12 @@ parameters:
   - name: IMAGE_NAMESPACE
     displayName: Namespace containing application images.
     required: true
-    value: bztwou-tools
+    value: a99fd4-tools
   - name: NAMESPACE_NAME
     displayName: Namespace Name
     description: The name of the namespace being deployed to.
     required: true
-    value: bztwou
+    value: a99fd4
   - name: SOURCE_IMAGE_NAME
     displayName: Source Image Name
     description: The name of the source image to use for the service.
@@ -415,6 +417,11 @@ parameters:
     description: The label/name of the agent
     required: true
     value: issuer-kit-agent
+  - name: AGENT_READ_ONLY_LEDGER
+    displayName: Set read only ledger flag.
+    description: Enable/Disable the read only ledger flag.  Controls the inclusion/exclusion of the agent '--read-only-ledger' startup parameter.  Defaults to disabled.
+    required: true
+    value: "false"
   - name: AGENT_BASE_URL
     displayName: Agent endpoint
     description: The endpoint of the agent
@@ -465,7 +472,12 @@ parameters:
     displayName: PostgreSql Wallet Hostname
     required: true
     description: Hostname of the deployed database hosting the wallet.  Only used when WALLET_STORAGE_TYPE = postgres_storage.
-    value: wallet
+    value: issuer-wallet
+  - name: WALLET_APP_NAME
+    displayName: Wallet Application Name
+    required: true
+    description: The name of the wallet shared application
+    value: issuer-wallet
   - name: WALLET_HOST_PORT
     displayName: PostgreSql Wallet Port
     required: true

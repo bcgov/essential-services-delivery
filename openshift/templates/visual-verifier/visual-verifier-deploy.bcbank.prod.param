@@ -8,8 +8,8 @@
 # APP_GROUP=bcbank
 # SUFFIX=-bcbank
 # ROLE=visual-verifier
-APPLICATION_DOMAIN=bcbank-verifie.pathfinder.gov.bc.ca
-# IMAGE_NAMESPACE=devex-von-image-tools
+APPLICATION_DOMAIN=bcbank-verifie.apps.silver.devops.gov.bc.ca
+# IMAGE_NAMESPACE=a99fd4-tools
 TAG_NAME=prod
 # APP_FILE=
 # APP_CONFIG=

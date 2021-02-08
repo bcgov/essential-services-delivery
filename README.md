@@ -118,6 +118,7 @@ healthbc - settings.healthbc.sh
   - ../openshift/templates/issuer-web/issuer-web-deploy.json
   - ../openshift/templates/wallet/wallet-deploy.json
 ```
+We have moved to creating a single wallet pod across all essential services for greater resource sharing. The shared wallet is deployed from the default profile and used by all agents. Please ensure the wallet component is deployed ***BEFORE*** attempting to deploy any issuer agent
 
 To publish or update the settings and configuration for all application profiles you can use the `deployAllProfiles` helper command in the `manage` script, for example;
 ```

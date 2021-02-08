@@ -9,7 +9,7 @@
 # SUFFIX=-safe-entry
 # ROLE=visual-verifier
 APPLICATION_DOMAIN=lngpipeline-camp.vonx.io
-# IMAGE_NAMESPACE=bztwou-tools
+# IMAGE_NAMESPACE=a99fd4-tools
 TAG_NAME=prod
 # APP_FILE=
 # APP_CONFIG=

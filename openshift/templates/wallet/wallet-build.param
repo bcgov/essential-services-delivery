@@ -3,7 +3,7 @@
 # Component: .
 # Template File: ../openshift/templates/wallet/wallet-build.json
 #=========================================================
-NAME=wallet
+NAME=issuer-kit-wallet
 APP_NAME=issuer-kit
 APP_GROUP=issuer-kit-storage
 GIT_REPO_URL=https://github.com/bcgov/issuer-kit.git

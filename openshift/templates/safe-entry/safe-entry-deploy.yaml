@@ -213,7 +213,7 @@ objects:
         weight: 100
 
 # - kind: NetworkSecurityPolicy
-#   apiVersion: secops.pathfinder.gov.bc.ca/v1alpha1
+#   apiVersion: security.devops.gov.bc.ca/v1alpha1
 #   metadata:
 #     name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
 #     labels:
@@ -265,7 +265,7 @@ parameters:
     description: The namespace where to get the above image name
     displayName: Image Namespace
     required: true
-    value: bztwou-tools
+    value: a99fd4-tools
   - name: CADDY_CONFIG_FILE_NAME
     displayName: CAddy Config File Name
     description: The name of the configuration file to be used for Caddy.
