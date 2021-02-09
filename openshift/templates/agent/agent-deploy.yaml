@@ -421,7 +421,7 @@ parameters:
     displayName: Set read only ledger flag.
     description: Enable/Disable the read only ledger flag.  Controls the inclusion/exclusion of the agent '--read-only-ledger' startup parameter.  Defaults to disabled.
     required: true
-    value: "false"
+    value: "true"
   - name: AGENT_BASE_URL
     displayName: Agent endpoint
     description: The endpoint of the agent
@@ -477,7 +477,7 @@ parameters:
     displayName: Wallet Application Name
     required: true
     description: The name of the wallet shared application
-    value: issuer-wallet
+    value: issuer-kit
   - name: WALLET_HOST_PORT
     displayName: PostgreSql Wallet Port
     required: true

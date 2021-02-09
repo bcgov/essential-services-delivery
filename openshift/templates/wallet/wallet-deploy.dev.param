@@ -3,7 +3,7 @@
 # Component: .
 # Template File: ../openshift/templates/wallet/wallet-deploy.yaml
 #=========================================================
-# NAME=issuer-wallet
+# NAME=issuer-kit-wallet
 # APP_NAME=issuer-wallet
 # APP_GROUP=issuer
 # SUFFIX=

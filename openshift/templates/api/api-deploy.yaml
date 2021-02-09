@@ -230,7 +230,7 @@ objects:
           - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
       destination:
         - - role=db
-          - app=${APP_NAME}${SUFFIX}
+          - app=${APP_NAME}
           - env=${TAG_NAME}
           - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
         - - role=agent
