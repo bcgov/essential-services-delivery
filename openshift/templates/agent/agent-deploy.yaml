@@ -421,7 +421,7 @@ parameters:
     displayName: Set read only ledger flag.
     description: Enable/Disable the read only ledger flag.  Controls the inclusion/exclusion of the agent '--read-only-ledger' startup parameter.  Defaults to disabled.
     required: true
-    value: "true"
+    value: "false"
   - name: AGENT_BASE_URL
     displayName: Agent endpoint
     description: The endpoint of the agent
