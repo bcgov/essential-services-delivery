@@ -4,7 +4,7 @@
 # Template File: ../openshift/templates/wallet/wallet-deploy.yaml
 #=========================================================
 # NAME=issuer-kit-wallet
-# APP_NAME=issuer-wallet
+# APP_NAME=issuer-kit-wallet
 # APP_GROUP=issuer
 # SUFFIX=
 # ROLE=wallet

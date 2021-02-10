@@ -472,7 +472,7 @@ parameters:
     displayName: PostgreSql Wallet Hostname
     required: true
     description: Hostname of the deployed database hosting the wallet.  Only used when WALLET_STORAGE_TYPE = postgres_storage.
-    value: issuer-wallet
+    value: issuer-kit-wallet
   - name: WALLET_APP_NAME
     displayName: Wallet Application Name
     required: true

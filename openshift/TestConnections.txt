@@ -4,4 +4,4 @@
 
 google.com:80
 issuer-kit-db:27017
-issuer-wallet:5432
+issuer-kit-wallet:5432
