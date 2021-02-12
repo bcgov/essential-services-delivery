@@ -6,13 +6,14 @@
 NAME=api
 APP_NAME=issuer
 DB_APP_NAME=issuer-kit
+DB_SUFFIX=
+DB_SERVICE=issuer-kit-db
 APP_GROUP=healthbc
 SUFFIX=-healthbc
 ROLE=controller
 IMAGE_NAMESPACE=a99fd4-tools
 NAMESPACE_NAME=a99fd4
 SERVICE_PORT=8080
-DB_SERVICE=issuer-kit-db
 DB_PORT=27017
 DB_NAME=issuer_db
 SOURCE_IMAGE_NAME=issuer-kit-api
