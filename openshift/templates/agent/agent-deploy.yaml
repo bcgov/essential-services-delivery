@@ -345,7 +345,7 @@ objects:
 
       destination:
         - - role=wallet
-          - app=${WALLET_APP_NAME}
+          - app=${WALLET_APP_NAME}${WALLET_SUFFIX}
           - env=${TAG_NAME}
           - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
         - - role=controller
@@ -478,6 +478,11 @@ parameters:
     required: true
     description: The name of the wallet shared application
     value: issuer-kit
+  - name: WALLET_SUFFIX
+    displayName: Wallet Suffix Name
+    required: true
+    description: The value of the wallet shared application suffix
+    value: -test
   - name: WALLET_HOST_PORT
     displayName: PostgreSql Wallet Port
     required: true
