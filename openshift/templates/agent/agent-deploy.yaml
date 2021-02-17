@@ -480,7 +480,7 @@ parameters:
     value: issuer-kit
   - name: WALLET_SUFFIX
     displayName: Wallet Suffix Name
-    required: true
+    required: false
     description: The value of the wallet shared application suffix
     value: -test
   - name: WALLET_HOST_PORT
