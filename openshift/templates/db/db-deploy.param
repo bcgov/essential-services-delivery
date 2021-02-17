@@ -3,10 +3,10 @@
 # Component: .
 # Template File: ../openshift/templates/db/db-deploy.json
 #=========================================================
-NAME=db
-APP_NAME=issuer
-APP_GROUP=esr2
-SUFFIX=-esr2
+NAME=issuer-kit-db
+APP_NAME=issuer-kit
+APP_GROUP=issuer-shared
+SUFFIX=
 ROLE=db
 IMAGE_NAMESPACE=a99fd4-tools
 SOURCE_IMAGE_NAME=issuer-kit-db
@@ -16,7 +16,7 @@ MONGODB_DATABASE=issuer_db
 # MONGODB_PASSWORD=[a-zA-Z0-9_~!@#$%^&*()-=<>,.?;:|]{16}
 # MONGODB_ADMIN_PASSWORD=[a-zA-Z0-9_~!@#$%^&*()-=<>,.?;:|]{16}
 MOUNT_PATH=/var/lib/mongodb/data
-PERSISTENT_VOLUME_SIZE=1Gi
+PERSISTENT_VOLUME_SIZE=2Gi
 PERSISTENT_VOLUME_CLASS=netapp-file-standard
 CPU_REQUEST=10m
 CPU_LIMIT=512m

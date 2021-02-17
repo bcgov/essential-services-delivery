@@ -15,6 +15,7 @@ objects:
         app: ${APP_NAME}${SUFFIX}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
+        backupTarget: ${BACKUP}
         role: ${ROLE}
         env: ${TAG_NAME}
         template: ${NAME}${SUFFIX}
@@ -45,6 +46,7 @@ objects:
           labels:
             app: ${APP_NAME}${SUFFIX}
             name: ${NAME}${SUFFIX}
+            backupTarget: ${BACKUP}
             app-group: ${APP_GROUP}
             role: ${ROLE}
             env: ${TAG_NAME}
@@ -127,6 +129,7 @@ objects:
         app: ${APP_NAME}${SUFFIX}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
+        backupTarget: ${BACKUP}
         role: ${ROLE}
         env: ${TAG_NAME}
         template: ${NAME}${SUFFIX}
@@ -145,6 +148,7 @@ objects:
         app: ${APP_NAME}${SUFFIX}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
+        backupTarget: ${BACKUP}
         role: ${ROLE}
         env: ${TAG_NAME}
     stringData:
@@ -159,6 +163,7 @@ objects:
       labels:
         app: ${APP_NAME}${SUFFIX}
         name: ${NAME}${SUFFIX}
+        backupTarget: ${BACKUP}
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
@@ -181,22 +186,27 @@ parameters:
     description: The name assigned to all of the OpenShift resources associated to
       the server instance.
     required: true
-    value: issuer-wallet
+    value: issuer-kit-wallet
   - name: APP_NAME
     displayName: App Name
     description: Used to group components together in the OpenShift console.
     required: true
-    value: issuer-wallet
+    value: issuer-kit
   - name: APP_GROUP
     displayName: App Group
     description: The name assigned to all of the deployments in this project.
     required: true
-    value: issuer
+    value: issuer-shared
   - name: SUFFIX
     displayName: Suffix
     description: A suffix applied to all of the objects in this template.
     required: false
     value: ''
+  - name: BACKUP
+    displayName: Backup
+    description: specifies that this is a backup target
+    required: true
+    value: target
   - name: ROLE
     displayName: Role
     description: The role of this service within the application - used for Network

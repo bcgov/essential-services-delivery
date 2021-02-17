@@ -14,13 +14,13 @@
     "oidcSettings": {
       "authority": "https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca",
       "clientId": "medlab-dev",
-      "redirectUri": "https://medlab-issuer-dev.pathfinder.gov.bc.ca/oidc-callback",
-      "redirect_uri": "https://medlab-issuer-dev.pathfinder.gov.bc.ca/oidc-callback-error",
+      "redirectUri": "https://medlab-issuer-dev.apps.silver.devops.gov.bc.ca/oidc-callback",
+      "redirect_uri": "https://medlab-issuer-dev.apps.silver.devops.gov.bc.ca/oidc-callback-error",
       "responseType": "code",
       "scope": "openid profile vc_authn",
       "automaticSilentRenew": true,
-      "silentRedirectUri": "https://medlab-issuer-dev.pathfinder.gov.bc.ca/silent-renew-oidc.html",
-      "post_logout_redirect_uri": "https://medlab-issuer-dev.pathfinder.gov.bc.ca",
+      "silentRedirectUri": "https://medlab-issuer-dev.apps.silver.devops.gov.bc.ca/silent-renew-oidc.html",
+      "post_logout_redirect_uri": "https://medlab-issuer-dev.apps.silver.devops.gov.bc.ca",
       "extraQueryParams": {
         "pres_req_conf_id": "c19c-dev"
       },
@@ -30,7 +30,7 @@
         "token_endpoint": "https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca/vc/connect/token",
         "userinfo_endpoint": "https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca/vc/connect/userinfo",
         "jwks_uri": "https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca/.well-known/openid-configuration/jwks",
-        "end_session_endpoint": "https://medlab-issuer-dev.pathfinder.gov.bc.ca"
+        "end_session_endpoint": "https://medlab-issuer-dev.apps.silver.devops.gov.bc.ca"
       },
       "loadUserInfo": false
     }
@@ -42,11 +42,11 @@
     "successText": "You can use your credential to access the following facilities:",
     "links": [
       {
-        "url": "https://safe-entry-verifier-dev.pathfinder.gov.bc.ca",
+        "url": "https://safe-entry-verifier-dev.apps.silver.devops.gov.bc.ca",
         "description": "Traveller Safe Entry"
       },
       {
-        "url": "https://safe-entry-c19-verifier-dev.pathfinder.gov.bc.ca",
+        "url": "https://safe-entry-c19-verifier-dev.apps.silver.devops.gov.bc.ca",
         "description": "Essential Service Safe Entry"
       }
     ]

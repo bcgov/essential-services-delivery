@@ -1,5 +1,0 @@
-#=========================================================
-# OpenShift template parameters for:
-# Component: .
-# Template File: ../openshift/templates/db/db-deploy.json
-#=========================================================

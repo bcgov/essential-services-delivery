@@ -190,7 +190,7 @@ objects:
                 - name: WALLET_TYPE
                   value: ${WALLET_STORAGE_TYPE}
                 - name: POSTGRESQL_WALLET_HOST
-                  value: ${WALLET_HOST}
+                  value: ${WALLET_HOST}${WALLET_SUFFIX}
                 - name: POSTGRESQL_WALLET_PORT
                   value: ${WALLET_HOST_PORT}
                 - name: WALLET_STORAGE_CONFIGURATION
@@ -200,17 +200,17 @@ objects:
                 - name: POSTGRESQL_WALLET_USER
                   valueFrom:
                     secretKeyRef:
-                      name: ${WALLET_HOST}
+                      name: ${WALLET_HOST}${WALLET_SUFFIX}
                       key: database-user
                 - name: POSTGRESQL_WALLET_PASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: ${WALLET_HOST}
+                      name: ${WALLET_HOST}${WALLET_SUFFIX}
                       key: database-password
                 - name: POSTGRESQL_WALLET_ADMIN_PASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: ${WALLET_HOST}
+                      name: ${WALLET_HOST}${WALLET_SUFFIX}
                       key: admin-password
                 - name: WALLET_ENCRYPTION_KEY
                   valueFrom:
@@ -345,7 +345,7 @@ objects:
 
       destination:
         - - role=wallet
-          - app=${WALLET_APP_NAME}
+          - app=${WALLET_APP_NAME}${WALLET_SUFFIX}
           - env=${TAG_NAME}
           - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
         - - role=controller
@@ -472,12 +472,17 @@ parameters:
     displayName: PostgreSql Wallet Hostname
     required: true
     description: Hostname of the deployed database hosting the wallet.  Only used when WALLET_STORAGE_TYPE = postgres_storage.
-    value: issuer-wallet
+    value: issuer-kit-wallet
   - name: WALLET_APP_NAME
     displayName: Wallet Application Name
     required: true
     description: The name of the wallet shared application
-    value: issuer-wallet
+    value: issuer-kit
+  - name: WALLET_SUFFIX
+    displayName: Wallet Suffix Name
+    required: false
+    description: The value of the wallet shared application suffix
+    value: -test
   - name: WALLET_HOST_PORT
     displayName: PostgreSql Wallet Port
     required: true

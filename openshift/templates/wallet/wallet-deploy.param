@@ -3,9 +3,9 @@
 # Component: .
 # Template File: ../openshift/templates/wallet/wallet-deploy.yaml
 #=========================================================
-NAME=issuer-wallet
-APP_NAME=issuer-wallet
-APP_GROUP=issuer
+NAME=issuer-kit-wallet
+APP_NAME=issuer-kit
+APP_GROUP=issuer-shared
 SUFFIX=
 ROLE=wallet
 IMAGE_NAMESPACE=a99fd4-tools

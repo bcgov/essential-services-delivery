@@ -5,13 +5,15 @@
 #=========================================================
 # NAME=api
 # APP_NAME=issuer
+# DB_APP_NAME=issuer-kit
+# DB_SUFFIX=
+# DB_SERVICE=issuer-kit-db
 # APP_GROUP=esr1
 # SUFFIX=-esr1
 # ROLE=controller
 # IMAGE_NAMESPACE=a99fd4-tools
 # NAMESPACE_NAME=a99fd4
 # SERVICE_PORT=8080
-# DB_SERVICE=db
 # DB_PORT=27017
 # DB_NAME=issuer_db
 # SOURCE_IMAGE_NAME=issuer-kit-api
