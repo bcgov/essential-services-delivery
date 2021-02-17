@@ -190,7 +190,7 @@ objects:
                 - name: WALLET_TYPE
                   value: ${WALLET_STORAGE_TYPE}
                 - name: POSTGRESQL_WALLET_HOST
-                  value: ${WALLET_HOST}
+                  value: ${WALLET_HOST}${WALLET_SUFFIX}
                 - name: POSTGRESQL_WALLET_PORT
                   value: ${WALLET_HOST_PORT}
                 - name: WALLET_STORAGE_CONFIGURATION
@@ -200,17 +200,17 @@ objects:
                 - name: POSTGRESQL_WALLET_USER
                   valueFrom:
                     secretKeyRef:
-                      name: ${WALLET_HOST}
+                      name: ${WALLET_HOST}${WALLET_SUFFIX}
                       key: database-user
                 - name: POSTGRESQL_WALLET_PASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: ${WALLET_HOST}
+                      name: ${WALLET_HOST}${WALLET_SUFFIX}
                       key: database-password
                 - name: POSTGRESQL_WALLET_ADMIN_PASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: ${WALLET_HOST}
+                      name: ${WALLET_HOST}${WALLET_SUFFIX}
                       key: admin-password
                 - name: WALLET_ENCRYPTION_KEY
                   valueFrom:
