@@ -5,6 +5,7 @@
 #=========================================================
 NAME=visual-verifier
 APP_NAME=visual-verifier
+NAMESPACE_NAME=a99fd4
 APP_GROUP=safe-entry
 SUFFIX=-safe-entry
 ROLE=visual-verifier
@@ -20,7 +21,8 @@ CUSTOM_FILES_MOUNT_PATH=/opt/app-root/src/static/
 # DJANGO_SECRET_KEY=[\w]{50}
 DJANGO_DEBUG=False
 VERIFIER_NAME=SafeEntryBC - Controlled Entry Point
-OIDC_RP_PROVIDER_ENDPOINT=https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca
+OIDC_RP_PROVIDER_ENDPOINT=https://a2a-vc-authn-controller-dev\.pathfinder.gov.bc.ca
+OIDC_RP_PROVIDER_HOST=a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca
 OIDC_RP_CLIENT_ID=
 OIDC_RP_CLIENT_SECRET=
 OIDC_RP_SCOPES=openid profile vc_authn

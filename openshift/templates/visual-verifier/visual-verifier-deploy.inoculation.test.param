@@ -5,6 +5,7 @@
 #=========================================================
 # NAME=visual-verifier
 # APP_NAME=visual-verifier
+# NAMESPACE_NAME=a99fd4
 # APP_GROUP=inoculation
 # SUFFIX=-inoculation
 # ROLE=visual-verifier

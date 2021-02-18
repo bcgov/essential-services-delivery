@@ -5,6 +5,7 @@
 #=========================================================
 NAME=visual-verifier
 APP_NAME=visual-verifier
+NAMESPACE_NAME=a99fd4
 APP_GROUP=safe-entry-c19
 SUFFIX=-safe-entry-c19
 ROLE=visual-verifier
