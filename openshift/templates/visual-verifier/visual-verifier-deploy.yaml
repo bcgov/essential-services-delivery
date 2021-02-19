@@ -236,11 +236,6 @@ parameters:
     description: Used to group components together in the OpenShift console.
     required: true
     value: visual-verifier
-  - name: NAMESPACE_NAME
-    displayName: NameSpace name
-    description: name of the project namespace
-    required: true
-    value: myproject
   - name: APP_GROUP
     displayName: App Group
     description: The name assigned to all of the deployments in this project.
@@ -268,6 +263,11 @@ parameters:
     description: The namespace of the OpenShift project containing the imagestream
       for the application.
     value: a99fd4-tools
+  - name: NAMESPACE_NAME
+    displayName: NameSpace name
+    description: name of the project namespace
+    required: true
+    value: myproject
   - name: TAG_NAME
     displayName: Environment TAG name
     description: The TAG name for this environment, e.g., dev, test, prod
