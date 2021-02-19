@@ -10,6 +10,7 @@
 # ROLE=visual-verifier
 APPLICATION_DOMAIN=inoculation-verifier.apps.silver.devops.gov.bc.ca
 # IMAGE_NAMESPACE=a99fd4-tools
+# NAMESPACE_NAME=a99fd4
 TAG_NAME=prod
 # APP_FILE=
 # APP_CONFIG=
@@ -21,6 +22,7 @@ TAG_NAME=prod
 # DJANGO_DEBUG=False
 # VERIFIER_NAME=Inoculation Verifier
 # OIDC_RP_PROVIDER_ENDPOINT=
+# OIDC_RP_PROVIDER_HOST=
 # OIDC_RP_CLIENT_ID=
 # OIDC_RP_CLIENT_SECRET=
 # OIDC_RP_SCOPES=openid profile vc_authn

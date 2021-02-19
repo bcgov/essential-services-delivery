@@ -8,6 +8,42 @@ metadata:
     tags: django
     iconClass: icon-python
 objects:
+  - kind: ExternalNetwork
+    apiVersion: security.devops.gov.bc.ca/v1alpha1
+    metadata:
+      name: ${NAME}${SUFFIX}
+      network: ${NAME}${SUFFIX}
+      labels:
+        name: ${NAME}${SUFFIX}
+        network: ${NAME}${SUFFIX}
+        app: ${APP_NAME}${SUFFIX}
+        app-group: ${APP_GROUP}
+        env: ${TAG_NAME}
+    spec:
+      description: |
+        Define the network parameters for accessing smtp server
+      entries:
+        - ${OIDC_RP_PROVIDER_HOST}
+      servicePorts:
+        - tcp/443
+  - kind: NetworkSecurityPolicy
+    apiVersion: security.devops.gov.bc.ca/v1alpha1
+    metadata:
+      name: ${NAME}${SUFFIX}-to-endpoint
+      labels:
+        name: ${NAME}${SUFFIX}-to-endpoint
+        env: ${TAG_NAME}
+        app: ${APP_NAME}${SUFFIX}
+        app-group: ${APP_GROUP}
+    spec:
+      description: Allow service to access the database and agent
+      source:
+        - - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
+          - role=${ROLE}
+          - app=${APP_NAME}${SUFFIX}
+          - env=${TAG_NAME}
+      destination:
+        - - ext:name=${NAME}${SUFFIX}
   - kind: Secret
     apiVersion: v1
     metadata:
@@ -20,6 +56,7 @@ objects:
         env: ${TAG_NAME}
     stringData:
       oidc-rp-provider-endpoint: ${OIDC_RP_PROVIDER_ENDPOINT}
+      oidc-rp-provider-host: ${OIDC_RP_PROVIDER_HOST}
       oidc-rp-client-id: ${OIDC_RP_CLIENT_ID}
       oidc-rp-client-secret: ${OIDC_RP_CLIENT_SECRET}
       oidc-rp-scopes: ${OIDC_RP_SCOPES}
@@ -226,6 +263,11 @@ parameters:
     description: The namespace of the OpenShift project containing the imagestream
       for the application.
     value: a99fd4-tools
+  - name: NAMESPACE_NAME
+    displayName: NameSpace name
+    description: name of the project namespace
+    required: true
+    value: myproject
   - name: TAG_NAME
     displayName: Environment TAG name
     description: The TAG name for this environment, e.g., dev, test, prod
@@ -282,6 +324,11 @@ parameters:
     displayName: OIDC RP Provider Endpoint
     description: OIDC RP Provider Endpoint
     required: true
+    value: ''
+  - name: OIDC_RP_PROVIDER_HOST
+    displayName: OIDC RP Provider Host
+    description: OIDC RP Provider Host
+    required: false
     value: ''
   - name: OIDC_RP_CLIENT_ID
     displayName: OIDC RP Client Id
