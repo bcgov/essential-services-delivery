@@ -28,15 +28,6 @@ objects:
                 matchLabels:
                   name: ${NAMESPACE_NAME}
                   environment: ${TAG_NAME}
-            - podSelector:
-                matchLabels:
-                  role: ${BACKUP_ROLE}
-                  app: ${BACKUP_APP_NAME}
-                  env: ${TAG_NAME}
-              namespaceSelector:
-                matchLabels:
-                  name: ${NAMESPACE_NAME}
-                  environment: ${TAG_NAME}
           ports:
             - protocol: TCP
               port: 27017
@@ -254,18 +245,13 @@ parameters:
       Policies
     required: true
     value: agent
-  - name: BACKUP_ROLE
-    displayName: Backup Role
+  - name: API_ROLE
+    displayName: Api Role
     description:
-      The role of the backup container service within the application - used for Network
+      The role of the API service within the application - used for Network
       Policies
     required: true
-    value: backup-container
-  - name: BACKUP_APP_NAME
-    displayName: Backup app name
-    description: The name of the Backup app.
-    required: true
-    value: backup-postgres
+    value: api
   - name: NAMESPACE_NAME
     displayName: Namespace Name
     description: The base namespace name for the project.
@@ -341,7 +327,7 @@ parameters:
     displayName: Resources CPU Limit
     description: The resources CPU limit (in cores) for this build.
     required: true
-    value: 750m
+    value: 250m
   - name: MEMORY_REQUEST
     displayName: Resources Memory Request
     description: The resources Memory request (in Mi, Gi, etc) for this build.
