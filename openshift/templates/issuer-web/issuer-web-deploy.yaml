@@ -6,6 +6,28 @@ metadata:
     tags: angular, caddy
   name: ${NAME}${SUFFIX}
 objects:
+  # - kind: NetworkSecurityPolicy
+  #   apiVersion: security.devops.gov.bc.ca/v1alpha1
+  #   metadata:
+  #     name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
+  #     labels:
+  #       name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
+  #       app: ${APP_NAME}${SUFFIX}
+  #       app-group: ${APP_GROUP}
+  #       role: ${ROLE}
+  #       env: ${TAG_NAME}
+  #   spec:
+  #     description: Allow the public frontend to talk to the controller service.
+  #     source:
+  #       - - role=${ROLE}
+  #         - app=${APP_NAME}${SUFFIX}
+  #         - env=${TAG_NAME}
+  #         - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
+  #     destination:
+  #       - - role=controller
+  #         - app=${APP_NAME}${SUFFIX}
+  #         - env=${TAG_NAME}
+  #         - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
   - apiVersion: v1
     kind: DeploymentConfig
     metadata:
@@ -225,30 +247,9 @@ objects:
         kind: Service
         name: ${NAME}${SUFFIX}
         weight: 100
-  - kind: NetworkSecurityPolicy
-    apiVersion: security.devops.gov.bc.ca/v1alpha1
-    metadata:
-      name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
-      labels:
-        name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
-        app: ${APP_NAME}${SUFFIX}
-        app-group: ${APP_GROUP}
-        role: ${ROLE}
-        env: ${TAG_NAME}
-    spec:
-      description: Allow the public frontend to talk to the controller service.
-      source:
-        - - role=${ROLE}
-          - app=${APP_NAME}${SUFFIX}
-          - env=${TAG_NAME}
-          - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-      destination:
-        - - role=controller
-          - app=${APP_NAME}${SUFFIX}
-          - env=${TAG_NAME}
-          - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
 parameters:
-  - description: The name assigned to all of the openshift objects defined in this
+  - description:
+      The name assigned to all of the openshift objects defined in this
       template. It is also the name of runtime image you want.
     displayName: Name
     name: NAME
@@ -268,10 +269,11 @@ parameters:
     displayName: Suffix
     description: A suffix applied to all of the objects in this template.
     required: false
-    value: ''
+    value: ""
   - name: ROLE
     displayName: Role
-    description: The role of this service within the application - used for Network
+    description:
+      The role of this service within the application - used for Network
       Policies
     required: true
     value: public-frontend
@@ -302,7 +304,8 @@ parameters:
     value: /etc/caddy/
   - name: APP_CONFIG_MAP_NAME
     displayName: Application Config Map Name
-    description: The name of the configuration map holding the data to configure the
+    description:
+      The name of the configuration map holding the data to configure the
       application.
     required: true
     value: issuer-web-config
@@ -360,17 +363,17 @@ parameters:
     displayName: Web Host Name
     description: The host name used by Caddy.
     required: false
-    value: ''
+    value: ""
   - name: WEB_HOST_PORT
     displayName: Web Host Port
     description: The port used by Caddy to serve content.
     required: true
-    value: '8080'
+    value: "8080"
   - name: WEB_HOST_TLS
     displayName: Config Mount Path
     description: The path to use to mount the config file.
     required: true
-    value: 'off'
+    value: "off"
   - name: API_HOST
     displayName: API Service Name
     description: The name of the API service.
@@ -380,8 +383,9 @@ parameters:
     displayName: API Service Port
     description: The port used by the API service.
     required: true
-    value: '8080'
-  - description: The exposed hostname that will route to the service, e.g., myappname.pathfinder.gov.bc.ca,
+    value: "8080"
+  - description:
+      The exposed hostname that will route to the service, e.g., myappname.pathfinder.gov.bc.ca,
       if left blank a value will be defaulted.
     displayName: Application Hostname
     name: APPLICATION_DOMAIN

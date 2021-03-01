@@ -1,0 +1,32 @@
+---
+kind: Template
+apiVersion: v1
+metadata:
+  name: global-nsp-build-template
+objects:
+  # - kind: NetworkSecurityPolicy
+  #   apiVersion: security.devops.gov.bc.ca/v1alpha1
+  #   metadata:
+  #     name: pods-to-k8s-api
+  #     labels:
+  #       name: pods-to-k8s-api
+  #       env: ${TAG_NAME}
+  #   spec:
+  #     description: |
+  #       Allow pods to talk to the internal k8s api so deployments work.
+  #       This only needs to be specified once per environment.
+  #     source:
+  #       - - $namespace=${NAMESPACE}-${TAG_NAME}
+  #     destination:
+  #       - - int:network=internal-cluster-api-endpoint
+
+parameters:
+  - name: NAMESPACE
+    displayName: The target namespace for the resources.
+    required: true
+    value:
+  - name: TAG_NAME
+    displayName: Environment Name
+    description: Environment name.  For the build environment this will typically be 'tools'
+    required: true
+    value: dev

@@ -7,6 +7,79 @@ metadata:
     tags: nodejs
     iconClass: icon-nodejs
 objects:
+  # - kind: NetworkSecurityPolicy
+  #   apiVersion: security.devops.gov.bc.ca/v1alpha1
+  #   metadata:
+  #     name: custom-${APP_NAME}-${NAME}${SUFFIX}-pods-to-api
+  #     labels:
+  #       name: custom-${APP_NAME}-${NAME}${SUFFIX}-pods-to-api
+  #       app: ${APP_NAME}${SUFFIX}
+  #       app-group: ${APP_GROUP}
+  #       role: ${ROLE}
+  #       env: ${TAG_NAME}
+  #   spec:
+  #     description: 'Allow pods to talk to the internal api so deployments work.
+
+  #       This only needs to be specified once per environment.
+
+  #       '
+  #     source:
+  #       - - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
+  #     destination:
+  #       - - int:network=internal-cluster-api-endpoint
+
+  # - kind: NetworkSecurityPolicy
+  #   apiVersion: security.devops.gov.bc.ca/v1alpha1
+  #   metadata:
+  #     name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
+  #     labels:
+  #       name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
+  #       app: ${APP_NAME}${SUFFIX}
+  #       app-group: ${APP_GROUP}
+  #       role: ${ROLE}
+  #       env: ${TAG_NAME}
+  #   spec:
+  #     description: 'Allow the controller to talk to either the database or agent micro
+  #       services.
+
+  #       '
+  #     source:
+  #       - - role=${ROLE}
+  #         - app=${APP_NAME}${SUFFIX}
+  #         - env=${TAG_NAME}
+  #         - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
+  #     destination:
+  #       - - role=db
+  #         - app=${DB_APP_NAME}${DB_SUFFIX}
+  #         - env=${TAG_NAME}
+  #         - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
+  #       - - role=agent
+  #         - app=${APP_NAME}${SUFFIX}
+  #         - env=${TAG_NAME}
+  #         - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
+
+  # - kind: NetworkSecurityPolicy
+  #   apiVersion: security.devops.gov.bc.ca/v1alpha1
+  #   metadata:
+  #     name: ${NAME}${SUFFIX}-to-external-network
+  #     labels:
+  #       name: ${NAME}${SUFFIX}-to-external-network
+  #       app: ${APP_NAME}${SUFFIX}
+  #       app-group: ${APP_GROUP}
+  #       role: ${ROLE}
+  #       env: ${TAG_NAME}
+  #   spec:
+  #     description: 'Allow the controller to access the internet.
+
+  #       '
+  #     source:
+  #       - - role=${ROLE}
+  #         - app=${APP_NAME}${SUFFIX}
+  #         - env=${TAG_NAME}
+  #         - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
+  #     destination:
+  #       - - ext:network=any
+
   - kind: Secret
     apiVersion: v1
     metadata:
@@ -103,7 +176,7 @@ objects:
                     path: ${APP_EMAIL_INVITE_FILE_NAME}
           containers:
             - name: ${NAME}${SUFFIX}
-              image: ' '
+              image: " "
               ports:
                 - containerPort: ${{SERVICE_PORT}}
                   protocol: TCP
@@ -188,80 +261,11 @@ objects:
                 - name: ${NAME}${SUFFIX}-invite-template-volume
                   mountPath: ${APP_CONFIG_MOUNT_PATH}${APP_EMAIL_INVITE_FILE_NAME}
                   subPath: ${APP_EMAIL_INVITE_FILE_NAME}
-  - kind: NetworkSecurityPolicy
-    apiVersion: security.devops.gov.bc.ca/v1alpha1
-    metadata:
-      name: custom-${APP_NAME}-${NAME}${SUFFIX}-pods-to-api
-      labels:
-        name: custom-${APP_NAME}-${NAME}${SUFFIX}-pods-to-api
-        app: ${APP_NAME}${SUFFIX}
-        app-group: ${APP_GROUP}
-        role: ${ROLE}
-        env: ${TAG_NAME}
-    spec:
-      description: 'Allow pods to talk to the internal api so deployments work.
-
-        This only needs to be specified once per environment.
-
-        '
-      source:
-        - - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-      destination:
-        - - int:network=internal-cluster-api-endpoint
-  - kind: NetworkSecurityPolicy
-    apiVersion: security.devops.gov.bc.ca/v1alpha1
-    metadata:
-      name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
-      labels:
-        name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
-        app: ${APP_NAME}${SUFFIX}
-        app-group: ${APP_GROUP}
-        role: ${ROLE}
-        env: ${TAG_NAME}
-    spec:
-      description: 'Allow the controller to talk to either the database or agent micro
-        services.
-
-        '
-      source:
-        - - role=${ROLE}
-          - app=${APP_NAME}${SUFFIX}
-          - env=${TAG_NAME}
-          - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-      destination:
-        - - role=db
-          - app=${DB_APP_NAME}${DB_SUFFIX}
-          - env=${TAG_NAME}
-          - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-        - - role=agent
-          - app=${APP_NAME}${SUFFIX}
-          - env=${TAG_NAME}
-          - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-  - kind: NetworkSecurityPolicy
-    apiVersion: security.devops.gov.bc.ca/v1alpha1
-    metadata:
-      name: ${NAME}${SUFFIX}-to-external-network
-      labels:
-        name: ${NAME}${SUFFIX}-to-external-network
-        app: ${APP_NAME}${SUFFIX}
-        app-group: ${APP_GROUP}
-        role: ${ROLE}
-        env: ${TAG_NAME}
-    spec:
-      description: 'Allow the controller to access the internet.
-
-        '
-      source:
-        - - role=${ROLE}
-          - app=${APP_NAME}${SUFFIX}
-          - env=${TAG_NAME}
-          - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-      destination:
-        - - ext:network=any
 parameters:
   - name: NAME
     displayName: Name
-    description: The name assigned to all of the OpenShift resources associated to
+    description:
+      The name assigned to all of the OpenShift resources associated to
       the server instance.
     required: true
     value: identity-kit-controller
@@ -274,7 +278,7 @@ parameters:
     displayName: Suffix
     description: A suffix applied to all of the objects in this template.
     required: false
-    value: ''
+    value: ""
   - name: DB_SERVICE
     displayName: Database Service Name
     description: The name of the database server/service.
@@ -294,17 +298,19 @@ parameters:
     displayName: Suffix
     description: A suffix applied to all of the objects in this template.
     required: false
-    value: ''
+    value: ""
   - name: ROLE
     displayName: Role
-    description: The role of this service within the application - used for Network
+    description:
+      The role of this service within the application - used for Network
       Policies
     required: true
     value: controller
   - name: IMAGE_NAMESPACE
     displayName: Image Namespace
     required: true
-    description: The namespace of the OpenShift project containing the imagestream
+    description:
+      The namespace of the OpenShift project containing the imagestream
       for the application.
     value: devex-von-tools
   - name: NAMESPACE_NAME
@@ -316,16 +322,17 @@ parameters:
     displayName: Service Port
     required: true
     description: The port exposed by the controller.
-    value: '8080'
+    value: "8080"
   - name: DB_PORT
     displayName: Database Port
     required: true
     description: The port exposed by the database service.
-    value: '27017'
+    value: "27017"
   - name: DB_NAME
     displayName: Database Name
     required: true
-    description: Name of the deployed database (see environment variables in deployed
+    description:
+      Name of the deployed database (see environment variables in deployed
       database).
     value: identity_kit_db
   - name: SOURCE_IMAGE_NAME
@@ -347,22 +354,22 @@ parameters:
     displayName: Agent Admin Port
     description: Agent admin port
     required: true
-    value: '8024'
+    value: "8024"
   - name: SMTP_SERVER_ADDRESS
     displayName: SMTP Server Address
     description: SMTP Server Address
     required: true
-    value: ''
+    value: ""
   - name: SMTP_SERVER_PORT
     displayName: SMTP Server Port
     description: SMTP Server Port
     required: true
-    value: ''
+    value: ""
   - name: ADMIN_EMAIL
     displayName: Admin Email
     description: The email address to be used as sender for outgoing messages.
     required: true
-    value: ''
+    value: ""
   - name: EMAIL_SUBJECT
     displayName: Invite Email Subject
     description: The subject line for the email invites.
@@ -375,7 +382,8 @@ parameters:
     value: https://identity-kit.pathfinder.gov.bc.ca/
   - name: APP_CONFIG_MAP_NAME
     displayName: Application Config Map Name
-    description: The name of the configuration map holding the data to configure the
+    description:
+      The name of the configuration map holding the data to configure the
       application.
     required: true
     value: api-config
