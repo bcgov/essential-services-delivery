@@ -53,6 +53,63 @@ objects:
   #         - env=${TAG_NAME}
   #         - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
 
+  - kind: NetworkPolicy
+    apiVersion: networking.k8s.io/v1
+    metadata:
+      name: ${NAME}${SUFFIX}-allow-ingress
+      labels:
+        name: ${NAME}${SUFFIX}-allow-ingress
+        app: ${APP_NAME}${SUFFIX}
+        app-group: ${APP_GROUP}
+        role: ${ROLE}
+        env: ${TAG_NAME}
+    spec:
+      description: |
+        Allow traffic from routes into the ${ROLE} container(s).
+      ingress:
+        - from:
+            - namespaceSelector:
+                matchLabels:
+                  network.openshift.io/policy-group: ingress
+      podSelector:
+        matchLabels:
+          role: ${ROLE}
+          app: ${APP_NAME}${SUFFIX}
+          env: ${TAG_NAME}
+      policyTypes:
+        - Ingress
+
+  - kind: NetworkPolicy
+    apiVersion: networking.k8s.io/v1
+    metadata:
+      name: ${NAME}
+      labels:
+        name: ${NAME}
+        app: ${APP_NAME}
+        env: ${TAG_NAME}
+    spec:
+      description: |
+        Allow the API to access the agent admin interface.
+      ingress:
+        - from:
+            - podSelector:
+                matchLabels:
+                  role: ${API_ROLE}
+                  app: ${APP_NAME}
+                  env: ${TAG_NAME}
+              namespaceSelector:
+                matchLabels:
+                  name: ${NAMESPACE_NAME}
+                  environment: ${TAG_NAME}
+          ports:
+            - protocol: TCP
+              port: ${{AGENT_ADMIN_PORT}}
+      podSelector:
+        matchLabels:
+          role: ${ROLE}
+          app: ${APP_NAME}
+          env: ${TAG_NAME}
+
   - kind: Service
     apiVersion: v1
     metadata:
@@ -379,6 +436,13 @@ parameters:
     description: The role of this service within the application - used for Network Policies.
     required: true
     value: agent
+  - name: API_ROLE
+    displayName: Agent Role
+    description:
+      The role of the api service within the application - used for Network
+      Policies
+    required: true
+    value: api
   - name: APPLICATION_DOMAIN
     displayName: Application Hostname
     description: The exposed hostname that will route to the service, if left blank a value will be defaulted.
@@ -431,7 +495,7 @@ parameters:
     displayName: Webhook URL
     description: The webhook endpoint
     required: true
-    value: http://issuer-kit-controller:8080
+    value: http://api:8080/webhooks
   - name: AGENT_ADMIN_PORT
     displayName: Agent Admin Port
     description: The admin port on which the service will listen.
@@ -477,12 +541,12 @@ parameters:
     displayName: Wallet Application Name
     required: true
     description: The name of the wallet shared application
-    value: issuer-kit
+    value: issuer-kit-shared
   - name: WALLET_SUFFIX
     displayName: Wallet Suffix Name
     required: false
     description: The value of the wallet shared application suffix
-    value: -test
+    value: ""
   - name: WALLET_HOST_PORT
     displayName: PostgreSql Wallet Port
     required: true
@@ -556,7 +620,7 @@ parameters:
     displayName: Resources CPU Limit
     description: The resources CPU limit (in cores) for this build.
     required: true
-    value: 1000m
+    value: 300m
   - name: MEMORY_REQUEST
     displayName: Resources Memory Request
     description: The resources Memory request (in Mi, Gi, etc) for this build.
@@ -566,4 +630,4 @@ parameters:
     displayName: Resources Memory Limit
     description: The resources Memory limit (in Mi, Gi, etc) for this build.
     required: true
-    value: 1Gi
+    value: 512Mi
