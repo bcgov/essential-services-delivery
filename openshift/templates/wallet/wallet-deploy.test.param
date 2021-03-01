@@ -7,6 +7,7 @@
 # APP_NAME=issuer-kit-shared
 # APP_GROUP=issuer-kit-shared
 # SUFFIX=
+# BACKUP=true
 # BACKUP_APP_NAME=backup-postgres
 # ROLE=wallet
 # AGENT_ROLE=agent

@@ -55,7 +55,7 @@ objects:
         app: ${APP_NAME}${SUFFIX}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
-        backupTarget: ${BACKUP}
+        backup: ${BACKUP}
         role: ${ROLE}
         env: ${TAG_NAME}
         template: ${NAME}${SUFFIX}
@@ -86,7 +86,7 @@ objects:
           labels:
             app: ${APP_NAME}${SUFFIX}
             name: ${NAME}${SUFFIX}
-            backupTarget: ${BACKUP}
+            backup: ${BACKUP}
             app-group: ${APP_GROUP}
             role: ${ROLE}
             env: ${TAG_NAME}
@@ -170,7 +170,7 @@ objects:
         app: ${APP_NAME}${SUFFIX}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
-        backupTarget: ${BACKUP}
+        backup: ${BACKUP}
         role: ${ROLE}
         env: ${TAG_NAME}
         template: ${NAME}${SUFFIX}
@@ -190,7 +190,7 @@ objects:
         app: ${APP_NAME}${SUFFIX}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
-        backupTarget: ${BACKUP}
+        backup: ${BACKUP}
         role: ${ROLE}
         env: ${TAG_NAME}
     stringData:
@@ -206,7 +206,7 @@ objects:
       labels:
         app: ${APP_NAME}${SUFFIX}
         name: ${NAME}${SUFFIX}
-        backupTarget: ${BACKUP}
+        backup: ${BACKUP}
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
@@ -247,6 +247,11 @@ parameters:
     description: A suffix applied to all of the objects in this template.
     required: false
     value: ""
+  - name: BACKUP
+    displayName: Backup Target
+    description: Specifies whether this app is target for a backup container instance.
+    required: true
+    value: "true"
   - name: BACKUP_APP_NAME
     displayName: Backup app name
     description: The name of the Backup app.
@@ -304,7 +309,7 @@ parameters:
     displayName: PostgreSQL Connection Username
     description:
       Username for PostgreSQL user that will be used for accessing the
-      database.  Needs to be basee64 encoded/
+      database.  Needs to be base 64 encoded/
     required: true
     generate: expression
     from: "[a-zA-Z_][a-zA-Z0-9_]{10}"
