@@ -1,13 +1,17 @@
 #=========================================================
 # OpenShift template parameters for:
 # Component: .
-# Template File: ../openshift/templates/db/db-deploy.json
+# Template File: ../openshift/templates/db/db-deploy.yaml
 #=========================================================
 # NAME=issuer-kit-db
-# APP_NAME=issuer-kit
-# APP_GROUP=issuer-shared
+# APP_NAME=issuer-kit-shared
+# APP_GROUP=issuer-kit-shared
 # SUFFIX=
 # ROLE=db
+# AGENT_ROLE=agent
+# BACKUP_ROLE=backup-container
+# BACKUP_APP_NAME=backup-postgres
+# NAMESPACE_NAME=a99fd4
 # IMAGE_NAMESPACE=a99fd4-tools
 # SOURCE_IMAGE_NAME=issuer-kit-db
 TAG_NAME=test
