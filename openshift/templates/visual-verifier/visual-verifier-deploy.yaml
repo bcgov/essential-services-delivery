@@ -17,7 +17,7 @@ objects:
   #     labels:
   #       name: ${NAME}${SUFFIX}
   #       network: ${NAME}${SUFFIX}
-  #       app: ${APP_NAME}${SUFFIX}
+  #       app: ${APP_NAME}
   #       app-group: ${APP_GROUP}
   #       env: ${TAG_NAME}
   #   spec:
@@ -34,23 +34,50 @@ objects:
   #     labels:
   #       name: ${NAME}${SUFFIX}-to-endpoint
   #       env: ${TAG_NAME}
-  #       app: ${APP_NAME}${SUFFIX}
+  #       app: ${APP_NAME}
   #       app-group: ${APP_GROUP}
   #   spec:
   #     description: Allow service to access the database and agent
   #     source:
   #       - - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
   #         - role=${ROLE}
-  #         - app=${APP_NAME}${SUFFIX}
+  #         - app=${APP_NAME}
   #         - env=${TAG_NAME}
   #     destination:
   #       - - ext:name=${NAME}${SUFFIX}
+
+  - kind: NetworkPolicy
+    apiVersion: networking.k8s.io/v1
+    metadata:
+      name: ${NAME}${SUFFIX}-allow-ingress
+      labels:
+        name: ${NAME}${SUFFIX}-allow-ingress
+        app: ${APP_NAME}
+        app-group: ${APP_GROUP}
+        role: ${ROLE}
+        env: ${TAG_NAME}
+    spec:
+      description: |
+        Allow traffic from routes into the ${ROLE} container(s).
+      ingress:
+        - from:
+            - namespaceSelector:
+                matchLabels:
+                  network.openshift.io/policy-group: ingress
+      podSelector:
+        matchLabels:
+          role: ${ROLE}
+          app: ${APP_NAME}
+          env: ${TAG_NAME}
+      policyTypes:
+        - Ingress
+
   - kind: Secret
     apiVersion: v1
     metadata:
       name: ${NAME}${SUFFIX}
       labels:
-        app: ${APP_NAME}${SUFFIX}
+        app: ${APP_NAME}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
@@ -64,13 +91,14 @@ objects:
       vc-authn-pres-req-conf-id: ${VC_AUTHN_PRES_REQ_CONF_ID}
       oidc-claims-required: ${OIDC_CLAIMS_REQUIRED}
     type: Opaque
+
   - kind: Service
     apiVersion: v1
     metadata:
       name: ${NAME}${SUFFIX}
       labels:
         name: ${NAME}${SUFFIX}
-        app: ${APP_NAME}${SUFFIX}
+        app: ${APP_NAME}
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
@@ -82,11 +110,12 @@ objects:
           targetPort: 8080
       selector:
         name: ${NAME}${SUFFIX}
+
   - apiVersion: v1
     kind: Route
     metadata:
       labels:
-        app: ${APP_NAME}${SUFFIX}
+        app: ${APP_NAME}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
@@ -103,6 +132,7 @@ objects:
         kind: Service
         name: ${NAME}${SUFFIX}
         weight: 100
+
   - kind: DeploymentConfig
     apiVersion: v1
     metadata:
@@ -111,7 +141,7 @@ objects:
         description: Defines how to deploy the application server
       labels:
         name: ${NAME}${SUFFIX}
-        app: ${APP_NAME}${SUFFIX}
+        app: ${APP_NAME}
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
@@ -137,7 +167,7 @@ objects:
           name: ${NAME}${SUFFIX}
           labels:
             name: ${NAME}${SUFFIX}
-            app: ${APP_NAME}${SUFFIX}
+            app: ${APP_NAME}
             app-group: ${APP_GROUP}
             role: ${ROLE}
             env: ${TAG_NAME}
@@ -225,6 +255,7 @@ objects:
                 - name: ${NAME}${SUFFIX}-custom-files-volume
                   mountPath: ${CUSTOM_FILES_MOUNT_PATH}${CUSTOM_HOME_FILE_NAME}
                   subPath: ${CUSTOM_HOME_FILE_NAME}
+
 parameters:
   - name: NAME
     displayName: Name
