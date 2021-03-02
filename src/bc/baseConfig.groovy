@@ -15,8 +15,8 @@ class baseConfig {
   public static final String  SUFFIX = ''
 
   // Apps - Listed in the order they should be built
-  public static final String[] APPS = ['issuer-kit-db', 'issuer-kit-wallet', 'visual-verifier', 'issuer-web', 'issuer-kit-agent', 'issuer-kit-api']
+  public static final String[] APPS = ['issuer-kit-db', 'issuer-kit-wallet', 'visual-verifier', 'issuer-kit-web', 'issuer-kit-agent', 'issuer-kit-api']
 
   // Apps - Listed in the order they should be tagged for deployment
-  public static final String[] DEPLOY_APPS = ['issuer-kit-db', 'issuer-kit-wallet', 'esr-web', 'safe-entry', 'visual-verifier', 'issuer-web', 'agent', 'issuer-kit-api']
+  public static final String[] DEPLOY_APPS = ['issuer-kit-db', 'issuer-kit-wallet', 'esr-web', 'safe-entry', 'visual-verifier', 'issuer-kit-web', 'agent', 'issuer-kit-api']
 }
