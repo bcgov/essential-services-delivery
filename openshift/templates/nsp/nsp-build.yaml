@@ -51,7 +51,7 @@ objects:
   #       - - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
   #     destination:
   #       - - ext:name=internet-build-resources
-  
+
   - kind: NetworkPolicy
     apiVersion: networking.k8s.io/v1
     metadata:
@@ -85,6 +85,26 @@ objects:
         - - $namespace=${NAMESPACE_NAME}-${ENV_NAME}
       destination:
         - - ext:network=any
+
+  - kind: NetworkPolicy
+    apiVersion: networking.k8s.io/v1
+    metadata:
+      name: jenkins-allow-ingress
+      labels:
+        name: jenkins-allow-ingress
+    spec:
+      description: |
+        Allow traffic from routes into the jenkins container(s).
+      ingress:
+        - from:
+            - namespaceSelector:
+                matchLabels:
+                  network.openshift.io/policy-group: ingress
+      podSelector:
+        matchLabels:
+          name: jenkins
+      policyTypes:
+        - Ingress
 
 parameters:
   - name: NAMESPACE_NAME
