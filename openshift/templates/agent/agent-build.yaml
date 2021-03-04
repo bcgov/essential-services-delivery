@@ -33,6 +33,9 @@ objects:
       strategy:
         type: Docker
         dockerStrategy:
+          from:
+            kind: DockerImage
+            name: ${SOURCE_IMAGE}
           dockerfilePath: ${DOCKER_FILE_PATH}
       output:
         to:
@@ -77,6 +80,11 @@ parameters:
     description: The path to the docker file defining the build.
     required: false
     value: docker/agent/Dockerfile
+  - name: SOURCE_IMAGE
+    displayName: Source Image
+    description: The fully-qualified name of the source image for this component. 
+    required: true
+    value: docker-remote.artifacts.developer.gov.bc.ca/bcgovimages/aries-cloudagent:py36-1.15-1_0.6.0
   - name: OUTPUT_IMAGE_TAG
     displayName: Output Image Tag
     description: The tag given to the built image.
