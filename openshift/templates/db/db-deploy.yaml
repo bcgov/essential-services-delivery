@@ -22,7 +22,7 @@ objects:
             - podSelector:
                 matchLabels:
                   role: ${API_ROLE}
-                  # app: ${APP_NAME} # Can't fileter on APP_NAME since we use a centralized/shared wallet
+                  # app: ${APP_NAME} # Can't fileter on APP_NAME since we use a centralized/shared db
                   env: ${TAG_NAME}
               namespaceSelector:
                 matchLabels:

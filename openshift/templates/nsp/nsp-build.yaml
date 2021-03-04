@@ -68,7 +68,7 @@ objects:
       name: any-to-any
     spec:
       description: |
-        Disable Aporeto policies: Allow all pods within the namespace to communicate.
+        Disable Aporeto policies - Allow all pods within the namespace to communicate.
       source:
         - - $namespace=${NAMESPACE_NAME}-${ENV_NAME}
       destination:
@@ -80,7 +80,7 @@ objects:
       name: any-to-external
     spec:
       description: |
-        Disable Aporeto policies: Allow all pods within the namespace full access to external systems.
+        Disable Aporeto policies - Allow all pods within the namespace full access to external systems.
       source:
         - - $namespace=${NAMESPACE_NAME}-${ENV_NAME}
       destination:
