@@ -4,6 +4,114 @@ apiVersion: v1
 metadata:
   name: ${NAME}${SUFFIX}
 objects:
+  # - kind: NetworkSecurityPolicy
+  #   apiVersion: security.devops.gov.bc.ca/v1alpha1
+  #   metadata:
+  #     name: custom-${APP_NAME}-${NAME}${SUFFIX}-to-external-network
+  #     labels:
+  #       name: custom-${APP_NAME}-${NAME}${SUFFIX}-to-external-network
+  #       app: ${APP_NAME}${SUFFIX}
+  #       app-group: ${APP_GROUP}
+  #       role: ${ROLE}
+  #       env: ${TAG_NAME}
+  #   spec:
+  #     description: |
+  #       Allow the agent to access the internet.
+  #     source:
+  #       - - role=${ROLE}
+  #         - app=${APP_NAME}${SUFFIX}
+  #         - env=${TAG_NAME}
+  #         - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
+  #     destination:
+  #       - - ext:network=any
+
+  # - kind: NetworkSecurityPolicy
+  #   apiVersion: security.devops.gov.bc.ca/v1alpha1
+  #   metadata:
+  #     name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
+  #     labels:
+  #       name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
+  #       app: ${APP_NAME}${SUFFIX}
+  #       app-group: ${APP_GROUP}
+  #       role: ${ROLE}
+  #       env: ${TAG_NAME}
+  #   spec:
+  #     description: |
+  #       Allow the agent to talk to either the wallet or controller micro services.
+  #     source:
+  #       - - role=${ROLE}
+  #         - app=${APP_NAME}${SUFFIX}
+  #         - env=${TAG_NAME}
+  #         - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
+  #     destination:
+  #       - - role=wallet
+  #         - app=${WALLET_APP_NAME}${WALLET_SUFFIX}
+  #         - env=${TAG_NAME}
+  #         - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
+  #       - - role=controller
+  #         - app=${APP_NAME}${SUFFIX}
+  #         - env=${TAG_NAME}
+  #         - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
+
+  - kind: NetworkPolicy
+    apiVersion: networking.k8s.io/v1
+    metadata:
+      name: ${NAME}${SUFFIX}-allow-ingress
+      labels:
+        name: ${NAME}${SUFFIX}-allow-ingress
+        app: ${APP_NAME}${SUFFIX}
+        app-group: ${APP_GROUP}
+        role: ${ROLE}
+        env: ${TAG_NAME}
+    spec:
+      description: |
+        Allow traffic from routes into the ${ROLE} container(s).
+      ingress:
+        - from:
+            - namespaceSelector:
+                matchLabels:
+                  network.openshift.io/policy-group: ingress
+      podSelector:
+        matchLabels:
+          role: ${ROLE}
+          app: ${APP_NAME}${SUFFIX}
+          env: ${TAG_NAME}
+      policyTypes:
+        - Ingress
+
+  - kind: NetworkPolicy
+    apiVersion: networking.k8s.io/v1
+    metadata:
+      name: ${NAME}${SUFFIX}
+      labels:
+        name: ${NAME}${SUFFIX}
+        app: ${APP_NAME}${SUFFIX}
+        app-group: ${APP_GROUP}
+        role: ${ROLE}
+        env: ${TAG_NAME}
+    spec:
+      description: |
+        Allow the API to access the agent admin interface.
+      ingress:
+        - from:
+            - podSelector:
+                matchLabels:
+                  role: ${API_ROLE}
+                  app: ${APP_NAME}${SUFFIX}
+                  env: ${TAG_NAME}
+              namespaceSelector:
+                matchLabels:
+                  name: ${NAMESPACE_NAME}
+                  environment: ${TAG_NAME}
+          ports:
+            - protocol: TCP
+              port: ${{AGENT_ADMIN_PORT}}
+      podSelector:
+        matchLabels:
+          role: ${ROLE}
+          app: ${APP_NAME}${SUFFIX}
+          env: ${TAG_NAME}
+
   - kind: Service
     apiVersion: v1
     metadata:
@@ -88,7 +196,7 @@ objects:
     spec:
       storageClassName: "${TAILS_FILES_VOLUME_CLASS}"
       accessModes:
-      - ReadWriteMany
+        - ReadWriteMany
       resources:
         requests:
           storage: "${TAILS_FILES_VOLUME_SIZE}"
@@ -259,7 +367,7 @@ objects:
                   protocol: TCP
               volumeMounts:
                 - name: ${NAME}${SUFFIX}-tails
-                  mountPath: '${TAILS_FILES_DIR}'
+                  mountPath: "${TAILS_FILES_DIR}"
               readinessProbe:
                 timeoutSeconds: 30
                 initialDelaySeconds: 3
@@ -304,56 +412,6 @@ objects:
               name: ${SOURCE_IMAGE_NAME}:${TAG_NAME}
               namespace: ${IMAGE_NAMESPACE}
 
-  - kind: NetworkSecurityPolicy
-    apiVersion: security.devops.gov.bc.ca/v1alpha1
-    metadata:
-      name: custom-${APP_NAME}-${NAME}${SUFFIX}-to-external-network
-      labels:
-        name: custom-${APP_NAME}-${NAME}${SUFFIX}-to-external-network
-        app: ${APP_NAME}${SUFFIX}
-        app-group: ${APP_GROUP}
-        role: ${ROLE}
-        env: ${TAG_NAME}
-    spec:
-      description: |
-        Allow the agent to access the internet.
-      source:
-        - - role=${ROLE}
-          - app=${APP_NAME}${SUFFIX}
-          - env=${TAG_NAME}
-          - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-      destination:
-        - - ext:network=any
-
-  - kind: NetworkSecurityPolicy
-    apiVersion: security.devops.gov.bc.ca/v1alpha1
-    metadata:
-      name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
-      labels:
-        name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
-        app: ${APP_NAME}${SUFFIX}
-        app-group: ${APP_GROUP}
-        role: ${ROLE}
-        env: ${TAG_NAME}
-    spec:
-      description: |
-        Allow the agent to talk to either the wallet or controller micro services.
-      source:
-        - - role=${ROLE}
-          - app=${APP_NAME}${SUFFIX}
-          - env=${TAG_NAME}
-          - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-
-      destination:
-        - - role=wallet
-          - app=${WALLET_APP_NAME}${WALLET_SUFFIX}
-          - env=${TAG_NAME}
-          - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-        - - role=controller
-          - app=${APP_NAME}${SUFFIX}
-          - env=${TAG_NAME}
-          - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-
 parameters:
   - name: NAME
     displayName: Name
@@ -380,6 +438,13 @@ parameters:
     description: The role of this service within the application - used for Network Policies.
     required: true
     value: agent
+  - name: API_ROLE
+    displayName: Agent Role
+    description:
+      The role of the api service within the application - used for Network
+      Policies
+    required: true
+    value: api
   - name: APPLICATION_DOMAIN
     displayName: Application Hostname
     description: The exposed hostname that will route to the service, if left blank a value will be defaulted.
@@ -432,7 +497,7 @@ parameters:
     displayName: Webhook URL
     description: The webhook endpoint
     required: true
-    value: http://issuer-kit-controller:8080
+    value: http://api:8080/webhooks
   - name: AGENT_ADMIN_PORT
     displayName: Agent Admin Port
     description: The admin port on which the service will listen.
@@ -478,12 +543,12 @@ parameters:
     displayName: Wallet Application Name
     required: true
     description: The name of the wallet shared application
-    value: issuer-kit
+    value: issuer-kit-shared
   - name: WALLET_SUFFIX
     displayName: Wallet Suffix Name
     required: false
     description: The value of the wallet shared application suffix
-    value: -test
+    value: ""
   - name: WALLET_HOST_PORT
     displayName: PostgreSql Wallet Port
     required: true
@@ -534,14 +599,12 @@ parameters:
     value: /home/indy/.indy_client/tails
   - name: TAILS_FILES_VOLUME_CLASS
     displayName: Tails File Storage Volume Class
-    description:
-      The class of the volume; gluster-file, gluster-block, gluster-file-db, netapp-file-standard, netapp-block-standard.
+    description: The class of the volume; gluster-file, gluster-block, gluster-file-db, netapp-file-standard, netapp-block-standard.
     required: true
     value: netapp-file-standard
   - name: TAILS_FILES_VOLUME_SIZE
     displayName: Tails File Storage Dir
-    description:
-      The size of the persistent volume , e.g. 512Mi, 1Gi, 2Gi.
+    description: The size of the persistent volume , e.g. 512Mi, 1Gi, 2Gi.
     required: true
     value: 1Gi
   - name: TAILS_SERVER_BASE_URL
@@ -559,7 +622,7 @@ parameters:
     displayName: Resources CPU Limit
     description: The resources CPU limit (in cores) for this build.
     required: true
-    value: 1000m
+    value: 300m
   - name: MEMORY_REQUEST
     displayName: Resources Memory Request
     description: The resources Memory request (in Mi, Gi, etc) for this build.
@@ -569,4 +632,4 @@ parameters:
     displayName: Resources Memory Limit
     description: The resources Memory limit (in Mi, Gi, etc) for this build.
     required: true
-    value: 1Gi
+    value: 512Mi

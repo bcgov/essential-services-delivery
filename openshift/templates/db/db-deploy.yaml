@@ -6,6 +6,37 @@ metadata:
     tags: ${NAME}${SUFFIX}
   name: ${NAME}${SUFFIX}
 objects:
+  - kind: NetworkPolicy
+    apiVersion: networking.k8s.io/v1
+    metadata:
+      name: ${NAME}
+      labels:
+        name: ${NAME}
+        app: ${APP_NAME}
+        env: ${TAG_NAME}
+    spec:
+      description: |
+        Allow the api(s) to access the db.
+      ingress:
+        - from:
+            - podSelector:
+                matchLabels:
+                  role: ${API_ROLE}
+                  # app: ${APP_NAME} # Can't fileter on APP_NAME since we use a centralized/shared db
+                  env: ${TAG_NAME}
+              namespaceSelector:
+                matchLabels:
+                  name: ${NAMESPACE_NAME}
+                  environment: ${TAG_NAME}
+          ports:
+            - protocol: TCP
+              port: 27017
+      podSelector:
+        matchLabels:
+          role: ${ROLE}
+          app: ${APP_NAME}
+          env: ${TAG_NAME}
+
   - kind: DeploymentConfig
     apiVersion: v1
     metadata:
@@ -55,7 +86,7 @@ objects:
                 claimName: ${NAME}${SUFFIX}
           containers:
             - name: ${NAME}${SUFFIX}
-              image: ' '
+              image: " "
               ports:
                 - containerPort: 27017
                   protocol: TCP
@@ -119,6 +150,7 @@ objects:
           dnsPolicy: ClusterFirst
           securityContext: {}
           schedulerName: default-scheduler
+
   - kind: PersistentVolumeClaim
     apiVersion: v1
     metadata:
@@ -137,6 +169,7 @@ objects:
       resources:
         requests:
           storage: ${PERSISTENT_VOLUME_SIZE}
+
   - kind: Secret
     apiVersion: v1
     metadata:
@@ -152,6 +185,7 @@ objects:
       database-password: ${MONGODB_PASSWORD}
       database-user: ${MONGODB_USER}
     type: Opaque
+
   - kind: Service
     apiVersion: v1
     metadata:
@@ -173,10 +207,12 @@ objects:
         name: ${NAME}${SUFFIX}
       type: ClusterIP
       sessionAffinity: None
+
 parameters:
   - name: NAME
     displayName: Name
-    description: The name assigned to all of the OpenShift resources associated to
+    description:
+      The name assigned to all of the OpenShift resources associated to
       the server instance.
     required: true
     value: issuer-kit-db
@@ -194,17 +230,38 @@ parameters:
     displayName: Suffix
     description: A suffix applied to all of the objects in this template.
     required: false
-    value: ''
+    value: ""
   - name: ROLE
     displayName: Role
-    description: The role of this service within the application - used for Network
+    description:
+      The role of this service within the application - used for Network
       Policies
     required: true
     value: db
+  - name: AGENT_ROLE
+    displayName: Agent Role
+    description:
+      The role of the agent service within the application - used for Network
+      Policies
+    required: true
+    value: agent
+  - name: API_ROLE
+    displayName: Api Role
+    description:
+      The role of the API service within the application - used for Network
+      Policies
+    required: true
+    value: api
+  - name: NAMESPACE_NAME
+    displayName: Namespace Name
+    description: The base namespace name for the project.
+    required: true
+    value: a99fd4
   - name: IMAGE_NAMESPACE
     displayName: Image Namespace
     required: true
-    description: The namespace of the OpenShift project containing the imagestream
+    description:
+      The namespace of the OpenShift project containing the imagestream
       for the application.
     value: a99fd4-tools
   - name: SOURCE_IMAGE_NAME
@@ -224,24 +281,26 @@ parameters:
     value: issuer_db
   - name: MONGODB_USER
     displayName: MongoDB Connection Username
-    description: Username for MongoDB user that will be used for accessing the database.  Needs
+    description:
+      Username for MongoDB user that will be used for accessing the database.  Needs
       to be basee64 encoded/
     required: true
     generate: expression
-    from: '[a-zA-Z_][a-zA-Z0-9_]{10}'
+    from: "[a-zA-Z_][a-zA-Z0-9_]{10}"
   - name: MONGODB_PASSWORD
     displayName: MongoDB Connection Password
     description: Password for the MongoDB connection user.  Needs to be basee64 encoded/
     required: true
     generate: expression
-    from: '[a-zA-Z0-9_~!@#$%^&*()-=<>,.?;:|]{16}'
+    from: "[a-zA-Z0-9_~!@#$%^&*()-=<>,.?;:|]{16}"
   - name: MONGODB_ADMIN_PASSWORD
     displayName: MongoDB Admin Password
-    description: Password for the MongoDB administrative account.  Needs to be basee64
+    description:
+      Password for the MongoDB administrative account.  Needs to be basee64
       encoded.
     required: true
     generate: expression
-    from: '[a-zA-Z0-9_~!@#$%^&*()-=<>,.?;:|]{16}'
+    from: "[a-zA-Z0-9_~!@#$%^&*()-=<>,.?;:|]{16}"
   - name: MOUNT_PATH
     displayName: Mount Path
     description: The path to mount the persistent volume.
@@ -254,7 +313,8 @@ parameters:
     value: 2Gi
   - name: PERSISTENT_VOLUME_CLASS
     displayName: Persistent Volume Class name
-    description: The class of the volume; gluster-file, gluster-block, gluster-file-db,
+    description:
+      The class of the volume; gluster-file, gluster-block, gluster-file-db,
       netapp-file-standard
     required: false
     value: netapp-file-standard
@@ -267,7 +327,7 @@ parameters:
     displayName: Resources CPU Limit
     description: The resources CPU limit (in cores) for this build.
     required: true
-    value: 750m
+    value: 250m
   - name: MEMORY_REQUEST
     displayName: Resources Memory Request
     description: The resources Memory request (in Mi, Gi, etc) for this build.

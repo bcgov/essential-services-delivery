@@ -1,21 +1,23 @@
 #=========================================================
 # OpenShift template parameters for:
 # Component: .
-# Template File: ../openshift/templates/api/api-deploy.json
+# Template File: ../openshift/templates/api/api-deploy.yaml
 #=========================================================
 # NAME=api
 # APP_NAME=issuer
-# DB_APP_NAME=issuer-kit
-# DB_SUFFIX=
-# DB_SERVICE=issuer-kit-db
 # APP_GROUP=esr2
 # SUFFIX=-esr2
-# ROLE=controller
+# ROLE=api
+# AGENT_ROLE=agent
+# PUBLIC_FRONTEND_ROLE=public-frontend
 # IMAGE_NAMESPACE=a99fd4-tools
 # NAMESPACE_NAME=a99fd4
 # SERVICE_PORT=8080
 # DB_PORT=27017
 # DB_NAME=issuer_db
+# DB_APP_NAME=issuer-kit-shared
+# DB_SUFFIX=
+# DB_SERVICE=issuer-kit-db
 # SOURCE_IMAGE_NAME=issuer-kit-api
 TAG_NAME=test
 # AGENT_SERVICE_NAME=agent

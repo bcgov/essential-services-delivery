@@ -4,10 +4,15 @@
 # Template File: ../openshift/templates/wallet/wallet-deploy.yaml
 #=========================================================
 # NAME=issuer-kit-wallet
-# APP_NAME=issuer-kit
-# APP_GROUP=issuer-shared
+# APP_NAME=issuer-kit-shared
+# APP_GROUP=issuer-kit-shared
 # SUFFIX=
+# BACKUP=true
+# BACKUP_APP_NAME=backup-postgres
 # ROLE=wallet
+# AGENT_ROLE=agent
+# BACKUP_ROLE=backup-container
+# NAMESPACE_NAME=a99fd4
 # IMAGE_NAMESPACE=a99fd4-tools
 # SOURCE_IMAGE_NAME=issuer-kit-wallet
 TAG_NAME=test

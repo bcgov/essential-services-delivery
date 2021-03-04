@@ -4,7 +4,7 @@
 # Template File: ../openshift/templates/visual-verifier/visual-verifier-deploy.json
 #=========================================================
 NAME=visual-verifier
-APP_NAME=visual-verifier
+APP_NAME=visual-verifiers
 APP_GROUP=safe-entry-c19
 SUFFIX=-safe-entry-c19
 ROLE=visual-verifier
