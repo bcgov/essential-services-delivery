@@ -3,7 +3,7 @@
 # Component: .
 # Template File: ../openshift/templates/issuer-web-base-image/issuer-web-base-image-build.json
 #=========================================================
-NAME=issuer-web-base-image
+NAME=issuer-kit-web-base-image
 APP_NAME=issuer-kit
 APP_GROUP=issuer-kit-base-image
 GIT_REPO_URL=https://github.com/bcgov/issuer-kit.git

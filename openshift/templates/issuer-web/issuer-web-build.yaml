@@ -91,7 +91,7 @@ parameters:
     displayName: Artifact Image Name
     description: The name of the image containing the built artifacts.
     required: true
-    value: issuer-web-base-image
+    value: issuer-kit-web-base-image
   - name: ARTIFACT_IMAGE_TAG
     displayName: Artifact Image Name
     description: The tag of the image containing the built artifacts

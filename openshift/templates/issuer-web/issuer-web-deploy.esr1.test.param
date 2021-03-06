@@ -29,7 +29,7 @@
 # API_HOST=api
 # API_PORT=8080
 APPLICATION_DOMAIN=esr1-issuer-test.apps.silver.devops.gov.bc.ca
-# SOURCE_IMAGE_NAME=issuer-web
+# SOURCE_IMAGE_NAME=issuer-kit-web
 TAG_NAME=test
 # CPU_REQUEST=10m
 # CPU_LIMIT=250m
