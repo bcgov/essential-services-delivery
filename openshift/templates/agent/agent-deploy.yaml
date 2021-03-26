@@ -256,6 +256,10 @@ objects:
             app-group: ${APP_GROUP}
             role: ${ROLE}
             env: ${TAG_NAME}
+          annotations:
+        description: Defines how to deploy the application server
+        app.openshift.io/connects-to: >-
+          [{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"${AGENT_SERVICE_NAME}${SUFFIX}"}]
         spec:
           volumes:
             - name: ${NAME}${SUFFIX}-tails
@@ -611,7 +615,7 @@ parameters:
     displayName: Tails Server Base Url
     description: The base URL for the Tails Server.
     required: true
-    value: https://tails-server-dev.pathfinder.gov.bc.ca
+    value: https://tails-server-dev.apps.silver.devops.gov.bc.ca
   # ===============================================================================
   - name: CPU_REQUEST
     displayName: Resources CPU Request
