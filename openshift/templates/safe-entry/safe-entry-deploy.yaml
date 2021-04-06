@@ -354,9 +354,9 @@ parameters:
     required: true
     value: "8080"
   - name: APPLICATION_DOMAIN
-    description: The exposed hostname that will route to the service, e.g., myappname.pathfinder.gov.bc.ca, if left blank a value will be defaulted.
+    description: The exposed hostname that will route to the service, e.g., myappname.apps.silver.devops.gov.bc.ca, if left blank a value will be defaulted.
     displayName: Application Hostname
-    value: safe-entry-dev.pathfinder.gov.bc.ca
+    value: safe-entry-dev.apps.silver.devops.gov.bc.ca
   - name: SOURCE_IMAGE_NAME
     displayName: Source Image Name
     description: The name of the image to use for this resource.

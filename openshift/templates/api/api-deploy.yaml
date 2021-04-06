@@ -440,7 +440,7 @@ parameters:
     displayName: Public Site URL
     description: Public Site URL
     required: true
-    value: https://issuer-kit.pathfinder.gov.bc.ca/
+    value: https://issuer-kit.apps.silver.devops.gov.bc.ca/
   - name: APP_CONFIG_MAP_NAME
     displayName: Application Config Map Name
     description:
