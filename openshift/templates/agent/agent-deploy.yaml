@@ -453,7 +453,7 @@ parameters:
     displayName: Application Hostname
     description: The exposed hostname that will route to the service, if left blank a value will be defaulted.
     required: false
-    value: issuer-kit-agent.pathfinder.gov.bc.ca
+    value: issuer-kit-agent.apps.silver.devops.gov.bc.ca
   - name: ADMIN_APPLICATION_DOMAIN
     displayName: Admin Application Hostname
     description: The exposed hostname that will route to the admin service endpoint, if left blank a value will be defaulted.
@@ -496,7 +496,7 @@ parameters:
     displayName: Agent endpoint
     description: The endpoint of the agent
     required: true
-    value: https://issuer-kit-agent.pathfinder.gov.bc.ca
+    value: https://issuer-kit-agent.apps.silver.devops.gov.bc.ca
   - name: WEBHOOK_URL
     displayName: Webhook URL
     description: The webhook endpoint

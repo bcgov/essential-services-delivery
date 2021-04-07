@@ -39,7 +39,7 @@
     "multiUse": true
   },
   "authentication": {
-    "jwksUri": "https://a2a-vc-authn-controller-test.pathfinder.gov.bc.ca/.well-known/openid-configuration/jwks",
+    "jwksUri": "https://toip-vc-authn-controller-test.apps.silver.devops.gov.bc.ca/.well-known/openid-configuration/jwks",
     "algorithms": ["RS256"]
   }
 }

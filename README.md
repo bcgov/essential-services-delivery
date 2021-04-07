@@ -25,23 +25,23 @@ This is an instance of [bcgov/dts-safe-entry-demo](https://github.com/bcgov/dts-
 
 All of the Issuer Services are instances of [bcgov/issuer-kit](https://github.com/bcgov/issuer-kit)
 
-### [Unverified Person Issuer](https://openvp-issuer.pathfinder.gov.bc.ca/)
+### [Unverified Person Issuer](https://openvp-issuer.apps.silver.devops.gov.bc.ca/)
 
 An issuer used to obtain a digital identification credential that is used to authorize access to other services within the PoC.
 
-### [Health Gateway](https://healthbc-issuer.pathfinder.gov.bc.ca/)
+### [Health Gateway](https://healthbc-issuer.apps.silver.devops.gov.bc.ca/)
 
 An issuer used to obtain a personal health number credential that is used to authorize access to other services within the PoC.
 
-### [Essential Services - Organization](https://esr1-issuer.pathfinder.gov.bc.ca/)
+### [Essential Services - Organization](https://esr1-issuer.apps.silver.devops.gov.bc.ca/)
 
 An issuer used to obtain a business level essential services credential that is used to authorize access to other services within the PoC.
 
-### [Essential Services - Access](https://esr2-issuer.pathfinder.gov.bc.ca/)
+### [Essential Services - Access](https://esr2-issuer.apps.silver.devops.gov.bc.ca/)
 
 An issuer used to obtain an essential services access credential that is used to authorize access to other services within the PoC.
 
-### [Med Lab](https://medlab-issuer.pathfinder.gov.bc.ca/)
+### [Med Lab](https://medlab-issuer.apps.silver.devops.gov.bc.ca/)
 
 An issuer used to obtain a "lab result" credential that is used to authorize access to other services within the PoC.
 

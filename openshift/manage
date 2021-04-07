@@ -37,14 +37,14 @@ usage () {
       - To POST/PUT ALL proof configurations, specify 'all' for <payLoadPath>.
 
         Examples;
-          $0 -p default -e null configureProof https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
+          $0 -p default -e null configureProof https://toip-vc-authn-controller-dev.apps.silver.devops.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
             - POST verified-person.json
-          $0 -p default -e null -u configureProof https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
+          $0 -p default -e null -u configureProof https://toip-vc-authn-controller-dev.apps.silver.devops.gov.bc.ca ../proof-configurations/verified-person/verified-person.json
             - PUT verified-person.json
 
-          $0 -p default -e dev -u configureProof https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca all
+          $0 -p default -e dev -u configureProof https://toip-vc-authn-controller-dev.apps.silver.devops.gov.bc.ca all
             - PUT all proof configurations for the 'dev' environment.
-          $0 -p default -e null -u configureProof https://a2a-vc-authn-controller-dev.pathfinder.gov.bc.ca all
+          $0 -p default -e null -u configureProof https://toip-vc-authn-controller-dev.apps.silver.devops.gov.bc.ca all
             - PUT all proof configurations for all environments.
 
     deployAllProfiles
