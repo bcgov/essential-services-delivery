@@ -78,6 +78,7 @@ objects:
       name: ${NAME}${SUFFIX}
       labels:
         app: ${APP_NAME}
+        app.kubernetes.io/part-of: ${APP_NAME}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
@@ -99,6 +100,7 @@ objects:
       labels:
         name: ${NAME}${SUFFIX}
         app: ${APP_NAME}
+        app.kubernetes.io/part-of: ${APP_NAME}
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
@@ -116,6 +118,7 @@ objects:
     metadata:
       labels:
         app: ${APP_NAME}
+        app.kubernetes.io/part-of: ${APP_NAME}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
@@ -142,6 +145,7 @@ objects:
       labels:
         name: ${NAME}${SUFFIX}
         app: ${APP_NAME}
+        app.kubernetes.io/part-of: ${APP_NAME}
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
@@ -168,6 +172,7 @@ objects:
           labels:
             name: ${NAME}${SUFFIX}
             app: ${APP_NAME}
+            app.kubernetes.io/part-of: ${APP_NAME}
             app-group: ${APP_GROUP}
             role: ${ROLE}
             env: ${TAG_NAME}
