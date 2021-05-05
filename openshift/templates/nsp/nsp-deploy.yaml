@@ -37,23 +37,6 @@ objects:
         - - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
       destination:
         - - ext:network=any
-
-  # - kind: NetworkSecurityPolicy
-  #   apiVersion: security.devops.gov.bc.ca/v1alpha1
-  #   metadata:
-  #     name: pods-to-k8s-api
-  #     labels:
-  #       name: pods-to-k8s-api
-  #       env: ${TAG_NAME}
-  #   spec:
-  #     description: |
-  #       Allow pods to talk to the internal k8s api so deployments work.
-  #       This only needs to be specified once per environment.
-  #     source:
-  #       - - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-  #     destination:
-  #       - - int:network=internal-cluster-api-endpoint
-
 parameters:
   - name: NAMESPACE_NAME
     displayName: The target namespace for the resources.
