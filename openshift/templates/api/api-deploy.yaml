@@ -95,7 +95,7 @@ objects:
       annotations:
         description: Defines how to deploy the application server
         app.openshift.io/connects-to: >-
-          [{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"${AGENT_SERVICE_NAME}${SUFFIX}"},
+          [{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"${AGENT_HOST}${SUFFIX}"},
           {"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"${DB_SERVICE}${DB_SUFFIX}"}]
       labels:
         name: ${NAME}${SUFFIX}
@@ -193,11 +193,11 @@ objects:
                       name: ${DB_SERVICE}${DB_SUFFIX}
                       key: database-password
                 - name: AGENT_ADMIN_URL
-                  value: http://${AGENT_SERVICE_NAME}${SUFFIX}:${AGENT_ADMIN_PORT}
+                  value: http://${AGENT_HOST}${SUFFIX}:${AGENT_ADMIN_PORT}
                 - name: AGENT_ADMIN_API_KEY
                   valueFrom:
                     secretKeyRef:
-                      name: ${AGENT_SERVICE_NAME}${SUFFIX}
+                      name: ${AGENT_HOST}${SUFFIX}
                       key: admin-api-key
                 - name: SMTP_HOST
                   valueFrom:
@@ -337,7 +337,7 @@ parameters:
     description: The TAG name for this environment, e.g., dev, test, prod
     required: true
     value: latest
-  - name: AGENT_SERVICE_NAME
+  - name: AGENT_HOST
     displayName: Agent Service name
     description: Agent service name
     required: true
