@@ -46,7 +46,7 @@ objects:
       annotations:
         description: Defines how to deploy the application server
         app.openshift.io/connects-to: >-
-          [{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"${API_HOST}"}]
+          [{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"${API_HOST}${SUFFIX}"}]
     spec:
       replicas: 1
       selector:
@@ -141,7 +141,7 @@ objects:
                 - name: WEB_HOST_TLS
                   value: ${WEB_HOST_TLS}
                 - name: API_HOST
-                  value: ${API_HOST}
+                  value: ${API_HOST}${SUFFIX}
                 - name: API_PORT
                   value: ${API_PORT}
               resources:
