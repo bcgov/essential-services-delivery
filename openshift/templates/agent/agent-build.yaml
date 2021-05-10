@@ -45,6 +45,7 @@ objects:
           name: ${NAME}:${OUTPUT_IMAGE_TAG}
       triggers:
         - type: ConfigChange
+      runPolicy: SerialLatestOnly
 parameters:
   - name: NAME
     displayName: Name

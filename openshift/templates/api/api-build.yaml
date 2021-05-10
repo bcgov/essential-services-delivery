@@ -52,6 +52,7 @@ objects:
           memory: ${MEMORY_LIMIT}
       triggers:
         - type: ConfigChange
+      runPolicy: SerialLatestOnly
 parameters:
   - name: NAME
     displayName: Name

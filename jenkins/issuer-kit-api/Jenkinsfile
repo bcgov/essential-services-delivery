@@ -1,4 +1,4 @@
-def PIPELINE_NAME = "issuer-web"
+def PIPELINE_NAME = "issuer-kit-api"
 
 def LIB_NAME= "covid19-es-lib"
 def LIB_REPO = "https://github.com/bcgov/essential-services-delivery.git"
@@ -10,7 +10,6 @@ library identifier: "${LIB_NAME}@${LIB_BRANCH}",
           branches: [[name: "*/${LIB_BRANCH}"]]])  
 
 node {
-
   def config = load "../workspace@script/jenkins/${PIPELINE_NAME}/config.groovy"
 
   config.BUILDS.each {
