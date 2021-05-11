@@ -14,6 +14,7 @@ objects:
       labels:
         name: ${NAME}
         app: ${APP_NAME}
+        app.kubernetes.io/part-of: ${APP_NAME}
         app-group: ${APP_GROUP}
   - kind: BuildConfig
     apiVersion: v1
@@ -22,6 +23,7 @@ objects:
       labels:
         name: ${NAME}
         app: ${APP_NAME}
+        app.kubernetes.io/part-of: ${APP_NAME}
         app-group: ${APP_GROUP}
     spec:
       source:
@@ -47,6 +49,7 @@ objects:
           memory: ${MEMORY_LIMIT}
       triggers:
         - type: ConfigChange
+      runPolicy: SerialLatestOnly
 parameters:
   - name: NAME
     displayName: Name

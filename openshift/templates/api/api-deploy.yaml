@@ -7,79 +7,6 @@ metadata:
     tags: nodejs
     iconClass: icon-nodejs
 objects:
-  # - kind: NetworkSecurityPolicy
-  #   apiVersion: security.devops.gov.bc.ca/v1alpha1
-  #   metadata:
-  #     name: custom-${APP_NAME}-${NAME}${SUFFIX}-pods-to-api
-  #     labels:
-  #       name: custom-${APP_NAME}-${NAME}${SUFFIX}-pods-to-api
-  #       app: ${APP_NAME}${SUFFIX}
-  #       app-group: ${APP_GROUP}
-  #       role: ${ROLE}
-  #       env: ${TAG_NAME}
-  #   spec:
-  #     description: 'Allow pods to talk to the internal api so deployments work.
-
-  #       This only needs to be specified once per environment.
-
-  #       '
-  #     source:
-  #       - - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-  #     destination:
-  #       - - int:network=internal-cluster-api-endpoint
-
-  # - kind: NetworkSecurityPolicy
-  #   apiVersion: security.devops.gov.bc.ca/v1alpha1
-  #   metadata:
-  #     name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
-  #     labels:
-  #       name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
-  #       app: ${APP_NAME}${SUFFIX}
-  #       app-group: ${APP_GROUP}
-  #       role: ${ROLE}
-  #       env: ${TAG_NAME}
-  #   spec:
-  #     description: 'Allow the controller to talk to either the database or agent micro
-  #       services.
-
-  #       '
-  #     source:
-  #       - - role=${ROLE}
-  #         - app=${APP_NAME}${SUFFIX}
-  #         - env=${TAG_NAME}
-  #         - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-  #     destination:
-  #       - - role=db
-  #         - app=${DB_APP_NAME}${DB_SUFFIX}
-  #         - env=${TAG_NAME}
-  #         - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-  #       - - role=agent
-  #         - app=${APP_NAME}${SUFFIX}
-  #         - env=${TAG_NAME}
-  #         - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-
-  # - kind: NetworkSecurityPolicy
-  #   apiVersion: security.devops.gov.bc.ca/v1alpha1
-  #   metadata:
-  #     name: ${NAME}${SUFFIX}-to-external-network
-  #     labels:
-  #       name: ${NAME}${SUFFIX}-to-external-network
-  #       app: ${APP_NAME}${SUFFIX}
-  #       app-group: ${APP_GROUP}
-  #       role: ${ROLE}
-  #       env: ${TAG_NAME}
-  #   spec:
-  #     description: 'Allow the controller to access the internet.
-
-  #       '
-  #     source:
-  #       - - role=${ROLE}
-  #         - app=${APP_NAME}${SUFFIX}
-  #         - env=${TAG_NAME}
-  #         - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-  #     destination:
-  #       - - ext:network=any
-
   - kind: NetworkPolicy
     apiVersion: networking.k8s.io/v1
     metadata:
@@ -129,6 +56,7 @@ objects:
       labels:
         name: ${NAME}${SUFFIX}
         app: ${APP_NAME}${SUFFIX}
+        app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
@@ -148,6 +76,7 @@ objects:
       labels:
         name: ${NAME}${SUFFIX}
         app: ${APP_NAME}${SUFFIX}
+        app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
@@ -167,10 +96,12 @@ objects:
       annotations:
         description: Defines how to deploy the application server
         app.openshift.io/connects-to: >-
-          [{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"${AGENT_SERVICE_NAME}${SUFFIX}"}]
+          [{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"${AGENT_HOST}${SUFFIX}"},
+          {"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"${DB_SERVICE}${DB_SUFFIX}"}]
       labels:
         name: ${NAME}${SUFFIX}
         app: ${APP_NAME}${SUFFIX}
+        app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
@@ -197,6 +128,7 @@ objects:
           labels:
             name: ${NAME}${SUFFIX}
             app: ${APP_NAME}${SUFFIX}
+            app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
             app-group: ${APP_GROUP}
             role: ${ROLE}
             env: ${TAG_NAME}
@@ -262,11 +194,11 @@ objects:
                       name: ${DB_SERVICE}${DB_SUFFIX}
                       key: database-password
                 - name: AGENT_ADMIN_URL
-                  value: http://${AGENT_SERVICE_NAME}${SUFFIX}:${AGENT_ADMIN_PORT}
+                  value: http://${AGENT_HOST}${SUFFIX}:${AGENT_ADMIN_PORT}
                 - name: AGENT_ADMIN_API_KEY
                   valueFrom:
                     secretKeyRef:
-                      name: ${AGENT_SERVICE_NAME}${SUFFIX}
+                      name: ${AGENT_HOST}${SUFFIX}
                       key: admin-api-key
                 - name: SMTP_HOST
                   valueFrom:
@@ -406,7 +338,7 @@ parameters:
     description: The TAG name for this environment, e.g., dev, test, prod
     required: true
     value: latest
-  - name: AGENT_SERVICE_NAME
+  - name: AGENT_HOST
     displayName: Agent Service name
     description: Agent service name
     required: true

@@ -53,6 +53,7 @@ objects:
       generation: 1
       labels:
         app: ${APP_NAME}${SUFFIX}
+        app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         backup: ${BACKUP}
@@ -85,6 +86,7 @@ objects:
         metadata:
           labels:
             app: ${APP_NAME}${SUFFIX}
+            app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
             name: ${NAME}${SUFFIX}
             backup: ${BACKUP}
             app-group: ${APP_GROUP}
@@ -168,6 +170,7 @@ objects:
       name: ${NAME}${SUFFIX}
       labels:
         app: ${APP_NAME}${SUFFIX}
+        app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         backup: ${BACKUP}
@@ -188,6 +191,7 @@ objects:
       name: ${NAME}${SUFFIX}
       labels:
         app: ${APP_NAME}${SUFFIX}
+        app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         backup: ${BACKUP}
@@ -205,6 +209,7 @@ objects:
       name: ${NAME}${SUFFIX}
       labels:
         app: ${APP_NAME}${SUFFIX}
+        app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
         name: ${NAME}${SUFFIX}
         backup: ${BACKUP}
         app-group: ${APP_GROUP}

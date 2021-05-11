@@ -9,43 +9,6 @@ metadata:
     tags: django
     iconClass: icon-python
 objects:
-  # - kind: ExternalNetwork
-  #   apiVersion: security.devops.gov.bc.ca/v1alpha1
-  #   metadata:
-  #     name: ${NAME}${SUFFIX}
-  #     network: ${NAME}${SUFFIX}
-  #     labels:
-  #       name: ${NAME}${SUFFIX}
-  #       network: ${NAME}${SUFFIX}
-  #       app: ${APP_NAME}
-  #       app-group: ${APP_GROUP}
-  #       env: ${TAG_NAME}
-  #   spec:
-  #     description: |
-  #       Define the network parameters for accessing smtp server
-  #     entries:
-  #       - ${OIDC_RP_PROVIDER_HOST}
-  #     servicePorts:
-  #       - tcp/443
-  # - kind: NetworkSecurityPolicy
-  #   apiVersion: security.devops.gov.bc.ca/v1alpha1
-  #   metadata:
-  #     name: ${NAME}${SUFFIX}-to-endpoint
-  #     labels:
-  #       name: ${NAME}${SUFFIX}-to-endpoint
-  #       env: ${TAG_NAME}
-  #       app: ${APP_NAME}
-  #       app-group: ${APP_GROUP}
-  #   spec:
-  #     description: Allow service to access the database and agent
-  #     source:
-  #       - - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-  #         - role=${ROLE}
-  #         - app=${APP_NAME}
-  #         - env=${TAG_NAME}
-  #     destination:
-  #       - - ext:name=${NAME}${SUFFIX}
-
   - kind: NetworkPolicy
     apiVersion: networking.k8s.io/v1
     metadata:
@@ -78,6 +41,7 @@ objects:
       name: ${NAME}${SUFFIX}
       labels:
         app: ${APP_NAME}
+        app.kubernetes.io/part-of: ${APP_NAME}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
@@ -99,6 +63,7 @@ objects:
       labels:
         name: ${NAME}${SUFFIX}
         app: ${APP_NAME}
+        app.kubernetes.io/part-of: ${APP_NAME}
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
@@ -116,6 +81,7 @@ objects:
     metadata:
       labels:
         app: ${APP_NAME}
+        app.kubernetes.io/part-of: ${APP_NAME}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
@@ -142,6 +108,7 @@ objects:
       labels:
         name: ${NAME}${SUFFIX}
         app: ${APP_NAME}
+        app.kubernetes.io/part-of: ${APP_NAME}
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
@@ -168,6 +135,7 @@ objects:
           labels:
             name: ${NAME}${SUFFIX}
             app: ${APP_NAME}
+            app.kubernetes.io/part-of: ${APP_NAME}
             app-group: ${APP_GROUP}
             role: ${ROLE}
             env: ${TAG_NAME}
