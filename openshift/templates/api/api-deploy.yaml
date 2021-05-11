@@ -34,6 +34,7 @@ objects:
             - podSelector:
                 matchLabels:
                   role: ${PUBLIC_FRONTEND_ROLE}
+                  app: ${APP_NAME}${SUFFIX}
                   env: ${TAG_NAME}
               namespaceSelector:
                 matchLabels:
