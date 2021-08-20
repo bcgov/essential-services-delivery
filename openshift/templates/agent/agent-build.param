@@ -10,5 +10,5 @@ GIT_REPO_URL=https://github.com/bcgov/issuer-kit.git
 GIT_REF=master
 SOURCE_CONTEXT_DIR=.
 DOCKER_FILE_PATH=docker/agent/Dockerfile
-SOURCE_IMAGE=docker-remote.artifacts.developer.gov.bc.ca/bcgovimages/aries-cloudagent:py36-1.15-1_0.6.0
+SOURCE_IMAGE=docker-remote.artifacts.developer.gov.bc.ca/bcgovimages/aries-cloudagent:py36-1.16-1_0.7.0
 OUTPUT_IMAGE_TAG=latest
