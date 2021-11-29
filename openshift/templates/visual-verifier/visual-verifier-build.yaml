@@ -111,7 +111,7 @@ parameters:
     displayName: Git Reference
     description: The git reference or branch.
     required: true
-    value: master
+    value: main
   - name: PIP_INDEX_URL
     displayName: Custom PyPi Index URL
     description: The custom PyPi index URL

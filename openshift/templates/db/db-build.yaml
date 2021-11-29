@@ -67,7 +67,7 @@ parameters:
     displayName: Git Reference
     description: The git reference or branch.
     required: true
-    value: master
+    value: main
   - name: SOURCE_IMAGE_KIND
     displayName: Source Image Kind
     description: The 'kind' (type) of the  source image; typically ImageStreamTag,

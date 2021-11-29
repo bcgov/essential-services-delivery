@@ -2,7 +2,7 @@ def PIPELINE_NAME = "deployment/test"
 
 def LIB_NAME= "covid19-es-lib"
 def LIB_REPO = "https://github.com/bcgov/essential-services-delivery.git"
-def LIB_BRANCH = "master"
+def LIB_BRANCH = "main"
 library identifier: "${LIB_NAME}@${LIB_BRANCH}",
         retriever: modernSCM(
           [$class: 'GitSCMSource',
