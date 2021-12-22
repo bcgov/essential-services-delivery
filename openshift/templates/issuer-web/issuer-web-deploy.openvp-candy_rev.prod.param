@@ -3,8 +3,8 @@
 # Component: .
 # Template File: ../openshift/templates/issuer-web/issuer-web-deploy.json
 #=========================================================
-# NAME=issuer-web-openvp-rev
-# APP_NAME=issuer-openvp
+# NAME=issuer-web-openvp-candy-rev
+# APP_NAME=issuer-openvp-candy
 # APP_GROUP=openvp
 # SUFFIX=
 # ROLE=public-frontend
@@ -28,7 +28,7 @@
 # WEB_HOST_TLS=off
 # API_HOST=api-openvp
 # API_PORT=8080
-APPLICATION_DOMAIN=openvp-rev-issuer.apps.silver.devops.gov.bc.ca
+APPLICATION_DOMAIN=openvp-candy-rev-issuer.apps.silver.devops.gov.bc.ca
 # SOURCE_IMAGE_NAME=issuer-kit-web
 TAG_NAME=prod
 # CPU_REQUEST=10m
