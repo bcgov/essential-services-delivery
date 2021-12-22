@@ -1,0 +1,38 @@
+#=========================================================
+# OpenShift template parameters for:
+# Component: .
+# Template File: ../openshift/templates/api/api-deploy.yaml
+#=========================================================
+# NAME=api
+# APP_NAME=issuer
+# APP_GROUP=openvp-candy
+# SUFFIX=-openvp-candy
+# ROLE=api
+# AGENT_ROLE=agent
+# PUBLIC_FRONTEND_ROLE=public-frontend
+# IMAGE_NAMESPACE=a99fd4-tools
+# NAMESPACE_NAME=a99fd4
+# SERVICE_PORT=8080
+# DB_PORT=27017
+# DB_NAME=issuer_db
+# DB_APP_NAME=issuer-kit-shared
+# DB_SUFFIX=
+# DB_SERVICE=issuer-kit-db
+# SOURCE_IMAGE_NAME=issuer-kit-api
+TAG_NAME=test
+# AGENT_HOST=agent
+# AGENT_ADMIN_PORT=8024
+# SMTP_SERVER_ADDRESS=
+# SMTP_SERVER_PORT=
+# ADMIN_EMAIL=
+# EMAIL_SUBJECT=Invite from Unverified Person Issuer
+PUBLIC_SITE_URL=https://openvp-candy-issuer-test.apps.silver.devops.gov.bc.ca
+# APP_CONFIG_MAP_NAME=api-config
+# APP_CONFIG_MOUNT_PATH=/opt/app-root/src/config/
+# APP_CONFIG_FILE_NAME=default.json
+# APP_SCHEMAS_FILE_NAME=schemas.json
+# APP_EMAIL_INVITE_FILE_NAME=invite-email.html
+# CPU_REQUEST=10m
+# CPU_LIMIT=300m
+# MEMORY_REQUEST=10Mi
+# MEMORY_LIMIT=256Mi
