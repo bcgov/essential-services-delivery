@@ -13,7 +13,7 @@
     "autoSignOut": true,
     "oidcSettings": {
       "authority": "https://toip-vc-authn-controller-test.apps.silver.devops.gov.bc.ca",
-      "clientId": "openvp",
+      "clientId": "openvp-candy",
       "redirectUri": "https://openvp-candy-issuer.apps.silver.devops.gov.bc.ca/oidc-callback",
       "redirect_uri": "https://openvp-candy-issuer.apps.silver.devops.gov.bc.ca/oidc-callback-error",
       "responseType": "code",
