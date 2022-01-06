@@ -1,7 +1,7 @@
 {
   "env": "test",
   "issuer": {
-    "name": "Unverified Person Issuer"
+    "name": "CANdy - Unverified Person Issuer"
   },
   "help": {
     "enabled": false,

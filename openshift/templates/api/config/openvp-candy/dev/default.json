@@ -33,8 +33,8 @@
     "url": "PUBLIC_SITE_URL"
   },
   "issuer": {
-    "name": "Unverified Person Issuer",
-    "offerComment": "Credential offer from Unverified Person Issuer",
+    "name": "CANdy - Unverified Person Issuer",
+    "offerComment": "Credential offer from CANdy - Unverified Person Issuer",
     "validityDays": -1,
     "multiUse": true
   },
