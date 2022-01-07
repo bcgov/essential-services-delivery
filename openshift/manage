@@ -461,7 +461,7 @@ case "${_cmd}" in
   configureproof)
     baseUrl=${1}
     payLoadPath=${2}
-    namespace=${3:-nnfbch}
+    namespace=${3:-e79518}
     secretName=${4:-vc-authn-controller}
     key=${5:-controller-api-key}
     configureProof ${baseUrl} ${payLoadPath} ${namespace} ${secretName} ${key}

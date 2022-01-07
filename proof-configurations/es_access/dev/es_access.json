@@ -18,6 +18,11 @@
             "issuer_did": "NCwGwDrzbZEqesYQummzWW",
             "schema_name": "unverified_person",
             "schema_version": "0.1.0"
+          },
+          {
+            "issuer_did": "Ui6HA36FvN83cEtmYYHxrn",
+            "schema_name": "unverified_person",
+            "schema_version": "0.1.0"
           }
         ]
       },
