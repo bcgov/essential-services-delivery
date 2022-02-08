@@ -15,6 +15,7 @@ class baseConfig {
   public static final String  SUFFIX = ''
 
   // Apps - Listed in the order they should be built
+  // - Issuer-Kit Builds in a99fd4 handled by https://github.com/bcgov/identity-kit-configurations
   public static final String[] APPS = ['issuer-kit-db', 'issuer-kit-wallet', 'visual-verifier', 'issuer-kit-web', 'issuer-kit-agent', 'issuer-kit-api']
 
   // Apps - Listed in the order they should be tagged for deployment
