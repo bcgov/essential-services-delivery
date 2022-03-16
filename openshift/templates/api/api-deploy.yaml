@@ -183,6 +183,8 @@ objects:
                   value: ${DB_PORT}
                 - name: DB_NAME
                   value: ${DB_NAME}
+                - name: SERVER_SELECTION_TIMEOUT
+                  value: ${SERVER_SELECTION_TIMEOUT}
                 - name: DB_USER
                   valueFrom:
                     secretKeyRef:
@@ -313,6 +315,11 @@ parameters:
       Name of the deployed database (see environment variables in deployed
       database).
     value: issuer_db
+  - name: SERVER_SELECTION_TIMEOUT
+    displayName: Database Server Selection Timeout
+    description: The time in seconds to wait before timing out on the initial database connection.
+    required: false
+    value: "60"
   - name: DB_APP_NAME
     displayName: App Name
     description: Used to group components together in the OpenShift console.
