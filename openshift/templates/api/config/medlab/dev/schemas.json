@@ -12,6 +12,8 @@
     ],
     "schema_name": "c19_status",
     "schema_version": "0.1.0",
+    "id":"GUfcrL4YS4DdXaYssdF1xb:2:c19_status:0.1.0",
+    "cred_def_id":"GUfcrL4YS4DdXaYssdF1xb:3:CL:106473:default",
     "default": true,
     "public": false
   }

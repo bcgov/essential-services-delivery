@@ -1,0 +1,20 @@
+[
+  {
+    "attributes": [
+      "virus",
+      "checktime",
+      "checkedlocation",
+      "checkedby",
+      "checkedfacility",
+      "diagnosismethod",
+      "issued",
+      "expiry"
+    ],
+    "schema_name": "c19_status",
+    "schema_version": "0.1.0",
+    "id":"MaGrPzgME3nRzmupNWcWYa:2:c19_status:0.1.0",
+    "cred_def_id":"MaGrPzgME3nRzmupNWcWYa:3:CL:111567:default",
+    "default": true,
+    "public": false
+  }
+]

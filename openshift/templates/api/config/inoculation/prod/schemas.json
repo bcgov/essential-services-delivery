@@ -1,0 +1,16 @@
+[
+  {
+    "attributes": [
+      "patient_name",
+      "inoculated_substance",
+      "inoculation_date",
+      "inoculation_cycle_completed"
+    ],
+    "schema_name": "inoculation_record",
+    "schema_version": "0.2.0",
+    "id": "KtFYZtDPXPxc9e6qdrXsUC:2:inoculation_record:0.2.0",
+    "cred_def_id": "KtFYZtDPXPxc9e6qdrXsUC:3:CL:168708:default",
+    "default": true,
+    "public": false
+  }
+]

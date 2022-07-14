@@ -1,0 +1,14 @@
+[
+  {
+    "attributes": [
+      "phn",
+      "issued"
+    ],
+    "schema_name": "vp_phn",
+    "schema_version": "0.1.0",
+    "id":"Vh6tBzL4hEEXJeQfDMUjhP:2:vp_phn:0.1.0",
+    "cred_def_id":"Vh6tBzL4hEEXJeQfDMUjhP:3:CL:106459:default",
+    "default": true,
+    "public": false
+  }
+]

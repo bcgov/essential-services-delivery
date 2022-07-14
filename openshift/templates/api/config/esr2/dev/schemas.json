@@ -1,0 +1,21 @@
+[
+  {
+    "attributes": [
+      "facility",
+      "reason",
+      "street_address",
+      "locality",
+      "region",
+      "postal_code",
+      "country",
+      "issued",
+      "expiry"
+    ],
+    "schema_name": "authorized_access",
+    "schema_version": "0.1.0",
+    "id":"8rrkThEVKUCUUJT4paKTPM:2:authorized_access:0.1.0",
+    "cred_def_id":"8rrkThEVKUCUUJT4paKTPM:3:CL:106461:default",
+    "default": true,
+    "public": false
+  }
+]

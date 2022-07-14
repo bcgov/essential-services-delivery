@@ -8,6 +8,8 @@
     ],
     "schema_name": "inoculation_record",
     "schema_version": "0.2.0",
+    "id": "HSqhvJoTMVQeJ3bLSdmr9h:2:inoculation_record:0.2.0",
+    "cred_def_id": "HSqhvJoTMVQeJ3bLSdmr9h:3:CL:168404:default",
     "default": true,
     "public": false
   }

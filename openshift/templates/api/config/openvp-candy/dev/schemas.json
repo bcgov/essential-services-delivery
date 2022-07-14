@@ -13,6 +13,8 @@
     ],
     "schema_name": "unverified_person",
     "schema_version": "0.1.0",
+    "id":"Ui6HA36FvN83cEtmYYHxrn:2:unverified_person:0.1.0",
+    "cred_def_id":"Ui6HA36FvN83cEtmYYHxrn:3:CL:15:default",
     "default": true,
     "public": true
   }

@@ -1,0 +1,21 @@
+[
+  {
+    "attributes": [
+      "given_names",
+      "family_name",
+      "birthdate",
+      "street_address",
+      "postal_code",
+      "locality",
+      "region",
+      "country",
+      "issued"
+    ],
+    "schema_name": "unverified_person",
+    "schema_version": "0.1.0",
+    "id":"9wVuYYDEDtpZ6CYMqSiWop:2:unverified_person:0.1.0",
+    "cred_def_id":"9wVuYYDEDtpZ6CYMqSiWop:3:CL:23:default",
+    "default": true,
+    "public": true
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "attributes": [
+      "given_names",
+      "family_name",
+      "birthdate",
+      "street_address",
+      "postal_code",
+      "locality",
+      "region",
+      "country",
+      "issued"
+    ],
+    "schema_name": "unverified_person",
+    "schema_version": "0.1.0",
+    "id": "NCwGwDrzbZEqesYQummzWW:2:unverified_person:0.1.0",
+    "cred_def_id": "NCwGwDrzbZEqesYQummzWW:3:CL:106455:default",
+    "default": true,
+    "public": true
+  },
+  {
+    "attributes": [
+      "given_names",
+      "family_name",
+      "birthdate",
+      "street_address",
+      "postal_code",
+      "locality",
+      "region",
+      "country",
+      "issued"
+    ],
+    "schema_name": "unverified_person",
+    "schema_version": "0.4.0",
+    "default": false,
+    "id":"NCwGwDrzbZEqesYQummzWW:2:unverified_person:0.4.0",
+    "cred_def_id":"NCwGwDrzbZEqesYQummzWW:3:CL:211383:default",
+    "public": true,
+    "revocable": true
+  }
+]

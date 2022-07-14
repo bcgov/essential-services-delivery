@@ -13,6 +13,8 @@
     ],
     "schema_name": "authorized_access",
     "schema_version": "0.1.0",
+    "id":"SWDmkhBJhWXqaStHbgFpJh:2:authorized_access:0.1.0",
+    "cred_def_id":"SWDmkhBJhWXqaStHbgFpJh:3:CL:106902:default",
     "default": true,
     "public": false
   }

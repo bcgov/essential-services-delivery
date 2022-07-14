@@ -6,6 +6,8 @@
     ],
     "schema_name": "vp_phn",
     "schema_version": "0.1.0",
+    "id":"VW3kuqkcJDmLbMFjLA1ojx:2:vp_phn:0.1.0",
+    "cred_def_id":"VW3kuqkcJDmLbMFjLA1ojx:3:CL:111563:default",
     "default": true,
     "public": false
   }

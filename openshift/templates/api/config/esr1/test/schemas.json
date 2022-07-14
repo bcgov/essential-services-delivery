@@ -1,0 +1,17 @@
+[
+  {
+    "attributes": [
+      "org_legal_name",
+      "org_registries_id",
+      "essential",
+      "services",
+      "issued"
+    ],
+    "schema_name": "service_provider",
+    "schema_version": "0.1.0",
+    "default": true,
+    "id":"3q7ycKnbnP4NoMVVLE7YpE:2:service_provider:0.1.0",
+    "cred_def_id":"3q7ycKnbnP4NoMVVLE7YpE:3:CL:106900:default",
+    "public": false
+  }
+]

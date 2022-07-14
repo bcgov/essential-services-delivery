@@ -10,6 +10,8 @@
     "schema_name": "service_provider",
     "schema_version": "0.1.0",
     "default": true,
+    "id":"U9aa9xX2iiFnKzPa3Ms6nY:2:service_provider:0.1.0",
+    "cred_def_id":"U9aa9xX2iiFnKzPa3Ms6nY:3:CL:111557:default",
     "public": false
   }
 ]
