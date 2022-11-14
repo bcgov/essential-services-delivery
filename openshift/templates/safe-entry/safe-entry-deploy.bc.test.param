@@ -18,6 +18,7 @@
 # API_HOST=api
 # API_PORT=8080
 APPLICATION_DOMAIN=safe-entry-bc-test.apps.silver.devops.gov.bc.ca
+# CERTBOT_MANAGED_ROUTE=false
 # SOURCE_IMAGE_NAME=safe-entry
 TAG_NAME=test
 # CPU_REQUEST=10m

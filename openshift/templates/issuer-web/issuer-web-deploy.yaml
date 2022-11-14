@@ -249,6 +249,7 @@ objects:
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
+        certbot-managed: ${CERTBOT_MANAGED_ROUTE}
       name: ${NAME}${SUFFIX}
     spec:
       host: ${APPLICATION_DOMAIN}
@@ -405,6 +406,11 @@ parameters:
     displayName: Application Hostname
     name: APPLICATION_DOMAIN
     value: issuer-kit.apps.silver.devops.gov.bc.ca
+  - name: CERTBOT_MANAGED_ROUTE
+    displayName: Certbot Managed Route
+    description: Flag indicating whether the routes certificates are managed by CertBot.
+    required: true
+    value: 'false'
   - name: SOURCE_IMAGE_NAME
     displayName: Source Image Name
     description: The name of the image to use for this resource.
