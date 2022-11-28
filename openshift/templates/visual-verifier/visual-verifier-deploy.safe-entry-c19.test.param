@@ -9,6 +9,7 @@
 # SUFFIX=-safe-entry-c19
 # ROLE=visual-verifier
 APPLICATION_DOMAIN=safe-entry-c19-verifier-test.apps.silver.devops.gov.bc.ca
+# CERTBOT_MANAGED_ROUTE=false
 # IMAGE_NAMESPACE=a99fd4-tools
 # NAMESPACE_NAME=a99fd4
 TAG_NAME=test
