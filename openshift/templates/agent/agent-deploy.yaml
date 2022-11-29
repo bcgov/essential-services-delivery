@@ -62,7 +62,6 @@ objects:
           role: ${ROLE}
           app: ${APP_NAME}${SUFFIX}
           env: ${TAG_NAME}
-
   - kind: Service
     apiVersion: v1
     metadata:
@@ -98,6 +97,7 @@ objects:
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
+        certbot-managed: ${CERTBOT_MANAGED_ROUTE}
       annotations:
         haproxy.router.openshift.io/timeout: ${ROUTE_TIMEOUT}
     spec:
@@ -123,6 +123,7 @@ objects:
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
+        certbot-managed: ${CERTBOT_MANAGED_ROUTE}
       annotations:
         haproxy.router.openshift.io/timeout: ${ROUTE_TIMEOUT}
     spec:
@@ -186,6 +187,7 @@ objects:
         env: ${TAG_NAME}
     stringData:
       admin-api-key: ${ADMIN_API_KEY}
+      webhook-url: ${WEBHOOK_URL}
     type: Opaque
 
   - kind: DeploymentConfig
@@ -220,11 +222,21 @@ objects:
             app-group: ${APP_GROUP}
             role: ${ROLE}
             env: ${TAG_NAME}
+          annotations:
+            description: Defines how to deploy the ${NAME}${SUFFIX} server
+            app.openshift.io/connects-to: >-
+              [{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"wallet${SUFFIX}"}]
         spec:
           volumes:
             - name: ${NAME}${SUFFIX}-tails
               persistentVolumeClaim:
                 claimName: ${NAME}${SUFFIX}-tails
+            - name: ${NAME}${SUFFIX}-app-config-volume
+              configMap:
+                name: ${APP_CONFIG_MAP_NAME}${SUFFIX}
+                items:
+                  - key: ${ACAPY_GENESIS_TRANSACTIONS_LIST}
+                    path: ${ACAPY_GENESIS_TRANSACTIONS_LIST}
           containers:
             - name: ${NAME}${SUFFIX}
               command:
@@ -236,32 +248,68 @@ objects:
                   --inbound-transport http '0.0.0.0' ${HTTP_INTERFACE_PORT}
                   --outbound-transport http
                   --endpoint ${AGENT_ENDPOINT}
-                  --genesis-url "${GENESIS_URL}"
-                  --auto-accept-invites
-                  --auto-accept-requests
-                  --auto-ping-connection
-                  --auto-respond-messages
-                  --auto-respond-credential-offer
-                  --auto-verify-presentation
-                  --auto-provision
-                  --wallet-type 'indy'
                   --wallet-name "$(echo ${AGENT_WALLET_NAME} | tr '[:upper:]' '[:lower:]' | sed "s~-~_~g")"
                   --wallet-key "${WALLET_ENCRYPTION_KEY}"
-                  --wallet-storage-type "${WALLET_TYPE}"
                   --wallet-storage-config "$(eval echo \"${WALLET_STORAGE_CONFIGURATION}\")"
                   --wallet-storage-creds "$(eval echo \"${WALLET_STORAGE_CREDENTIALS}\")"
                   --seed "${INDY_WALLET_SEED}"
                   --admin '0.0.0.0' ${ADMIN_INTERFACE_PORT}
-                  $([ ! -z "${AGENT_ADMIN_API_KEY}" ] && echo "--admin-api-key ${AGENT_ADMIN_API_KEY}" || echo "--admin-insecure-mode")
-                  --log-level ${AGENT_LOG_LEVEL}
-                  --tails-server-base-url ${TAILS_SERVER_BASE_URL});
+                  $([ ! -z "${AGENT_ADMIN_API_KEY}" ] && echo "--admin-api-key ${AGENT_ADMIN_API_KEY}" || echo "--admin-insecure-mode"));
               env:
-                - name: GENESIS_URL
-                  value: ${GENESIS_FILE_URL}
+                - name: ACAPY_LABEL
+                  value: ${ACAPY_LABEL}
+                - name: AGENT_ENDPOINT
+                  value: ${AGENT_BASE_URL}
+                - name: ACAPY_IMAGE_URL
+                  value: ${ACAPY_IMAGE_URL}
+                - name: ACAPY_READ_ONLY_LEDGER
+                  value: ${ACAPY_READ_ONLY_LEDGER}
+                - name: ACAPY_GENESIS_TRANSACTIONS_LIST
+                  value: ${APP_CONFIG_MOUNT_PATH}${ACAPY_GENESIS_TRANSACTIONS_LIST}
+
+                - name: ACAPY_INVITE_PUBLIC
+                  value: ${ACAPY_INVITE_PUBLIC}
+                - name: ACAPY_PUBLIC_INVITES
+                  value: ${ACAPY_PUBLIC_INVITES}
+
+                - name: ACAPY_AUTO_ACCEPT_INVITES
+                  value: ${ACAPY_AUTO_ACCEPT_INVITES}
+                - name: ACAPY_AUTO_ACCEPT_REQUESTS
+                  value: ${ACAPY_AUTO_ACCEPT_REQUESTS}
+                - name: ACAPY_AUTO_PING_CONNECTION
+                  value: ${ACAPY_AUTO_PING_CONNECTION}
+                - name: ACAPY_MONITOR_PING
+                  value: ${ACAPY_MONITOR_PING}
+                - name: ACAPY_AUTO_RESPOND_MESSAGES
+                  value: ${ACAPY_AUTO_RESPOND_MESSAGES}
+                - name: ACAPY_AUTO_RESPOND_CREDENTIAL_OFFER
+                  value: ${ACAPY_AUTO_RESPOND_CREDENTIAL_OFFER}
+                - name: ACAPY_AUTO_RESPOND_CREDENTIAL_REQUEST
+                  value: ${ACAPY_AUTO_RESPOND_CREDENTIAL_REQUEST}
+                - name: ACAPY_AUTO_VERIFY_PRESENTATION
+                  value: ${ACAPY_AUTO_VERIFY_PRESENTATION}
+                - name: ACAPY_AUTO_PROVISION
+                  value: ${ACAPY_AUTO_PROVISION}
+                - name: ACAPY_NOTIFY_REVOCATION
+                  value: ${ACAPY_NOTIFY_REVOCATION}
+
+                - name: ACAPY_ENDORSER_ALIAS
+                  value: ${ACAPY_ENDORSER_ALIAS}
+                - name: ACAPY_ENDORSER_ROLE
+                  value: ${ACAPY_ENDORSER_ROLE}
+                - name: ACAPY_AUTO_REQUEST_ENDORSEMENT
+                  value: ${ACAPY_AUTO_REQUEST_ENDORSEMENT}
+                - name: ACAPY_AUTO_WRITE_TRANSACTIONS
+                  value: ${ACAPY_AUTO_WRITE_TRANSACTIONS}
+                - name: ACAPY_CREATE_REVOCATION_TRANSACTIONS
+                  value: ${ACAPY_CREATE_REVOCATION_TRANSACTIONS}
+
                 - name: AGENT_WALLET_NAME
                   value: ${NAME}${SUFFIX}-wallet
-                - name: WALLET_TYPE
-                  value: ${WALLET_STORAGE_TYPE}
+                - name: ACAPY_WALLET_TYPE
+                  value: ${ACAPY_WALLET_TYPE}
+                - name: ACAPY_WALLET_STORAGE_TYPE
+                  value: ${ACAPY_WALLET_STORAGE_TYPE}
                 - name: POSTGRESQL_WALLET_HOST
                   value: ${WALLET_HOST}${WALLET_SUFFIX}
                 - name: POSTGRESQL_WALLET_PORT
@@ -300,8 +348,12 @@ objects:
                     secretKeyRef:
                       name: ${WALLET_CREDENTIAL_STORE_NAME}${SUFFIX}
                       key: did
+
                 - name: WEBHOOK_URL
-                  value: ${WEBHOOK_URL}
+                  valueFrom:
+                    secretKeyRef:
+                      name: ${NAME}${SUFFIX}
+                      key: webhook-url
                 - name: HTTP_INTERFACE_PORT
                   value: ${AGENT_HTTP_PORT}
                 - name: ADMIN_INTERFACE_PORT
@@ -311,18 +363,13 @@ objects:
                     secretKeyRef:
                       name: ${NAME}${SUFFIX}
                       key: admin-api-key
-                - name: ACAPY_LABEL
-                  value: ${AGENT_LABEL_NAME}
-                - name: AGENT_ENDPOINT
-                  value: ${AGENT_BASE_URL}
-                - name: ACAPY_READ_ONLY_LEDGER
-                  value: ${AGENT_READ_ONLY_LEDGER}
-                - name: AGENT_LOG_LEVEL
-                  value: ${LOG_LEVEL}
+
+                - name: ACAPY_LOG_LEVEL
+                  value: ${ACAPY_LOG_LEVEL}
+                - name: ACAPY_TAILS_SERVER_BASE_URL
+                  value: ${ACAPY_TAILS_SERVER_BASE_URL}
                 - name: TAILS_FILES_DIR
                   value: ${TAILS_FILES_DIR}
-                - name: TAILS_SERVER_BASE_URL
-                  value: ${TAILS_SERVER_BASE_URL}
               image:
               ports:
                 - containerPort: ${{AGENT_ADMIN_PORT}}
@@ -332,6 +379,9 @@ objects:
               volumeMounts:
                 - name: ${NAME}${SUFFIX}-tails
                   mountPath: "${TAILS_FILES_DIR}"
+                - name: ${NAME}${SUFFIX}-app-config-volume
+                  mountPath: ${APP_CONFIG_MOUNT_PATH}${ACAPY_GENESIS_TRANSACTIONS_LIST}
+                  subPath: ${ACAPY_GENESIS_TRANSACTIONS_LIST}
               readinessProbe:
                 timeoutSeconds: 30
                 initialDelaySeconds: 3
@@ -373,7 +423,7 @@ objects:
               - ${NAME}${SUFFIX}
             from:
               kind: ImageStreamTag
-              name: ${SOURCE_IMAGE_NAME}:${TAG_NAME}
+              name: ${SOURCE_IMAGE_NAME}:${TAG_PREFIX}${TAG_NAME}
               namespace: ${IMAGE_NAMESPACE}
 
 parameters:
@@ -411,13 +461,18 @@ parameters:
     value: api
   - name: APPLICATION_DOMAIN
     displayName: Application Hostname
-    description: The exposed hostname that will route to the service, if left blank a value will be defaulted.
+    description: The exposed hostname that will route to the public service endpoint, if left blank a value will be defaulted.
     required: false
     value: issuer-kit-agent.apps.silver.devops.gov.bc.ca
   - name: ADMIN_APPLICATION_DOMAIN
     displayName: Admin Application Hostname
     description: The exposed hostname that will route to the admin service endpoint, if left blank a value will be defaulted.
     required: false
+  - name: CERTBOT_MANAGED_ROUTE
+    displayName: Certbot Managed Route
+    description: Flag indicating whether the routes certificates are managed by CertBot.
+    required: true
+    value: 'false'
   - name: ROUTE_TIMEOUT
     displayName: Route Timeout
     description: The timeout for the application route.  When this timeout is exceeded the application's route will respond with a 504 Gateway Timeout error.
@@ -437,26 +492,50 @@ parameters:
     description: The name of the source image to use for the service.
     required: true
     value: agent
+
+  - name: TAG_PREFIX
+    displayName: Environment TAG prefix
+    description: The prefix for the TAG name for this environment.
+    required: false
+    value: 
   - name: TAG_NAME
     displayName: Environment TAG name
     description: The TAG name for this environment, e.g., dev, test, prod.
     required: true
     value: latest
-  - name: AGENT_LABEL_NAME
+  - name: APP_CONFIG_MAP_NAME
+    displayName: Application Config Map Name
+    description:
+      The name of the configuration map holding the data to configure the
+      application.
+    required: true
+    value: agent-config
+  - name: APP_CONFIG_MOUNT_PATH
+    displayName: Application Config Map Mount Path
+    description: The mount path for the application Config Map.
+    required: true
+    value: /home/indy/
+
+  - name: ACAPY_LABEL
     displayName: Agent Label/Name
     description: The label/name of the agent
     required: true
     value: issuer-kit-agent
-  - name: AGENT_READ_ONLY_LEDGER
+  - name: ACAPY_READ_ONLY_LEDGER
     displayName: Set read only ledger flag.
     description: Enable/Disable the read only ledger flag.  Controls the inclusion/exclusion of the agent '--read-only-ledger' startup parameter.  Defaults to disabled.
     required: true
-    value: "false"
+    value: "true"
   - name: AGENT_BASE_URL
     displayName: Agent endpoint
     description: The endpoint of the agent
     required: true
     value: https://issuer-kit-agent.apps.silver.devops.gov.bc.ca
+  - name: ACAPY_IMAGE_URL
+    displayName: Agent Image URL
+    description: The URL of the image for the agent
+    required: false
+    value:
   - name: WEBHOOK_URL
     displayName: Webhook URL
     description: The webhook endpoint
@@ -483,45 +562,142 @@ parameters:
     description: The http port on which the service will listen.
     required: true
     value: "8021"
-  - name: GENESIS_FILE_URL
-    displayName: Genesis File URL
-    description: The URL from which the genesis file can be downloaded.
+  - name: ACAPY_GENESIS_TRANSACTIONS_LIST
+    displayName: Multi-ledger configuration file location
+    description: File location for the multi-ledger yaml config file
     required: true
-    value: https://raw.githubusercontent.com/sovrin-foundation/sovrin/stable/sovrin/pool_transactions_sandbox_genesis
-  - name: LOG_LEVEL
+    value: ledgers.yaml
+  - name: ACAPY_LOG_LEVEL
     displayName: Log Level
     description: The logging level for the agent.
     required: true
     value: WARNING
+
+  - name: ACAPY_INVITE_PUBLIC
+    displayName: Invite Public
+    description: Flag specifying the generated invite should be public.
+    required: true
+    value: 'true'
+  - name: ACAPY_PUBLIC_INVITES
+    displayName: Public Invite
+    description: Send invitations out, and receive connection requests, using the public DID for the agent.
+    required: true
+    value: 'true'
+
+  - name: ACAPY_AUTO_ACCEPT_INVITES
+    displayName: ACAPY_AUTO_ACCEPT_INVITES
+    description: ACAPY_AUTO_ACCEPT_INVITES
+    required: true
+    value: 'true'
+  - name: ACAPY_AUTO_ACCEPT_REQUESTS
+    displayName: ACAPY_AUTO_ACCEPT_REQUESTS
+    description: ACAPY_AUTO_ACCEPT_REQUESTS
+    required: true
+    value: 'true'
+  - name: ACAPY_AUTO_PING_CONNECTION
+    displayName: Auto Ping Connection
+    description: Automatically send a trust ping immediately after a connection response is accepted. Some agents require this before marking a connection as 'active'.
+    required: true
+    value: 'true'
+  - name: ACAPY_MONITOR_PING
+    displayName: Monitor Ping
+    description: Send a webhook when a ping is sent or received.
+    required: true
+    value: 'false'
+  - name: ACAPY_AUTO_RESPOND_MESSAGES
+    displayName: ACAPY_AUTO_RESPOND_MESSAGES
+    description: ACAPY_AUTO_RESPOND_MESSAGES
+    required: true
+    value: 'true'
+  - name: ACAPY_AUTO_RESPOND_CREDENTIAL_OFFER
+    displayName: ACAPY_AUTO_RESPOND_CREDENTIAL_OFFER
+    description: ACAPY_AUTO_RESPOND_CREDENTIAL_OFFER
+    required: true
+    value: 'truee'
+  - name: ACAPY_AUTO_RESPOND_CREDENTIAL_REQUEST
+    displayName: ACAPY_AUTO_RESPOND_CREDENTIAL_REQUEST
+    description: ACAPY_AUTO_RESPOND_CREDENTIAL_REQUEST
+    required: false
+    value: 'false'
+  - name: ACAPY_AUTO_VERIFY_PRESENTATION
+    displayName: ACAPY_AUTO_VERIFY_PRESENTATION
+    description: ACAPY_AUTO_VERIFY_PRESENTATION
+    required: true
+    value: 'true'
+  - name: ACAPY_AUTO_PROVISION
+    displayName: Auto Provision
+    description: If the requested profile does not exist, initialize it with the given parameters.
+    required: true
+    value: 'true'
+  - name: ACAPY_NOTIFY_REVOCATION
+    displayName: Notify Revocation
+    description: Specifies that aca-py will notify credential recipients when revoking a credential it issued.
+    required: true
+    value: 'false'
+
+  # ===============================================================================
+  # Author/Endorser Configuration
+  # Default: Endorser protocol is disabled (ACAPY_ENDORSER_ROLE=none)
+  #--------------------------------------------------------------------------------
+  - name: ACAPY_ENDORSER_ROLE
+    displayName: Endorser Role
+    description:
+      Specify the role ('author', 'endorser', or 'none') which this agent will participate. Authors will request transaction endorement from an Endorser. Endorsers will endorse transactions from Authors, and may write their own transactions to the ledger. If no role ('none') is specified then the endorsement protocol will not be used and this agent will write transactions to the ledger directly.
+    required: true
+    value: none
+  - name: ACAPY_ENDORSER_ALIAS
+    displayName: Endorser Alias
+    description:
+      For transaction Authors, specify the alias of the Endorser connection that will be used to endorse transactions.
+      This MUST match the setting used for the alias of the connection when establishing the connection with the Endorser.
+      Example; 'Endorser'
+    required: false
+    value:
+  - name: ACAPY_AUTO_REQUEST_ENDORSEMENT
+    displayName: Auto Request Endorsement
+    description:
+      For Authors, specify whether to automatically request endorsement for all transactions.  If not specified, the controller must invoke the request endorse operation for each transaction.
+    required: true
+    value: 'false'
+  - name: ACAPY_AUTO_WRITE_TRANSACTIONS
+    displayName: Auto Write Transactions
+    description:
+      For Authors, specify whether to automatically write any endorsed transactions.  If not specified, the controller must invoke the write transaction operation for each transaction.
+    required: true
+    value: 'false'
+  - name: ACAPY_CREATE_REVOCATION_TRANSACTIONS
+    displayName: Auto Create Revocation Transactions
+    description:
+      For Authors, specify whether to automatically create transactions for a cred def's revocation registry.  If not specified,the controller must invoke the endpoints required to create the revocation registry and assign to the cred def.
+    required: true
+    value: 'false'
+  # ===============================================================================
+
   # ===============================================================================
   # Wallet Configuration
   #--------------------------------------------------------------------------------
-  - name: WALLET_STORAGE_TYPE
+  - name: ACAPY_WALLET_TYPE
+    displayName: Wallet Type
+    description:
+      The wallet type.  Supported internal storage types are 'basic' (memory), 'indy', and 'askar'.
+    required: false
+    value: 'indy'
+  - name: ACAPY_WALLET_STORAGE_TYPE
     displayName: Wallet Storage Type
     description:
-      The wallet storage type.  Your choice of 'postgres' or 'sqlite' at
-      the moment.  If not defined, defaults to 'sqlite' for compatibility
+      The wallet storage type.  Your choice of 'postgres' or 'sqlite' at the moment.
+      If not defined, defaults to 'sqlite' for compatibility
     required: false
     value: postgres_storage
   - name: WALLET_HOST
     displayName: PostgreSql Wallet Hostname
     required: true
-    description: Hostname of the deployed database hosting the wallet.  Only used when WALLET_STORAGE_TYPE = postgres_storage.
+    description: Hostname of the deployed database hosting the wallet.  Only used when ACAPY_WALLET_STORAGE_TYPE = postgres_storage.
     value: issuer-kit-wallet
-  - name: WALLET_APP_NAME
-    displayName: Wallet Application Name
-    required: true
-    description: The name of the wallet shared application
-    value: issuer-kit-shared
-  - name: WALLET_SUFFIX
-    displayName: Wallet Suffix Name
-    required: false
-    description: The value of the wallet shared application suffix
-    value: ""
   - name: WALLET_HOST_PORT
     displayName: PostgreSql Wallet Port
     required: true
-    description: The port number of the deployed database hosting the wallet.  Only used when WALLET_STORAGE_TYPE = postgres_storage.
+    description: The port number of the deployed database hosting the wallet.  Only used when ACAPY_WALLET_STORAGE_TYPE = postgres_storage.
     value: "5432"
   - name: WALLET_STORAGE_CONFIG
     displayName: Wallet Storage Configuration
@@ -558,6 +734,13 @@ parameters:
     required: false
     generate: expression
     from: "[a-zA-Z0-9]{16}"
+  - name: WALLET_SUFFIX
+    displayName: Wallet Suffix
+    description: The suffix attached to the wallet
+    required: false
+    value:
+  # ===============================================================================
+
   # ===============================================================================
   # Tails Files Configuration
   #--------------------------------------------------------------------------------
@@ -576,7 +759,7 @@ parameters:
     description: The size of the persistent volume , e.g. 512Mi, 1Gi, 2Gi.
     required: true
     value: 1Gi
-  - name: TAILS_SERVER_BASE_URL
+  - name: ACAPY_TAILS_SERVER_BASE_URL
     displayName: Tails Server Base Url
     description: The base URL for the Tails Server.
     required: true
@@ -586,19 +769,19 @@ parameters:
     displayName: Resources CPU Request
     description: The resources CPU request (in cores) for this build.
     required: true
-    value: 10m
+    value: 100m
   - name: CPU_LIMIT
     displayName: Resources CPU Limit
     description: The resources CPU limit (in cores) for this build.
     required: true
-    value: 300m
+    value: 250m
   - name: MEMORY_REQUEST
     displayName: Resources Memory Request
     description: The resources Memory request (in Mi, Gi, etc) for this build.
     required: true
-    value: 10Mi
+    value: 128Mi
   - name: MEMORY_LIMIT
     displayName: Resources Memory Limit
     description: The resources Memory limit (in Mi, Gi, etc) for this build.
     required: true
-    value: 512Mi
+    value: 256Mi
