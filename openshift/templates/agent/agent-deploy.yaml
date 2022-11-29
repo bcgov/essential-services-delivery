@@ -613,7 +613,7 @@ parameters:
     displayName: ACAPY_AUTO_RESPOND_CREDENTIAL_OFFER
     description: ACAPY_AUTO_RESPOND_CREDENTIAL_OFFER
     required: true
-    value: 'truee'
+    value: 'true'
   - name: ACAPY_AUTO_RESPOND_CREDENTIAL_REQUEST
     displayName: ACAPY_AUTO_RESPOND_CREDENTIAL_REQUEST
     description: ACAPY_AUTO_RESPOND_CREDENTIAL_REQUEST
