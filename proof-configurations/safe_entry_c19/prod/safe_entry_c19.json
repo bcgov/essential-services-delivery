@@ -25,6 +25,11 @@
             "issuer_did": "9wVuYYDEDtpZ6CYMqSiWop",
             "schema_name": "unverified_person",
             "schema_version": "0.1.0"
+          },
+          {
+            "issuer_did": "4eCXHS79ykiMv2PoBxPK23",
+            "schema_name": "unverified_person",
+            "schema_version": "0.1.0"
           }
         ]
       },
