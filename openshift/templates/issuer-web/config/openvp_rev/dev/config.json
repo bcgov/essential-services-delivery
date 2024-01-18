@@ -9,7 +9,14 @@
   },
   "inviteRequired": false,
   "authentication": {
-    "enabled": false
+    "enabled": false,
+    "oidcSettings": {
+      "authority": "not-used",
+      "clientId": "not-used",
+      "redirect_uri": "not-used",
+      "responseType": "not-used",
+      "scope": "not-used"
+    }
   },
   "apiServer": {
     "url": "/api"
