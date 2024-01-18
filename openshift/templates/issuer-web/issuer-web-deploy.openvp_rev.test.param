@@ -3,10 +3,12 @@
 # Component: .
 # Template File: ../openshift/templates/issuer-web/issuer-web-deploy.json
 #=========================================================
-# NAME=issuer-web-openvp-rev
-# APP_NAME=issuer-openvp
+# NAME=issuer-web
+# APP_NAME=issuer
 # APP_GROUP=openvp
-# SUFFIX=
+# SUFFIX=-openvp-rev
+# APP_SUFFIX=-openvp
+# API_HOST_SUFFIX=-openvp
 # ROLE=public-frontend
 # IMAGE_NAMESPACE=a99fd4-tools
 # NAMESPACE_NAME=a99fd4
