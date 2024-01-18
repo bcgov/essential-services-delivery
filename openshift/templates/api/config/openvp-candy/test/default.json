@@ -40,7 +40,7 @@
     "multiUse": true
   },
   "authentication": {
-    "jwksUri": "https://toip-vc-authn-controller-test.apps.silver.devops.gov.bc.ca/.well-known/openid-configuration/jwks",
+    "jwksUri": "https://test.loginproxy.gov.bc.ca/auth/realms/digitaltrust-citz/protocol/openid-connect/certs",
     "algorithms": ["RS256"]
   }
 }
