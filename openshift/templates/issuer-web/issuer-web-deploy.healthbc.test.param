@@ -7,6 +7,8 @@
 # APP_NAME=issuer
 # APP_GROUP=healthbc
 # SUFFIX=-healthbc
+# APP_SUFFIX=-healthbc
+# API_HOST_SUFFIX=-healthbc
 # ROLE=public-frontend
 # IMAGE_NAMESPACE=a99fd4-tools
 # NAMESPACE_NAME=a99fd4

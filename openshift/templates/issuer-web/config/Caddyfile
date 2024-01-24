@@ -18,7 +18,7 @@
     # Enable gzip, zstd compression
     encode zstd gzip
 
-    # Enable templates module - required for 
+    # Enable templates module - required for
     templates
 
     # Openly exposed health check endpoint for OpenShift

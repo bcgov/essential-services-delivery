@@ -3,10 +3,12 @@
 # Component: .
 # Template File: ../openshift/templates/issuer-web/issuer-web-deploy.json
 #=========================================================
-NAME=issuer-web-openvp-rev
-APP_NAME=issuer-openvp
+NAME=issuer-web
+APP_NAME=issuer
 APP_GROUP=openvp
-SUFFIX=
+SUFFIX=-openvp-rev
+APP_SUFFIX=-openvp
+API_HOST_SUFFIX=-openvp
 ROLE=public-frontend
 IMAGE_NAMESPACE=a99fd4-tools
 NAMESPACE_NAME=a99fd4
@@ -26,7 +28,7 @@ APP_VUETIFY_FILE_NAME=vuetify.json
 WEB_HOST_NAME=
 WEB_HOST_PORT=8080
 WEB_HOST_TLS=off
-API_HOST=api-openvp
+API_HOST=api
 API_PORT=8080
 APPLICATION_DOMAIN=openvp-rev-issuer-dev.apps.silver.devops.gov.bc.ca
 SOURCE_IMAGE_NAME=issuer-kit-web

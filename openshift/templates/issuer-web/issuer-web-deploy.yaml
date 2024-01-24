@@ -12,7 +12,7 @@ objects:
       name: ${NAME}${SUFFIX}-allow-ingress
       labels:
         name: ${NAME}${SUFFIX}-allow-ingress
-        app: ${APP_NAME}${SUFFIX}
+        app: ${APP_NAME}${APP_SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
@@ -27,7 +27,7 @@ objects:
       podSelector:
         matchLabels:
           role: ${ROLE}
-          app: ${APP_NAME}${SUFFIX}
+          app: ${APP_NAME}${APP_SUFFIX}
           env: ${TAG_NAME}
       policyTypes:
         - Ingress
@@ -36,8 +36,8 @@ objects:
     kind: DeploymentConfig
     metadata:
       labels:
-        app: ${APP_NAME}${SUFFIX}
-        app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
+        app: ${APP_NAME}${APP_SUFFIX}
+        app.kubernetes.io/part-of: ${APP_NAME}${APP_SUFFIX}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
@@ -46,7 +46,7 @@ objects:
       annotations:
         description: Defines how to deploy the application server
         app.openshift.io/connects-to: >-
-          [{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"${API_HOST}${SUFFIX}"}]
+          [{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"${API_HOST}${API_HOST_SUFFIX}"}]
     spec:
       replicas: 1
       selector:
@@ -63,8 +63,8 @@ objects:
       template:
         metadata:
           labels:
-            app: ${APP_NAME}${SUFFIX}
-            app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
+            app: ${APP_NAME}${APP_SUFFIX}
+            app.kubernetes.io/part-of: ${APP_NAME}${APP_SUFFIX}
             name: ${NAME}${SUFFIX}
             app-group: ${APP_GROUP}
             role: ${ROLE}
@@ -141,7 +141,7 @@ objects:
                 - name: WEB_HOST_TLS
                   value: ${WEB_HOST_TLS}
                 - name: API_HOST
-                  value: ${API_HOST}${SUFFIX}
+                  value: ${API_HOST}${API_HOST_SUFFIX}
                 - name: API_PORT
                   value: ${API_PORT}
               resources:
@@ -220,8 +220,8 @@ objects:
     kind: Service
     metadata:
       labels:
-        app: ${APP_NAME}${SUFFIX}
-        app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
+        app: ${APP_NAME}${APP_SUFFIX}
+        app.kubernetes.io/part-of: ${APP_NAME}${APP_SUFFIX}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
@@ -243,8 +243,8 @@ objects:
     kind: Route
     metadata:
       labels:
-        app: ${APP_NAME}${SUFFIX}
-        app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
+        app: ${APP_NAME}${APP_SUFFIX}
+        app.kubernetes.io/part-of: ${APP_NAME}${APP_SUFFIX}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
@@ -276,6 +276,11 @@ parameters:
     description: Used to group components together in the OpenShift console.
     required: true
     value: issuer
+  - name: APP_SUFFIX
+    displayName: App Suffix
+    description: A suffix applied to all of the APP_NAME objects in this template.
+    required: false
+    value: ""
   - name: APP_GROUP
     displayName: App Group
     description: The name assigned to all of the deployments in this project.
@@ -395,6 +400,11 @@ parameters:
     description: The name of the API service.
     required: true
     value: api
+  - name: API_HOST_SUFFIX
+    displayName: API Host Suffix
+    description: A suffix applied to all of the API host objects in this template.
+    required: false
+    value: ""
   - name: API_PORT
     displayName: API Service Port
     description: The port used by the API service.
